@@ -1,4 +1,4 @@
-# FRP Manager for macOS — 项目规范
+# SwiFRP — 项目规范
 
 ## 项目概述
 
@@ -466,7 +466,7 @@
 **macOS 等价**: **launchd** (LaunchAgent/LaunchDaemon)
 
 每个配置对应一个独立的 launchd job：
-- **标识符**: `com.frpmgr.client.<MD5(configName)>`
+- **标识符**: `com.swifrp.client.<MD5(configName)>`
 - **plist 文件位置**: `~/Library/LaunchAgents/` (用户级)
 - **启动参数**: frpc 可执行路径 + `-c <config_path>`
 - **自动启动**: `RunAtLoad = true`（非手动模式）
@@ -545,7 +545,7 @@ GET http://{adminAddr}:{adminPort}/api/reload
 #### 11.2 配置文件结构
 
 ```
-~/Library/Application Support/FRPManager/
+~/Library/Application Support/SwiFRP/
 ├── app.json              # 应用设置（语言、密码、默认值、窗口位置）
 ├── configs/
 │   ├── my-server.toml    # 配置文件
@@ -651,11 +651,11 @@ struct AutoDelete {
 ### 项目结构建议
 
 ```
-FRPManager/
-├── FRPManager.xcodeproj
-├── FRPManager/
+SwiFRP/
+├── SwiFRP.xcodeproj
+├── SwiFRP/
 │   ├── App/
-│   │   ├── FRPManagerApp.swift          # @main 入口
+│   │   ├── SwiFRPApp.swift              # @main 入口
 │   │   └── AppDelegate.swift            # 生命周期管理
 │   ├── Models/
 │   │   ├── ClientConfig.swift           # FRP 客户端配置模型
@@ -711,7 +711,7 @@ FRPManager/
 │   │   ├── Assets.xcassets              # 图标和图片
 │   │   └── Localizable.xcstrings        # 多语言字符串
 │   └── Info.plist
-├── FRPManagerTests/
+├── SwiFRPTests/
 │   └── ...
 └── README.md
 ```
