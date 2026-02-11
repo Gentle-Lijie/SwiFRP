@@ -213,13 +213,9 @@ struct ConfigConverter {
 
             // Bandwidth
             if let bw = values["bandwidth_limit"], !bw.isEmpty {
-                var digits = ""
-                var unit = ""
-                for ch in bw {
-                    if ch.isNumber { digits.append(ch) } else { unit.append(ch) }
-                }
-                proxy.bandwidth.limit = Int(digits) ?? 0
-                if !unit.isEmpty { proxy.bandwidth.unit = unit }
+                let parsed = StringUtils.parseBandwidth(bw)
+                proxy.bandwidth.limit = parsed.limit
+                if !parsed.unit.isEmpty { proxy.bandwidth.unit = parsed.unit }
             }
 
             config.proxies.append(proxy)
