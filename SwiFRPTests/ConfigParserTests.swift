@@ -313,8 +313,8 @@ final class ConfigParserTests: XCTestCase {
 
         var proxy = ProxyConfig(name: "ssh")
         proxy.type = "tcp"
-        proxy.localPort = "22"
-        proxy.remotePort = "6000"
+        proxy.localPort = 22
+        proxy.remotePort = 6000
         config.proxies = [proxy]
 
         let toml = converter.configToTOML(config)
@@ -329,8 +329,8 @@ final class ConfigParserTests: XCTestCase {
         XCTAssertEqual(restored.proxies.count, 1)
         XCTAssertEqual(restored.proxies.first?.name, "ssh")
         XCTAssertEqual(restored.proxies.first?.type, "tcp")
-        XCTAssertEqual(restored.proxies.first?.localPort, "22")
-        XCTAssertEqual(restored.proxies.first?.remotePort, "6000")
+        XCTAssertEqual(restored.proxies.first?.localPort, 22)
+        XCTAssertEqual(restored.proxies.first?.remotePort, 6000)
     }
 
     func testConfigConverterINI() {
@@ -345,8 +345,8 @@ final class ConfigParserTests: XCTestCase {
 
         var proxy = ProxyConfig(name: "ssh")
         proxy.type = "tcp"
-        proxy.localPort = "22"
-        proxy.remotePort = "6000"
+        proxy.localPort = 22
+        proxy.remotePort = 6000
         config.proxies = [proxy]
 
         let ini = converter.configToINI(config)
@@ -362,8 +362,8 @@ final class ConfigParserTests: XCTestCase {
         XCTAssertEqual(restored.proxies.count, 1)
         XCTAssertEqual(restored.proxies.first?.name, "ssh")
         XCTAssertEqual(restored.proxies.first?.type, "tcp")
-        XCTAssertEqual(restored.proxies.first?.localPort, "22")
-        XCTAssertEqual(restored.proxies.first?.remotePort, "6000")
+        XCTAssertEqual(restored.proxies.first?.localPort, 22)
+        XCTAssertEqual(restored.proxies.first?.remotePort, 6000)
     }
 
     func testConfigConverterTOMLWithHttpProxy() {
@@ -374,7 +374,7 @@ final class ConfigParserTests: XCTestCase {
 
         var proxy = ProxyConfig(name: "web")
         proxy.type = "http"
-        proxy.localPort = "8080"
+        proxy.localPort = 8080
         proxy.subdomain = "myapp"
         proxy.customDomains = ["example.com"]
         proxy.httpUser = "admin"
@@ -420,8 +420,8 @@ final class ConfigParserTests: XCTestCase {
 
         var proxy = ProxyConfig(name: "limited")
         proxy.type = "tcp"
-        proxy.localPort = "22"
-        proxy.remotePort = "6000"
+        proxy.localPort = 22
+        proxy.remotePort = 6000
         proxy.bandwidth.limit = 10
         proxy.bandwidth.unit = "MB"
         config.proxies = [proxy]
@@ -442,7 +442,7 @@ final class ConfigParserTests: XCTestCase {
 
         var proxy = ProxyConfig(name: "web1")
         proxy.type = "http"
-        proxy.localPort = "80"
+        proxy.localPort = 80
         proxy.loadBalance.group = "web-group"
         proxy.loadBalance.groupKey = "secret"
         config.proxies = [proxy]
@@ -461,7 +461,7 @@ final class ConfigParserTests: XCTestCase {
 
         var proxy = ProxyConfig(name: "web")
         proxy.type = "http"
-        proxy.localPort = "80"
+        proxy.localPort = 80
         proxy.healthCheck.type = "http"
         proxy.healthCheck.url = "/health"
         proxy.healthCheck.timeout = 3
@@ -576,15 +576,15 @@ final class ConfigParserTests: XCTestCase {
     func testTOMLProxyConfigToDict() {
         var proxy = ProxyConfig(name: "ssh")
         proxy.type = "tcp"
-        proxy.localPort = "22"
-        proxy.remotePort = "6000"
+        proxy.localPort = 22
+        proxy.remotePort = 6000
         proxy.useEncryption = true
 
         let dict = TOMLParser.proxyConfigToDict(proxy)
         XCTAssertEqual(dict["name"] as? String, "ssh")
         XCTAssertEqual(dict["type"] as? String, "tcp")
-        XCTAssertEqual(dict["localPort"] as? String, "22")
-        XCTAssertEqual(dict["remotePort"] as? String, "6000")
+        XCTAssertEqual(dict["localPort"] as? Int, 22)
+        XCTAssertEqual(dict["remotePort"] as? Int, 6000)
         XCTAssertEqual(dict["transport.useEncryption"] as? Bool, true)
     }
 
@@ -602,7 +602,7 @@ final class ConfigParserTests: XCTestCase {
         let proxy = TOMLParser.dictToProxyConfig(dict)
         XCTAssertEqual(proxy.name, "web")
         XCTAssertEqual(proxy.type, "http")
-        XCTAssertEqual(proxy.localPort, "8080")
+        XCTAssertEqual(proxy.localPort, 8080)
         XCTAssertEqual(proxy.subdomain, "myapp")
         XCTAssertEqual(proxy.customDomains, ["a.com", "b.com"])
         XCTAssertEqual(proxy.httpUser, "admin")
@@ -662,8 +662,8 @@ final class ConfigParserTests: XCTestCase {
 
         var proxy = ProxyConfig(name: "secure")
         proxy.type = "tcp"
-        proxy.localPort = "22"
-        proxy.remotePort = "6000"
+        proxy.localPort = 22
+        proxy.remotePort = 6000
         proxy.useEncryption = true
         proxy.useCompression = true
         config.proxies = [proxy]
@@ -682,7 +682,7 @@ final class ConfigParserTests: XCTestCase {
 
         var proxy = ProxyConfig(name: "p2p-ssh")
         proxy.type = "xtcp"
-        proxy.localPort = "22"
+        proxy.localPort = 22
         proxy.secretKey = "my-secret"
         proxy.role = "visitor"
         config.proxies = [proxy]

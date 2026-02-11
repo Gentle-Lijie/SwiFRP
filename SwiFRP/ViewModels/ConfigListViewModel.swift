@@ -51,9 +51,14 @@ class ConfigListViewModel: ObservableObject {
 
     func deleteSelectedConfigs() {
         let sortedIndices = selectedIndices.sorted(by: >)
+        var errors: [String] = []
         for index in sortedIndices {
             let config = appState.configs[index]
-            try? LaunchdManager.shared.uninstall(configName: config.name)
+            do {
+                try LaunchdManager.shared.uninstall(configName: config.name)
+            } catch {
+                errors.append("\(config.name): \(error.localizedDescription)")
+            }
             ConfigFileManager.shared.deleteConfig(name: config.name)
         }
         appState.configs.remove(atOffsets: IndexSet(sortedIndices))
@@ -61,6 +66,10 @@ class ConfigListViewModel: ObservableObject {
         appState.saveAppConfig()
         selectedIndices.removeAll()
         appState.selectedConfigIndex = nil
+        if !errors.isEmpty {
+            errorMessage = errors.joined(separator: "\n")
+            showError = true
+        }
     }
 
     func duplicateConfig(_ config: ClientConfig, fullCopy: Bool) {

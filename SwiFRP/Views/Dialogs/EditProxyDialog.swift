@@ -89,10 +89,10 @@ struct EditProxyDialog: View {
         ScrollView {
             Form {
                 TextField(String(localized: "proxy.localIP"), text: $draft.localIP)
-                TextField(String(localized: "proxy.localPort"), text: $draft.localPort)
+                TextField(String(localized: "proxy.localPort"), value: $draft.localPort, format: .number)
 
                 if ["tcp", "udp"].contains(draft.type) {
-                    TextField(String(localized: "proxy.remotePort"), text: $draft.remotePort)
+                    TextField(String(localized: "proxy.remotePort"), value: $draft.remotePort, format: .number)
                 }
 
                 if ["xtcp", "stcp", "sudp"].contains(draft.type) {

@@ -52,8 +52,8 @@ struct ConfigConverter {
             p["type"] = proxy.type
             if proxy.disabled { p["disabled"] = "true" }
             if proxy.localIP != "127.0.0.1" { p["local_ip"] = proxy.localIP }
-            if !proxy.localPort.isEmpty { p["local_port"] = proxy.localPort }
-            if !proxy.remotePort.isEmpty { p["remote_port"] = proxy.remotePort }
+            if let lp = proxy.localPort { p["local_port"] = String(lp) }
+            if let rp = proxy.remotePort { p["remote_port"] = String(rp) }
 
             // P2P
             if ["xtcp", "stcp", "sudp"].contains(proxy.type) {
@@ -167,8 +167,8 @@ struct ConfigConverter {
             proxy.type = values["type"] ?? "tcp"
             proxy.disabled = values["disabled"] == "true"
             proxy.localIP = values["local_ip"] ?? "127.0.0.1"
-            proxy.localPort = values["local_port"] ?? ""
-            proxy.remotePort = values["remote_port"] ?? ""
+            proxy.localPort = Int(values["local_port"] ?? "")
+            proxy.remotePort = Int(values["remote_port"] ?? "")
 
             // P2P
             proxy.role = values["role"] ?? "server"

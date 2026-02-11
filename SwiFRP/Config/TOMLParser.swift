@@ -210,8 +210,8 @@ struct TOMLParser {
 
         // Local
         if proxy.localIP != "127.0.0.1" { dict["localIP"] = proxy.localIP }
-        if !proxy.localPort.isEmpty { dict["localPort"] = proxy.localPort }
-        if !proxy.remotePort.isEmpty { dict["remotePort"] = proxy.remotePort }
+        if let lp = proxy.localPort { dict["localPort"] = lp }
+        if let rp = proxy.remotePort { dict["remotePort"] = rp }
 
         // P2P
         let p2pTypes = ["xtcp", "stcp", "sudp"]
@@ -361,8 +361,12 @@ struct TOMLParser {
         proxy.disabled = dict["disabled"] as? Bool ?? false
 
         proxy.localIP = dict["localIP"] as? String ?? "127.0.0.1"
-        proxy.localPort = dict["localPort"] as? String ?? ""
-        proxy.remotePort = dict["remotePort"] as? String ?? ""
+        if let lp = dict["localPort"] {
+            proxy.localPort = lp as? Int ?? Int("\(lp)")
+        }
+        if let rp = dict["remotePort"] {
+            proxy.remotePort = rp as? Int ?? Int("\(rp)")
+        }
 
         // P2P
         proxy.secretKey = dict["secretKey"] as? String ?? ""
