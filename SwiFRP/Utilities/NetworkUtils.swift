@@ -5,12 +5,14 @@ struct GitHubRelease: Codable {
     let tagName: String
     let htmlURL: String
     let body: String
+    let publishedAt: String?
     let assets: [GitHubAsset]
 
     enum CodingKeys: String, CodingKey {
         case tagName = "tag_name"
         case htmlURL = "html_url"
         case body
+        case publishedAt = "published_at"
         case assets
     }
 }
