@@ -65,6 +65,13 @@ struct StringUtils {
         return (Int(digits) ?? 0, unit.isEmpty ? "MB" : unit)
     }
 
+    /// Returns the SHA-256 hex digest of a string using CryptoKit.
+    static func sha256Hash(_ string: String) -> String {
+        let data = Data(string.utf8)
+        let digest = SHA256.hash(data: data)
+        return digest.map { String(format: "%02x", $0) }.joined()
+    }
+
     /// Formats a byte count into a human-readable string (e.g., "1.5 MB").
     static func formatBytes(_ bytes: Int64) -> String {
         let units = ["B", "KB", "MB", "GB", "TB"]
