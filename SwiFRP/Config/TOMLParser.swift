@@ -151,8 +151,10 @@ struct TOMLParser {
         if !config.oidcAudience.isEmpty { common["auth.oidc.audience"] = config.oidcAudience }
         if !config.oidcScope.isEmpty { common["auth.oidc.scope"] = config.oidcScope }
         if !config.oidcTokenEndpoint.isEmpty { common["auth.oidc.tokenEndpointURL"] = config.oidcTokenEndpoint }
-        if config.authHeartbeat { common["auth.additionalScopes"] = ["HeartBeats"] }
-        if config.authNewWorkConn { common["auth.additionalScopes"] = ["NewWorkConns"] }
+        var additionalScopes: [String] = []
+        if config.authHeartbeat { additionalScopes.append("HeartBeats") }
+        if config.authNewWorkConn { additionalScopes.append("NewWorkConns") }
+        if !additionalScopes.isEmpty { common["auth.additionalScopes"] = additionalScopes }
 
         // Log
         if config.logLevel != "info" { common["log.level"] = config.logLevel }
@@ -380,9 +382,9 @@ struct TOMLParser {
 
         // Bandwidth
         if let bw = dict["transport.bandwidthLimit"] as? String {
-            let (limit, unit) = parseBandwidth(bw)
-            proxy.bandwidth.limit = limit
-            proxy.bandwidth.unit = unit
+            let parsed = StringUtils.parseBandwidth(bw)
+            proxy.bandwidth.limit = parsed.limit
+            proxy.bandwidth.unit = parsed.unit
         }
         proxy.bandwidth.mode = dict["transport.bandwidthLimitMode"] as? String ?? "client"
 
@@ -523,16 +525,4 @@ struct TOMLParser {
         }
     }
 
-    private static func parseBandwidth(_ value: String) -> (Int, String) {
-        var digits = ""
-        var unit = ""
-        for ch in value {
-            if ch.isNumber {
-                digits.append(ch)
-            } else {
-                unit.append(ch)
-            }
-        }
-        return (Int(digits) ?? 0, unit.isEmpty ? "MB" : unit)
-    }
 }

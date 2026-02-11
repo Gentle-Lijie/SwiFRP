@@ -55,6 +55,16 @@ struct StringUtils {
         return ports
     }
 
+    /// Parses a bandwidth string like "10MB" into (limit, unit) components.
+    static func parseBandwidth(_ value: String) -> (limit: Int, unit: String) {
+        var digits = ""
+        var unit = ""
+        for ch in value {
+            if ch.isNumber { digits.append(ch) } else { unit.append(ch) }
+        }
+        return (Int(digits) ?? 0, unit.isEmpty ? "MB" : unit)
+    }
+
     /// Formats a byte count into a human-readable string (e.g., "1.5 MB").
     static func formatBytes(_ bytes: Int64) -> String {
         let units = ["B", "KB", "MB", "GB", "TB"]
