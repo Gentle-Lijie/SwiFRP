@@ -751,6 +751,51 @@ SwiFRP/
 
 ---
 
+## 开发规范（Swift + GitHub Flow）
+
+本规范基于 **Swift 工程最佳实践** 与 **GitHub 标准协作流程（GitHub Flow）**。
+
+### 代码与架构
+
+- **架构统一**：保持 MVVM 分层，不跨层调用；业务逻辑放在 ViewModel / Services。
+- **并发规范**：新代码默认使用 `async/await`；共享状态使用 `actor` 或 `@MainActor` 约束。
+- **文件组织**：遵循既定目录结构，新增文件需归位到对应模块（Models / Views / ViewModels / Services / Utilities）。
+- **命名风格**：Swift 标准命名（UpperCamelCase 类型名，lowerCamelCase 变量/函数）。
+- **国际化**：所有用户可见文案必须使用 `String(localized:)`，禁止硬编码。
+- **格式化**：建议使用 `swift-format`，保持一致的缩进与换行风格。
+- **代码审查点**：UI 线程安全、生命周期管理、内存泄漏（循环引用）必须检查。
+
+### GitHub Flow
+
+- **默认分支**：`main` 仅允许通过 PR 合并，禁止直接 push。
+- **分支命名**：
+  - `feat/<topic>` 新功能
+  - `fix/<topic>` 缺陷修复
+  - `chore/<topic>` 构建/工具/杂项
+  - `refactor/<topic>` 重构
+- **提交规范**：建议使用 Conventional Commits（如 `feat: add proxy editor`）。
+- **PR 流程**：
+  1. 从 `main` 创建分支
+  2. 完成开发并自测
+  3. 提交 PR（描述背景、变更点、测试方式、截图如适用）
+  4. 至少 1 人代码审查通过
+  5. CI 通过后合并
+- **回滚策略**：小步合并、可逆变更优先，必要时用 revert 回退。
+
+### 测试与质量
+
+- **单元测试**：新增逻辑需配套 `XCTest`。
+- **UI 测试**：关键交互（配置编辑、代理列表、启动/停止）应有基础覆盖。
+- **静态检查**：建议启用 Swift 诊断与编译器警告为错误（Treat Warnings as Errors）。
+- **发布前检查**：确保版本号更新、变更日志完整、功能自测通过。
+
+### 发布与版本
+
+- **语义化版本**：遵循 $MAJOR.MINOR.PATCH$。
+- **Release 规范**：使用 GitHub Releases，附带变更摘要与下载链接。
+
+---
+
 ## frpc 二进制集成
 
 macOS 版本需要集成 frpc 客户端二进制：
