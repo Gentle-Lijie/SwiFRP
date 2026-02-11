@@ -1,0 +1,401 @@
+/* ============================================================
+   SwiFRP - 한국어 로컬라이즈 문자열
+   ============================================================ */
+
+/* ---- 탭 ---- */
+"tab.configuration" = "구성";
+"tab.log" = "로그";
+"tab.preferences" = "환경설정";
+"tab.about" = "정보";
+"tab.about.newVersion" = "새 버전";
+
+/* ---- 환영 ---- */
+"welcome.title" = "SwiFRP에 오신 것을 환영합니다";
+"welcome.subtitle" = "서버 구성을 추가하여 시작하세요";
+
+/* ---- 공통 ---- */
+"common.add" = "추가";
+"common.browse" = "찾아보기…";
+"common.cancel" = "취소";
+"common.clearAll" = "모두 지우기";
+"common.close" = "닫기";
+"common.copy" = "복사";
+"common.delete" = "삭제";
+"common.no" = "아니오";
+"common.ok" = "확인";
+"common.quit" = "종료";
+"common.save" = "저장";
+"common.seconds" = "초";
+"common.selectAll" = "모두 선택";
+"common.unlock" = "잠금 해제";
+
+/* ---- 오류 ---- */
+"error.title" = "오류";
+
+/* ---- 클립보드 ---- */
+"clipboard.empty" = "클립보드가 비어 있습니다";
+
+/* ---- 키-값 ---- */
+"keyvalue.key" = "키";
+"keyvalue.value" = "값";
+
+/* ---- 비밀번호 ---- */
+"password.enterPassword" = "비밀번호를 입력하세요";
+"password.incorrect" = "비밀번호가 올바르지 않습니다";
+"password.placeholder" = "비밀번호";
+
+/* ---- 패널(서버 제어) ---- */
+"panel.noServer" = "서버가 선택되지 않음";
+"panel.protocol" = "프로토콜";
+"panel.serverAddress" = "서버 주소";
+"panel.start" = "시작";
+"panel.stop" = "중지";
+"panel.tlsEnabled" = "TLS 활성화됨";
+"panel.status.running" = "실행 중";
+"panel.status.starting" = "시작하는 중…";
+"panel.status.stopped" = "중지됨";
+"panel.status.stopping" = "중지하는 중…";
+"panel.status.unknown" = "알 수 없음";
+"panel.stopConfirmation" = "이 터널을 중지하시겠습니까?";
+
+/* ---- 구성 관리 ---- */
+"config.deleteConfirmation" = "이 구성을 삭제하시겠습니까?";
+"config.duplicate" = "복제";
+"config.duplicate.basic" = "기본 복제";
+"config.duplicate.full" = "전체 복제";
+"config.edit" = "편집";
+"config.exportAll" = "모두 내보내기";
+"config.import.clipboard" = "클립보드에서";
+"config.import.file" = "파일에서…";
+"config.import.url" = "URL에서…";
+"config.importClipboard" = "클립보드에서 가져오기";
+"config.manualStart" = "수동 시작";
+"config.move.bottom" = "맨 아래로";
+"config.move.down" = "아래로 이동";
+"config.move.top" = "맨 위로";
+"config.move.up" = "위로 이동";
+"config.moveTo" = "이동";
+"config.name" = "이름";
+"config.natCheck" = "NAT 유형 감지";
+"config.new.empty" = "빈 구성 새로 만들기";
+"config.noServer" = "서버 구성이 없습니다";
+"config.properties" = "속성";
+"config.shareLink" = "링크 공유";
+
+/* ---- 속성 ---- */
+"properties.automatic" = "자동";
+"properties.configName" = "구성 이름";
+"properties.fileCreated" = "생성일";
+"properties.fileFormat" = "파일 형식";
+"properties.fileModified" = "수정일";
+"properties.identifier" = "식별자";
+"properties.logFiles" = "로그 파일";
+"properties.logSize" = "로그 크기";
+"properties.manual" = "수동";
+"properties.protocol" = "프로토콜";
+"properties.proxyCount" = "프록시 수";
+"properties.serverAddr" = "서버 주소";
+"properties.serverPort" = "서버 포트";
+"properties.serviceName" = "서비스 이름";
+"properties.startupMode" = "시작 모드";
+"properties.tcpConnections" = "TCP 연결 수";
+"properties.title" = "속성";
+"properties.udpConnections" = "UDP 연결 수";
+
+/* ---- 클라이언트 구성 - 탭 ---- */
+"client.tab.admin" = "관리";
+"client.tab.advanced" = "고급";
+"client.tab.auth" = "인증";
+"client.tab.basic" = "기본";
+"client.tab.connection" = "연결";
+"client.tab.log" = "로그";
+"client.tab.tls" = "TLS";
+
+/* ---- 클라이언트 구성 - 기본 ---- */
+"client.name" = "이름";
+"client.serverAddr" = "서버 주소";
+"client.serverPort" = "서버 포트";
+"client.user" = "사용자";
+"client.manualStart" = "수동 시작";
+"client.legacyFormat" = "레거시 형식";
+"client.error.nameRequired" = "이름은 필수입니다";
+"client.error.serverAddrRequired" = "서버 주소는 필수입니다";
+
+/* ---- 클라이언트 구성 - 인증 ---- */
+"client.authMethod" = "인증 방식";
+"client.auth.none" = "없음";
+"client.token" = "토큰";
+"client.tokenFile" = "토큰 파일";
+"client.authScope" = "인증 범위";
+"client.authHeartbeat" = "인증 하트비트";
+"client.authNewWorkConn" = "새 연결 인증";
+"client.oidcClientID" = "OIDC 클라이언트 ID";
+"client.oidcClientSecret" = "OIDC 클라이언트 시크릿";
+"client.oidcAudience" = "OIDC 대상";
+"client.oidcScope" = "OIDC 범위";
+"client.oidcTokenEndpoint" = "OIDC 토큰 엔드포인트";
+"client.oidcProxyURL" = "OIDC 프록시 URL";
+"client.oidcSkipVerify" = "OIDC TLS 검증 건너뛰기";
+"client.oidcTLSCA" = "OIDC TLS CA 파일";
+
+/* ---- 클라이언트 구성 - 연결 ---- */
+"client.protocol" = "프로토콜";
+"client.dialTimeout" = "연결 시간 초과";
+"client.keepalivePeriod" = "킵얼라이브 주기";
+"client.heartbeatInterval" = "하트비트 간격";
+"client.heartbeatTimeout" = "하트비트 시간 초과";
+"client.connectPoolSize" = "연결 풀 크기";
+"client.connectServerLocalIP" = "로컬 연결 IP";
+"client.tcpMux" = "TCP 다중화";
+"client.tcpMuxKeepAliveInterval" = "TCP 다중화 킵얼라이브 간격";
+"client.quicSettings" = "QUIC 설정";
+"client.quicKeepalivePeriod" = "QUIC 킵얼라이브 주기";
+"client.quicMaxIdleTimeout" = "QUIC 최대 유휴 시간 초과";
+"client.quicMaxIncomingStreams" = "QUIC 최대 수신 스트림 수";
+"client.dnsServer" = "DNS 서버";
+"client.stunServer" = "STUN 서버";
+"client.loginFailExit" = "로그인 실패 시 종료";
+
+/* ---- 클라이언트 구성 - TLS ---- */
+"client.tlsEnable" = "TLS 활성화";
+"client.tlsCertFile" = "TLS 인증서 파일";
+"client.tlsKeyFile" = "TLS 키 파일";
+"client.tlsTrustedCaFile" = "TLS 신뢰할 수 있는 CA 파일";
+"client.tlsServerName" = "TLS 서버 이름";
+"client.tlsDisableCustomFirstByte" = "사용자 정의 첫 바이트 비활성화";
+
+/* ---- 클라이언트 구성 - 로그 ---- */
+"client.logLevel" = "로그 수준";
+"client.logMaxDays" = "로그 최대 보관일";
+
+/* ---- 클라이언트 구성 - 관리 ---- */
+"client.adminAddr" = "관리 주소";
+"client.adminPort" = "관리 포트";
+"client.adminUser" = "관리 사용자";
+"client.adminPwd" = "관리 비밀번호";
+"client.adminTLS" = "관리 TLS";
+"client.assetsDir" = "에셋 디렉터리";
+
+/* ---- 클라이언트 구성 - 고급 ---- */
+"client.metadatas" = "메타데이터";
+"client.autoDelete" = "자동 삭제";
+"client.delete.none" = "없음";
+"client.delete.absolute" = "절대 날짜";
+"client.delete.relative" = "상대 일수";
+"client.deleteMethod" = "삭제 방식";
+"client.deleteAfterDays" = "삭제까지 일수";
+"client.deleteAfterDate" = "삭제 날짜";
+
+/* ---- 프록시 구성 ---- */
+"proxy.add" = "추가";
+"proxy.new" = "새 프록시";
+"proxy.name" = "프록시 이름";
+"proxy.type" = "프록시 유형";
+"proxy.enable" = "활성화";
+"proxy.disable" = "비활성화";
+"proxy.toggleEnabled" = "활성화 전환";
+"proxy.delete" = "삭제";
+"proxy.deleteConfirmation" = "이 프록시를 삭제하시겠습니까?";
+"proxy.edit" = "편집";
+"proxy.randomName" = "무작위 이름";
+"proxy.importClipboard" = "클립보드에서 가져오기";
+"proxy.copyAccessAddr" = "접근 주소 복사";
+"proxy.showRemoteAddr" = "원격 주소 표시";
+"proxy.moveTo" = "이동";
+"proxy.error.nameRequired" = "프록시 이름은 필수입니다";
+
+/* ---- 프록시 구성 - 탭 ---- */
+"proxy.tab.basic" = "기본";
+"proxy.tab.advanced" = "고급";
+"proxy.tab.plugin" = "플러그인";
+"proxy.tab.healthCheck" = "상태 검사";
+"proxy.tab.loadBalance" = "부하 분산";
+"proxy.tab.metadata" = "메타데이터";
+
+/* ---- 프록시 구성 - 기본 ---- */
+"proxy.localIP" = "로컬 IP";
+"proxy.localPort" = "로컬 포트";
+"proxy.remotePort" = "원격 포트";
+"proxy.role" = "역할";
+"proxy.secretKey" = "비밀 키";
+"proxy.serverName" = "서버 이름";
+"proxy.serverUser" = "서버 사용자";
+"proxy.subdomain" = "서브도메인";
+"proxy.customDomains" = "사용자 정의 도메인";
+"proxy.locations" = "라우팅 경로";
+"proxy.bindAddr" = "바인드 주소";
+"proxy.bindPort" = "바인드 포트";
+
+/* ---- 프록시 구성 - 고급 ---- */
+"proxy.bandwidth" = "대역폭";
+"proxy.bandwidthLimit" = "대역폭 제한";
+"proxy.bandwidthMode" = "대역폭 모드";
+"proxy.useCompression" = "압축 사용";
+"proxy.useEncryption" = "암호화 사용";
+"proxy.transport" = "전송";
+"proxy.transportField" = "전송 프로토콜";
+"proxy.proxyProtocolVersion" = "Proxy Protocol 버전";
+"proxy.hostHeaderRewrite" = "Host 헤더 재작성";
+"proxy.httpSettings" = "HTTP 설정";
+"proxy.httpUser" = "HTTP 사용자";
+"proxy.httpPwd" = "HTTP 비밀번호";
+"proxy.http2" = "HTTP/2";
+"proxy.requestHeaders" = "요청 헤더";
+"proxy.responseHeaders" = "응답 헤더";
+"proxy.routeByHTTPUser" = "HTTP 사용자별 라우팅";
+"proxy.allowUsers" = "허용 사용자";
+"proxy.annotations" = "주석";
+"proxy.metadatas" = "메타데이터";
+"proxy.multiplexer" = "멀티플렉서";
+"proxy.keepTunnel" = "터널 유지";
+"proxy.fallbackTo" = "대체 대상";
+"proxy.fallbackTimeout" = "대체 시간 초과";
+"proxy.maxRetriesPerHour" = "시간당 최대 재시도 횟수";
+"proxy.minRetryInterval" = "최소 재시도 간격";
+"proxy.retry" = "재시도";
+
+/* ---- 프록시 구성 - 플러그인 ---- */
+"proxy.plugin" = "플러그인";
+"proxy.plugin.none" = "없음";
+"proxy.plugin.localAddr" = "로컬 주소";
+"proxy.plugin.localPath" = "로컬 경로";
+"proxy.plugin.stripPrefix" = "접두사 제거";
+"proxy.plugin.httpUser" = "HTTP 사용자";
+"proxy.plugin.httpPwd" = "HTTP 비밀번호";
+"proxy.plugin.hostHeaderRewrite" = "Host 헤더 재작성";
+"proxy.plugin.requestHeaders" = "요청 헤더";
+"proxy.plugin.socks5User" = "SOCKS5 사용자";
+"proxy.plugin.socks5Pwd" = "SOCKS5 비밀번호";
+"proxy.plugin.staticFileUser" = "정적 파일 사용자";
+"proxy.plugin.staticFilePwd" = "정적 파일 비밀번호";
+"proxy.plugin.tlsCertFile" = "TLS 인증서 파일";
+"proxy.plugin.tlsKeyFile" = "TLS 키 파일";
+"proxy.plugin.tlsTrustedCaFile" = "TLS 신뢰할 수 있는 CA 파일";
+"proxy.plugin.unixPath" = "Unix 소켓 경로";
+
+/* ---- 프록시 구성 - 상태 검사 ---- */
+"proxy.healthCheck.type" = "상태 검사 유형";
+"proxy.healthCheck.none" = "없음";
+"proxy.healthCheck.interval" = "검사 간격";
+"proxy.healthCheck.timeout" = "검사 시간 초과";
+"proxy.healthCheck.maxFailed" = "최대 실패 횟수";
+"proxy.healthCheck.url" = "상태 검사 URL";
+
+/* ---- 프록시 구성 - 부하 분산 ---- */
+"proxy.loadBalance.group" = "부하 분산 그룹";
+"proxy.loadBalance.groupKey" = "부하 분산 그룹 키";
+
+/* ---- 프록시 목록 열 ---- */
+"proxy.column.name" = "이름";
+"proxy.column.type" = "유형";
+"proxy.column.localAddr" = "로컬 주소";
+"proxy.column.localPort" = "로컬 포트";
+"proxy.column.remoteAddr" = "원격 주소";
+"proxy.column.remotePort" = "원격 포트";
+"proxy.column.domain" = "도메인";
+"proxy.column.plugin" = "플러그인";
+
+/* ---- 빠른 추가 ---- */
+"proxy.quickAdd" = "빠른 추가";
+"proxy.quick.ssh" = "SSH";
+"proxy.quick.vnc" = "VNC";
+"proxy.quick.remoteDesktop" = "원격 데스크톱";
+"proxy.quick.web" = "Web (HTTP)";
+"proxy.quick.ftp" = "FTP";
+"proxy.quick.httpFileServer" = "HTTP 파일 서버";
+"proxy.quick.socks5Proxy" = "SOCKS5 프록시";
+
+/* ---- 빠른 추가 대화상자 ---- */
+"quickAdd.simpleProxy.title" = "간단한 프록시";
+"quickAdd.simpleProxy.port" = "로컬 포트";
+"quickAdd.openPort.title" = "포트 개방";
+"quickAdd.openPort.port" = "원격 포트";
+"quickAdd.openPort.protocol" = "프로토콜";
+"quickAdd.proxyServer.title" = "프록시 서버";
+"quickAdd.proxyServer.type" = "프록시 유형";
+"quickAdd.proxyServer.user" = "사용자 이름";
+"quickAdd.proxyServer.password" = "비밀번호";
+"quickAdd.httpFileServer.title" = "HTTP 파일 서버";
+"quickAdd.httpFileServer.localPath" = "로컬 경로";
+"quickAdd.httpFileServer.stripPrefix" = "접두사 제거";
+"quickAdd.httpFileServer.auth" = "인증";
+"quickAdd.httpFileServer.user" = "사용자 이름";
+"quickAdd.httpFileServer.password" = "비밀번호";
+
+/* ---- 로그 ---- */
+"log.autoRefresh" = "자동 새로고침";
+"log.config" = "구성";
+"log.error.readFailed" = "로그 파일 읽기 실패";
+"log.logFile" = "로그 파일";
+"log.noContent" = "로그 내용이 없습니다";
+"log.openFolder" = "폴더에서 열기";
+"log.selectConfig" = "로그를 볼 구성을 선택하세요";
+
+/* ---- NAT 감지 ---- */
+"nat.title" = "NAT 유형 감지";
+"nat.startDetection" = "감지 시작";
+"nat.detecting" = "감지 중…";
+"nat.stunServer" = "STUN 서버";
+"nat.natType" = "NAT 유형";
+"nat.natBehavior" = "NAT 동작";
+"nat.externalAddresses" = "외부 주소";
+"nat.localAddress" = "로컬 주소";
+"nat.isPublic" = "공용 네트워크";
+"nat.error.noOutput" = "출력이 없습니다";
+"nat.error.parseFailed" = "결과 분석 실패";
+
+/* ---- 환경설정 ---- */
+"preferences.language" = "언어";
+"preferences.language.select" = "언어 선택";
+"preferences.language.restartNote" = "언어 변경을 적용하려면 앱을 다시 시작하세요";
+
+/* ---- 환경설정 - 비밀번호 ---- */
+"preferences.password" = "비밀번호 보호";
+"preferences.password.enable" = "비밀번호 활성화";
+"preferences.password.disable" = "비밀번호 비활성화";
+"preferences.password.set" = "비밀번호 설정";
+"preferences.password.change" = "비밀번호 변경";
+"preferences.password.changeTitle" = "비밀번호 변경";
+"preferences.password.current" = "현재 비밀번호";
+"preferences.password.new" = "새 비밀번호";
+"preferences.password.confirm" = "비밀번호 확인";
+"preferences.password.empty" = "비밀번호를 입력하세요";
+"preferences.password.tooShort" = "비밀번호가 너무 짧습니다";
+"preferences.password.mismatch" = "비밀번호가 일치하지 않습니다";
+"preferences.password.incorrect" = "현재 비밀번호가 올바르지 않습니다";
+
+/* ---- 환경설정 - 고급 ---- */
+"preferences.advanced" = "고급";
+"preferences.advanced.title" = "고급 설정";
+"preferences.advanced.defaults" = "기본값";
+"preferences.advanced.open" = "열기";
+"preferences.advanced.protocol" = "프로토콜";
+"preferences.advanced.sourceAddr" = "소스 주소";
+"preferences.advanced.dnsServer" = "DNS 서버";
+"preferences.advanced.stunServer" = "STUN 서버";
+"preferences.advanced.logLevel" = "로그 수준";
+"preferences.advanced.logMaxDays" = "로그 최대 보관일";
+"preferences.advanced.user" = "사용자";
+"preferences.advanced.tls" = "TLS";
+"preferences.advanced.tcpMux" = "TCP 다중화";
+"preferences.advanced.manualStart" = "수동 시작";
+"preferences.advanced.legacyFormat" = "레거시 형식";
+"preferences.advanced.checkUpdate" = "업데이트 확인";
+
+/* ---- 정보 ---- */
+"about.version \(Constants.appVersion)" = "버전 %@";
+"about.frpVersion \(Constants.frpVersion)" = "FRP 버전 %@";
+"about.buildDate \(Constants.buildDate)" = "빌드 날짜 %@";
+"about.newVersion \(info.version)" = "새 버전 사용 가능: %@";
+"about.checkForUpdate" = "업데이트 확인";
+"about.checkingUpdate" = "확인 중…";
+"about.upToDate" = "최신 버전입니다";
+"about.downloadUpdate" = "업데이트 다운로드";
+"about.projectURL" = "프로젝트 홈페이지";
+"about.frpDocs" = "FRP 문서";
+
+/* ---- URL 가져오기 대화상자 ---- */
+"urlImport.title" = "URL에서 가져오기";
+"urlImport.description" = "구성을 가져올 URL을 입력하세요";
+"urlImport.import" = "가져오기";
+"urlImport.downloading \(current) \(total)" = "다운로드 중 %@/%@";

@@ -1,0 +1,401 @@
+/* ============================================================
+   SwiFRP - English Localizable Strings
+   ============================================================ */
+
+/* ---- Tabs ---- */
+"tab.configuration" = "Configuration";
+"tab.log" = "Log";
+"tab.preferences" = "Preferences";
+"tab.about" = "About";
+"tab.about.newVersion" = "New Version";
+
+/* ---- Welcome ---- */
+"welcome.title" = "Welcome to SwiFRP";
+"welcome.subtitle" = "Add a server configuration to get started";
+
+/* ---- Common ---- */
+"common.add" = "Add";
+"common.browse" = "Browse…";
+"common.cancel" = "Cancel";
+"common.clearAll" = "Clear All";
+"common.close" = "Close";
+"common.copy" = "Copy";
+"common.delete" = "Delete";
+"common.no" = "No";
+"common.ok" = "OK";
+"common.quit" = "Quit";
+"common.save" = "Save";
+"common.seconds" = "seconds";
+"common.selectAll" = "Select All";
+"common.unlock" = "Unlock";
+
+/* ---- Error ---- */
+"error.title" = "Error";
+
+/* ---- Clipboard ---- */
+"clipboard.empty" = "Clipboard is empty";
+
+/* ---- Key-Value ---- */
+"keyvalue.key" = "Key";
+"keyvalue.value" = "Value";
+
+/* ---- Password ---- */
+"password.enterPassword" = "Enter Password";
+"password.incorrect" = "Incorrect password";
+"password.placeholder" = "Password";
+
+/* ---- Panel (Server Control) ---- */
+"panel.noServer" = "No Server Selected";
+"panel.protocol" = "Protocol";
+"panel.serverAddress" = "Server Address";
+"panel.start" = "Start";
+"panel.stop" = "Stop";
+"panel.tlsEnabled" = "TLS Enabled";
+"panel.status.running" = "Running";
+"panel.status.starting" = "Starting…";
+"panel.status.stopped" = "Stopped";
+"panel.status.stopping" = "Stopping…";
+"panel.status.unknown" = "Unknown";
+"panel.stopConfirmation" = "Are you sure you want to stop this tunnel?";
+
+/* ---- Configuration ---- */
+"config.deleteConfirmation" = "Are you sure you want to delete this configuration?";
+"config.duplicate" = "Duplicate";
+"config.duplicate.basic" = "Basic Duplicate";
+"config.duplicate.full" = "Full Duplicate";
+"config.edit" = "Edit";
+"config.exportAll" = "Export All";
+"config.import.clipboard" = "From Clipboard";
+"config.import.file" = "From File…";
+"config.import.url" = "From URL…";
+"config.importClipboard" = "Import from Clipboard";
+"config.manualStart" = "Manual Start";
+"config.move.bottom" = "Move to Bottom";
+"config.move.down" = "Move Down";
+"config.move.top" = "Move to Top";
+"config.move.up" = "Move Up";
+"config.moveTo" = "Move To";
+"config.name" = "Name";
+"config.natCheck" = "NAT Type Check";
+"config.new.empty" = "New Empty Configuration";
+"config.noServer" = "No server configured";
+"config.properties" = "Properties";
+"config.shareLink" = "Share Link";
+
+/* ---- Properties ---- */
+"properties.automatic" = "Automatic";
+"properties.configName" = "Configuration Name";
+"properties.fileCreated" = "Created";
+"properties.fileFormat" = "File Format";
+"properties.fileModified" = "Modified";
+"properties.identifier" = "Identifier";
+"properties.logFiles" = "Log Files";
+"properties.logSize" = "Log Size";
+"properties.manual" = "Manual";
+"properties.protocol" = "Protocol";
+"properties.proxyCount" = "Proxy Count";
+"properties.serverAddr" = "Server Address";
+"properties.serverPort" = "Server Port";
+"properties.serviceName" = "Service Name";
+"properties.startupMode" = "Startup Mode";
+"properties.tcpConnections" = "TCP Connections";
+"properties.title" = "Properties";
+"properties.udpConnections" = "UDP Connections";
+
+/* ---- Client Configuration - Tabs ---- */
+"client.tab.admin" = "Admin";
+"client.tab.advanced" = "Advanced";
+"client.tab.auth" = "Auth";
+"client.tab.basic" = "Basic";
+"client.tab.connection" = "Connection";
+"client.tab.log" = "Log";
+"client.tab.tls" = "TLS";
+
+/* ---- Client Configuration - Basic ---- */
+"client.name" = "Name";
+"client.serverAddr" = "Server Address";
+"client.serverPort" = "Server Port";
+"client.user" = "User";
+"client.manualStart" = "Manual Start";
+"client.legacyFormat" = "Legacy Format";
+"client.error.nameRequired" = "Name is required";
+"client.error.serverAddrRequired" = "Server address is required";
+
+/* ---- Client Configuration - Auth ---- */
+"client.authMethod" = "Auth Method";
+"client.auth.none" = "None";
+"client.token" = "Token";
+"client.tokenFile" = "Token File";
+"client.authScope" = "Auth Scope";
+"client.authHeartbeat" = "Auth Heartbeat";
+"client.authNewWorkConn" = "Auth New Work Connection";
+"client.oidcClientID" = "OIDC Client ID";
+"client.oidcClientSecret" = "OIDC Client Secret";
+"client.oidcAudience" = "OIDC Audience";
+"client.oidcScope" = "OIDC Scope";
+"client.oidcTokenEndpoint" = "OIDC Token Endpoint";
+"client.oidcProxyURL" = "OIDC Proxy URL";
+"client.oidcSkipVerify" = "OIDC Skip TLS Verification";
+"client.oidcTLSCA" = "OIDC TLS CA File";
+
+/* ---- Client Configuration - Connection ---- */
+"client.protocol" = "Protocol";
+"client.dialTimeout" = "Dial Timeout";
+"client.keepalivePeriod" = "Keepalive Period";
+"client.heartbeatInterval" = "Heartbeat Interval";
+"client.heartbeatTimeout" = "Heartbeat Timeout";
+"client.connectPoolSize" = "Connection Pool Size";
+"client.connectServerLocalIP" = "Connect Server Local IP";
+"client.tcpMux" = "TCP Multiplexing";
+"client.tcpMuxKeepAliveInterval" = "TCP Mux Keepalive Interval";
+"client.quicSettings" = "QUIC Settings";
+"client.quicKeepalivePeriod" = "QUIC Keepalive Period";
+"client.quicMaxIdleTimeout" = "QUIC Max Idle Timeout";
+"client.quicMaxIncomingStreams" = "QUIC Max Incoming Streams";
+"client.dnsServer" = "DNS Server";
+"client.stunServer" = "STUN Server";
+"client.loginFailExit" = "Exit on Login Failure";
+
+/* ---- Client Configuration - TLS ---- */
+"client.tlsEnable" = "Enable TLS";
+"client.tlsCertFile" = "TLS Certificate File";
+"client.tlsKeyFile" = "TLS Key File";
+"client.tlsTrustedCaFile" = "TLS Trusted CA File";
+"client.tlsServerName" = "TLS Server Name";
+"client.tlsDisableCustomFirstByte" = "Disable Custom First Byte";
+
+/* ---- Client Configuration - Log ---- */
+"client.logLevel" = "Log Level";
+"client.logMaxDays" = "Log Max Days";
+
+/* ---- Client Configuration - Admin ---- */
+"client.adminAddr" = "Admin Address";
+"client.adminPort" = "Admin Port";
+"client.adminUser" = "Admin User";
+"client.adminPwd" = "Admin Password";
+"client.adminTLS" = "Admin TLS";
+"client.assetsDir" = "Assets Directory";
+
+/* ---- Client Configuration - Advanced ---- */
+"client.metadatas" = "Metadata";
+"client.autoDelete" = "Auto Delete";
+"client.delete.none" = "None";
+"client.delete.absolute" = "Absolute Date";
+"client.delete.relative" = "Relative Days";
+"client.deleteMethod" = "Delete Method";
+"client.deleteAfterDays" = "Delete After Days";
+"client.deleteAfterDate" = "Delete After Date";
+
+/* ---- Proxy Configuration ---- */
+"proxy.add" = "Add";
+"proxy.new" = "New Proxy";
+"proxy.name" = "Proxy Name";
+"proxy.type" = "Proxy Type";
+"proxy.enable" = "Enable";
+"proxy.disable" = "Disable";
+"proxy.toggleEnabled" = "Toggle Enabled";
+"proxy.delete" = "Delete";
+"proxy.deleteConfirmation" = "Are you sure you want to delete this proxy?";
+"proxy.edit" = "Edit";
+"proxy.randomName" = "Random Name";
+"proxy.importClipboard" = "Import from Clipboard";
+"proxy.copyAccessAddr" = "Copy Access Address";
+"proxy.showRemoteAddr" = "Show Remote Address";
+"proxy.moveTo" = "Move To";
+"proxy.error.nameRequired" = "Proxy name is required";
+
+/* ---- Proxy Configuration - Tabs ---- */
+"proxy.tab.basic" = "Basic";
+"proxy.tab.advanced" = "Advanced";
+"proxy.tab.plugin" = "Plugin";
+"proxy.tab.healthCheck" = "Health Check";
+"proxy.tab.loadBalance" = "Load Balance";
+"proxy.tab.metadata" = "Metadata";
+
+/* ---- Proxy Configuration - Basic ---- */
+"proxy.localIP" = "Local IP";
+"proxy.localPort" = "Local Port";
+"proxy.remotePort" = "Remote Port";
+"proxy.role" = "Role";
+"proxy.secretKey" = "Secret Key";
+"proxy.serverName" = "Server Name";
+"proxy.serverUser" = "Server User";
+"proxy.subdomain" = "Subdomain";
+"proxy.customDomains" = "Custom Domains";
+"proxy.locations" = "Locations";
+"proxy.bindAddr" = "Bind Address";
+"proxy.bindPort" = "Bind Port";
+
+/* ---- Proxy Configuration - Advanced ---- */
+"proxy.bandwidth" = "Bandwidth";
+"proxy.bandwidthLimit" = "Bandwidth Limit";
+"proxy.bandwidthMode" = "Bandwidth Mode";
+"proxy.useCompression" = "Use Compression";
+"proxy.useEncryption" = "Use Encryption";
+"proxy.transport" = "Transport";
+"proxy.transportField" = "Transport Protocol";
+"proxy.proxyProtocolVersion" = "Proxy Protocol Version";
+"proxy.hostHeaderRewrite" = "Host Header Rewrite";
+"proxy.httpSettings" = "HTTP Settings";
+"proxy.httpUser" = "HTTP User";
+"proxy.httpPwd" = "HTTP Password";
+"proxy.http2" = "HTTP/2";
+"proxy.requestHeaders" = "Request Headers";
+"proxy.responseHeaders" = "Response Headers";
+"proxy.routeByHTTPUser" = "Route by HTTP User";
+"proxy.allowUsers" = "Allow Users";
+"proxy.annotations" = "Annotations";
+"proxy.metadatas" = "Metadata";
+"proxy.multiplexer" = "Multiplexer";
+"proxy.keepTunnel" = "Keep Tunnel Open";
+"proxy.fallbackTo" = "Fallback To";
+"proxy.fallbackTimeout" = "Fallback Timeout";
+"proxy.maxRetriesPerHour" = "Max Retries Per Hour";
+"proxy.minRetryInterval" = "Min Retry Interval";
+"proxy.retry" = "Retry";
+
+/* ---- Proxy Configuration - Plugin ---- */
+"proxy.plugin" = "Plugin";
+"proxy.plugin.none" = "None";
+"proxy.plugin.localAddr" = "Local Address";
+"proxy.plugin.localPath" = "Local Path";
+"proxy.plugin.stripPrefix" = "Strip Prefix";
+"proxy.plugin.httpUser" = "HTTP User";
+"proxy.plugin.httpPwd" = "HTTP Password";
+"proxy.plugin.hostHeaderRewrite" = "Host Header Rewrite";
+"proxy.plugin.requestHeaders" = "Request Headers";
+"proxy.plugin.socks5User" = "SOCKS5 User";
+"proxy.plugin.socks5Pwd" = "SOCKS5 Password";
+"proxy.plugin.staticFileUser" = "Static File User";
+"proxy.plugin.staticFilePwd" = "Static File Password";
+"proxy.plugin.tlsCertFile" = "TLS Certificate File";
+"proxy.plugin.tlsKeyFile" = "TLS Key File";
+"proxy.plugin.tlsTrustedCaFile" = "TLS Trusted CA File";
+"proxy.plugin.unixPath" = "Unix Socket Path";
+
+/* ---- Proxy Configuration - Health Check ---- */
+"proxy.healthCheck.type" = "Health Check Type";
+"proxy.healthCheck.none" = "None";
+"proxy.healthCheck.interval" = "Check Interval";
+"proxy.healthCheck.timeout" = "Check Timeout";
+"proxy.healthCheck.maxFailed" = "Max Failed Attempts";
+"proxy.healthCheck.url" = "Health Check URL";
+
+/* ---- Proxy Configuration - Load Balance ---- */
+"proxy.loadBalance.group" = "Load Balance Group";
+"proxy.loadBalance.groupKey" = "Load Balance Group Key";
+
+/* ---- Proxy Table Columns ---- */
+"proxy.column.name" = "Name";
+"proxy.column.type" = "Type";
+"proxy.column.localAddr" = "Local Address";
+"proxy.column.localPort" = "Local Port";
+"proxy.column.remoteAddr" = "Remote Address";
+"proxy.column.remotePort" = "Remote Port";
+"proxy.column.domain" = "Domain";
+"proxy.column.plugin" = "Plugin";
+
+/* ---- Quick Add ---- */
+"proxy.quickAdd" = "Quick Add";
+"proxy.quick.ssh" = "SSH";
+"proxy.quick.vnc" = "VNC";
+"proxy.quick.remoteDesktop" = "Remote Desktop";
+"proxy.quick.web" = "Web (HTTP)";
+"proxy.quick.ftp" = "FTP";
+"proxy.quick.httpFileServer" = "HTTP File Server";
+"proxy.quick.socks5Proxy" = "SOCKS5 Proxy";
+
+/* ---- Quick Add Dialogs ---- */
+"quickAdd.simpleProxy.title" = "Simple Proxy";
+"quickAdd.simpleProxy.port" = "Local Port";
+"quickAdd.openPort.title" = "Open Port";
+"quickAdd.openPort.port" = "Remote Port";
+"quickAdd.openPort.protocol" = "Protocol";
+"quickAdd.proxyServer.title" = "Proxy Server";
+"quickAdd.proxyServer.type" = "Proxy Type";
+"quickAdd.proxyServer.user" = "Username";
+"quickAdd.proxyServer.password" = "Password";
+"quickAdd.httpFileServer.title" = "HTTP File Server";
+"quickAdd.httpFileServer.localPath" = "Local Path";
+"quickAdd.httpFileServer.stripPrefix" = "Strip Prefix";
+"quickAdd.httpFileServer.auth" = "Authentication";
+"quickAdd.httpFileServer.user" = "Username";
+"quickAdd.httpFileServer.password" = "Password";
+
+/* ---- Log ---- */
+"log.autoRefresh" = "Auto Refresh";
+"log.config" = "Configuration";
+"log.error.readFailed" = "Failed to read log file";
+"log.logFile" = "Log File";
+"log.noContent" = "No log content";
+"log.openFolder" = "Open in Folder";
+"log.selectConfig" = "Select a configuration to view logs";
+
+/* ---- NAT Detection ---- */
+"nat.title" = "NAT Type Detection";
+"nat.startDetection" = "Start Detection";
+"nat.detecting" = "Detecting…";
+"nat.stunServer" = "STUN Server";
+"nat.natType" = "NAT Type";
+"nat.natBehavior" = "NAT Behavior";
+"nat.externalAddresses" = "External Addresses";
+"nat.localAddress" = "Local Address";
+"nat.isPublic" = "Public Network";
+"nat.error.noOutput" = "No output received";
+"nat.error.parseFailed" = "Failed to parse result";
+
+/* ---- Preferences ---- */
+"preferences.language" = "Language";
+"preferences.language.select" = "Select Language";
+"preferences.language.restartNote" = "Restart the app to apply language changes";
+
+/* ---- Preferences - Password ---- */
+"preferences.password" = "Password Protection";
+"preferences.password.enable" = "Enable Password";
+"preferences.password.disable" = "Disable Password";
+"preferences.password.set" = "Set Password";
+"preferences.password.change" = "Change Password";
+"preferences.password.changeTitle" = "Change Password";
+"preferences.password.current" = "Current Password";
+"preferences.password.new" = "New Password";
+"preferences.password.confirm" = "Confirm Password";
+"preferences.password.empty" = "Password cannot be empty";
+"preferences.password.tooShort" = "Password is too short";
+"preferences.password.mismatch" = "Passwords do not match";
+"preferences.password.incorrect" = "Current password is incorrect";
+
+/* ---- Preferences - Advanced ---- */
+"preferences.advanced" = "Advanced";
+"preferences.advanced.title" = "Advanced Settings";
+"preferences.advanced.defaults" = "Defaults";
+"preferences.advanced.open" = "Open";
+"preferences.advanced.protocol" = "Protocol";
+"preferences.advanced.sourceAddr" = "Source Address";
+"preferences.advanced.dnsServer" = "DNS Server";
+"preferences.advanced.stunServer" = "STUN Server";
+"preferences.advanced.logLevel" = "Log Level";
+"preferences.advanced.logMaxDays" = "Log Max Days";
+"preferences.advanced.user" = "User";
+"preferences.advanced.tls" = "TLS";
+"preferences.advanced.tcpMux" = "TCP Multiplexing";
+"preferences.advanced.manualStart" = "Manual Start";
+"preferences.advanced.legacyFormat" = "Legacy Format";
+"preferences.advanced.checkUpdate" = "Check for Updates";
+
+/* ---- About ---- */
+"about.version \(Constants.appVersion)" = "Version %@";
+"about.frpVersion \(Constants.frpVersion)" = "FRP Version %@";
+"about.buildDate \(Constants.buildDate)" = "Build Date %@";
+"about.newVersion \(info.version)" = "New version available: %@";
+"about.checkForUpdate" = "Check for Updates";
+"about.checkingUpdate" = "Checking…";
+"about.upToDate" = "Up to Date";
+"about.downloadUpdate" = "Download Update";
+"about.projectURL" = "Project Homepage";
+"about.frpDocs" = "FRP Documentation";
+
+/* ---- URL Import Dialog ---- */
+"urlImport.title" = "Import from URL";
+"urlImport.description" = "Enter a URL to import configuration";
+"urlImport.import" = "Import";
+"urlImport.downloading \(current) \(total)" = "Downloading %@ of %@";

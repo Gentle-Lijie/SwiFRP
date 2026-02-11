@@ -1,0 +1,401 @@
+/* ============================================================
+   SwiFRP - Cadenas localizadas en español
+   ============================================================ */
+
+/* ---- Pestañas ---- */
+"tab.configuration" = "Configuración";
+"tab.log" = "Registro";
+"tab.preferences" = "Preferencias";
+"tab.about" = "Acerca de";
+"tab.about.newVersion" = "Nueva versión";
+
+/* ---- Bienvenida ---- */
+"welcome.title" = "Bienvenido a SwiFRP";
+"welcome.subtitle" = "Añade una configuración de servidor para comenzar";
+
+/* ---- Común ---- */
+"common.add" = "Añadir";
+"common.browse" = "Examinar…";
+"common.cancel" = "Cancelar";
+"common.clearAll" = "Borrar todo";
+"common.close" = "Cerrar";
+"common.copy" = "Copiar";
+"common.delete" = "Eliminar";
+"common.no" = "No";
+"common.ok" = "Aceptar";
+"common.quit" = "Salir";
+"common.save" = "Guardar";
+"common.seconds" = "segundos";
+"common.selectAll" = "Seleccionar todo";
+"common.unlock" = "Desbloquear";
+
+/* ---- Error ---- */
+"error.title" = "Error";
+
+/* ---- Portapapeles ---- */
+"clipboard.empty" = "El portapapeles está vacío";
+
+/* ---- Clave-valor ---- */
+"keyvalue.key" = "Clave";
+"keyvalue.value" = "Valor";
+
+/* ---- Contraseña ---- */
+"password.enterPassword" = "Introduce la contraseña";
+"password.incorrect" = "Contraseña incorrecta";
+"password.placeholder" = "Contraseña";
+
+/* ---- Panel (control del servidor) ---- */
+"panel.noServer" = "Ningún servidor seleccionado";
+"panel.protocol" = "Protocolo";
+"panel.serverAddress" = "Dirección del servidor";
+"panel.start" = "Iniciar";
+"panel.stop" = "Detener";
+"panel.tlsEnabled" = "TLS activado";
+"panel.status.running" = "En ejecución";
+"panel.status.starting" = "Iniciando…";
+"panel.status.stopped" = "Detenido";
+"panel.status.stopping" = "Deteniendo…";
+"panel.status.unknown" = "Desconocido";
+"panel.stopConfirmation" = "¿Seguro que deseas detener este túnel?";
+
+/* ---- Gestión de configuración ---- */
+"config.deleteConfirmation" = "¿Seguro que deseas eliminar esta configuración?";
+"config.duplicate" = "Duplicar";
+"config.duplicate.basic" = "Duplicación básica";
+"config.duplicate.full" = "Duplicación completa";
+"config.edit" = "Editar";
+"config.exportAll" = "Exportar todo";
+"config.import.clipboard" = "Desde el portapapeles";
+"config.import.file" = "Desde archivo…";
+"config.import.url" = "Desde URL…";
+"config.importClipboard" = "Importar desde el portapapeles";
+"config.manualStart" = "Inicio manual";
+"config.move.bottom" = "Mover al final";
+"config.move.down" = "Mover abajo";
+"config.move.top" = "Mover al principio";
+"config.move.up" = "Mover arriba";
+"config.moveTo" = "Mover a";
+"config.name" = "Nombre";
+"config.natCheck" = "Detección de tipo NAT";
+"config.new.empty" = "Nueva configuración vacía";
+"config.noServer" = "No hay servidores configurados";
+"config.properties" = "Propiedades";
+"config.shareLink" = "Compartir enlace";
+
+/* ---- Propiedades ---- */
+"properties.automatic" = "Automático";
+"properties.configName" = "Nombre de configuración";
+"properties.fileCreated" = "Fecha de creación";
+"properties.fileFormat" = "Formato de archivo";
+"properties.fileModified" = "Fecha de modificación";
+"properties.identifier" = "Identificador";
+"properties.logFiles" = "Archivos de registro";
+"properties.logSize" = "Tamaño de registro";
+"properties.manual" = "Manual";
+"properties.protocol" = "Protocolo";
+"properties.proxyCount" = "Número de proxies";
+"properties.serverAddr" = "Dirección del servidor";
+"properties.serverPort" = "Puerto del servidor";
+"properties.serviceName" = "Nombre del servicio";
+"properties.startupMode" = "Modo de inicio";
+"properties.tcpConnections" = "Conexiones TCP";
+"properties.title" = "Propiedades";
+"properties.udpConnections" = "Conexiones UDP";
+
+/* ---- Configuración del cliente - Pestañas ---- */
+"client.tab.admin" = "Administración";
+"client.tab.advanced" = "Avanzado";
+"client.tab.auth" = "Autenticación";
+"client.tab.basic" = "Básico";
+"client.tab.connection" = "Conexión";
+"client.tab.log" = "Registro";
+"client.tab.tls" = "TLS";
+
+/* ---- Configuración del cliente - Básico ---- */
+"client.name" = "Nombre";
+"client.serverAddr" = "Dirección del servidor";
+"client.serverPort" = "Puerto del servidor";
+"client.user" = "Usuario";
+"client.manualStart" = "Inicio manual";
+"client.legacyFormat" = "Formato heredado";
+"client.error.nameRequired" = "El nombre es obligatorio";
+"client.error.serverAddrRequired" = "La dirección del servidor es obligatoria";
+
+/* ---- Configuración del cliente - Autenticación ---- */
+"client.authMethod" = "Método de autenticación";
+"client.auth.none" = "Ninguno";
+"client.token" = "Token";
+"client.tokenFile" = "Archivo de token";
+"client.authScope" = "Ámbito de autenticación";
+"client.authHeartbeat" = "Heartbeat de autenticación";
+"client.authNewWorkConn" = "Autenticación en nueva conexión";
+"client.oidcClientID" = "ID de cliente OIDC";
+"client.oidcClientSecret" = "Secreto de cliente OIDC";
+"client.oidcAudience" = "Audiencia OIDC";
+"client.oidcScope" = "Ámbito OIDC";
+"client.oidcTokenEndpoint" = "Endpoint de token OIDC";
+"client.oidcProxyURL" = "URL del proxy OIDC";
+"client.oidcSkipVerify" = "Omitir verificación TLS de OIDC";
+"client.oidcTLSCA" = "Archivo CA TLS de OIDC";
+
+/* ---- Configuración del cliente - Conexión ---- */
+"client.protocol" = "Protocolo";
+"client.dialTimeout" = "Tiempo de espera de conexión";
+"client.keepalivePeriod" = "Período de keepalive";
+"client.heartbeatInterval" = "Intervalo de heartbeat";
+"client.heartbeatTimeout" = "Tiempo de espera de heartbeat";
+"client.connectPoolSize" = "Tamaño del pool de conexiones";
+"client.connectServerLocalIP" = "IP local de conexión al servidor";
+"client.tcpMux" = "Multiplexación TCP";
+"client.tcpMuxKeepAliveInterval" = "Intervalo de keepalive de TCP Mux";
+"client.quicSettings" = "Configuración de QUIC";
+"client.quicKeepalivePeriod" = "Período de keepalive de QUIC";
+"client.quicMaxIdleTimeout" = "Tiempo máximo de inactividad de QUIC";
+"client.quicMaxIncomingStreams" = "Máximo de flujos entrantes de QUIC";
+"client.dnsServer" = "Servidor DNS";
+"client.stunServer" = "Servidor STUN";
+"client.loginFailExit" = "Salir si falla el inicio de sesión";
+
+/* ---- Configuración del cliente - TLS ---- */
+"client.tlsEnable" = "Activar TLS";
+"client.tlsCertFile" = "Archivo de certificado TLS";
+"client.tlsKeyFile" = "Archivo de clave TLS";
+"client.tlsTrustedCaFile" = "Archivo de CA de confianza TLS";
+"client.tlsServerName" = "Nombre del servidor TLS";
+"client.tlsDisableCustomFirstByte" = "Desactivar primer byte personalizado";
+
+/* ---- Configuración del cliente - Registro ---- */
+"client.logLevel" = "Nivel de registro";
+"client.logMaxDays" = "Días máximos de registro";
+
+/* ---- Configuración del cliente - Administración ---- */
+"client.adminAddr" = "Dirección de administración";
+"client.adminPort" = "Puerto de administración";
+"client.adminUser" = "Usuario de administración";
+"client.adminPwd" = "Contraseña de administración";
+"client.adminTLS" = "TLS de administración";
+"client.assetsDir" = "Directorio de recursos";
+
+/* ---- Configuración del cliente - Avanzado ---- */
+"client.metadatas" = "Metadatos";
+"client.autoDelete" = "Eliminación automática";
+"client.delete.none" = "Ninguno";
+"client.delete.absolute" = "Fecha absoluta";
+"client.delete.relative" = "Días relativos";
+"client.deleteMethod" = "Método de eliminación";
+"client.deleteAfterDays" = "Eliminar después de días";
+"client.deleteAfterDate" = "Eliminar en fecha";
+
+/* ---- Configuración de proxy ---- */
+"proxy.add" = "Añadir";
+"proxy.new" = "Nuevo proxy";
+"proxy.name" = "Nombre del proxy";
+"proxy.type" = "Tipo de proxy";
+"proxy.enable" = "Activar";
+"proxy.disable" = "Desactivar";
+"proxy.toggleEnabled" = "Alternar activación";
+"proxy.delete" = "Eliminar";
+"proxy.deleteConfirmation" = "¿Seguro que deseas eliminar este proxy?";
+"proxy.edit" = "Editar";
+"proxy.randomName" = "Nombre aleatorio";
+"proxy.importClipboard" = "Importar desde el portapapeles";
+"proxy.copyAccessAddr" = "Copiar dirección de acceso";
+"proxy.showRemoteAddr" = "Mostrar dirección remota";
+"proxy.moveTo" = "Mover a";
+"proxy.error.nameRequired" = "El nombre del proxy es obligatorio";
+
+/* ---- Configuración de proxy - Pestañas ---- */
+"proxy.tab.basic" = "Básico";
+"proxy.tab.advanced" = "Avanzado";
+"proxy.tab.plugin" = "Complemento";
+"proxy.tab.healthCheck" = "Verificación de estado";
+"proxy.tab.loadBalance" = "Balanceo de carga";
+"proxy.tab.metadata" = "Metadatos";
+
+/* ---- Configuración de proxy - Básico ---- */
+"proxy.localIP" = "IP local";
+"proxy.localPort" = "Puerto local";
+"proxy.remotePort" = "Puerto remoto";
+"proxy.role" = "Rol";
+"proxy.secretKey" = "Clave secreta";
+"proxy.serverName" = "Nombre del servidor";
+"proxy.serverUser" = "Usuario del servidor";
+"proxy.subdomain" = "Subdominio";
+"proxy.customDomains" = "Dominios personalizados";
+"proxy.locations" = "Rutas";
+"proxy.bindAddr" = "Dirección de enlace";
+"proxy.bindPort" = "Puerto de enlace";
+
+/* ---- Configuración de proxy - Avanzado ---- */
+"proxy.bandwidth" = "Ancho de banda";
+"proxy.bandwidthLimit" = "Límite de ancho de banda";
+"proxy.bandwidthMode" = "Modo de ancho de banda";
+"proxy.useCompression" = "Usar compresión";
+"proxy.useEncryption" = "Usar cifrado";
+"proxy.transport" = "Transporte";
+"proxy.transportField" = "Protocolo de transporte";
+"proxy.proxyProtocolVersion" = "Versión de Proxy Protocol";
+"proxy.hostHeaderRewrite" = "Reescritura de encabezado Host";
+"proxy.httpSettings" = "Configuración HTTP";
+"proxy.httpUser" = "Usuario HTTP";
+"proxy.httpPwd" = "Contraseña HTTP";
+"proxy.http2" = "HTTP/2";
+"proxy.requestHeaders" = "Encabezados de solicitud";
+"proxy.responseHeaders" = "Encabezados de respuesta";
+"proxy.routeByHTTPUser" = "Enrutar por usuario HTTP";
+"proxy.allowUsers" = "Usuarios permitidos";
+"proxy.annotations" = "Anotaciones";
+"proxy.metadatas" = "Metadatos";
+"proxy.multiplexer" = "Multiplexor";
+"proxy.keepTunnel" = "Mantener túnel abierto";
+"proxy.fallbackTo" = "Respaldo a";
+"proxy.fallbackTimeout" = "Tiempo de espera de respaldo";
+"proxy.maxRetriesPerHour" = "Máximo de reintentos por hora";
+"proxy.minRetryInterval" = "Intervalo mínimo de reintento";
+"proxy.retry" = "Reintentar";
+
+/* ---- Configuración de proxy - Complemento ---- */
+"proxy.plugin" = "Complemento";
+"proxy.plugin.none" = "Ninguno";
+"proxy.plugin.localAddr" = "Dirección local";
+"proxy.plugin.localPath" = "Ruta local";
+"proxy.plugin.stripPrefix" = "Eliminar prefijo";
+"proxy.plugin.httpUser" = "Usuario HTTP";
+"proxy.plugin.httpPwd" = "Contraseña HTTP";
+"proxy.plugin.hostHeaderRewrite" = "Reescritura de encabezado Host";
+"proxy.plugin.requestHeaders" = "Encabezados de solicitud";
+"proxy.plugin.socks5User" = "Usuario SOCKS5";
+"proxy.plugin.socks5Pwd" = "Contraseña SOCKS5";
+"proxy.plugin.staticFileUser" = "Usuario de archivos estáticos";
+"proxy.plugin.staticFilePwd" = "Contraseña de archivos estáticos";
+"proxy.plugin.tlsCertFile" = "Archivo de certificado TLS";
+"proxy.plugin.tlsKeyFile" = "Archivo de clave TLS";
+"proxy.plugin.tlsTrustedCaFile" = "Archivo de CA de confianza TLS";
+"proxy.plugin.unixPath" = "Ruta de socket Unix";
+
+/* ---- Configuración de proxy - Verificación de estado ---- */
+"proxy.healthCheck.type" = "Tipo de verificación";
+"proxy.healthCheck.none" = "Ninguno";
+"proxy.healthCheck.interval" = "Intervalo de verificación";
+"proxy.healthCheck.timeout" = "Tiempo de espera de verificación";
+"proxy.healthCheck.maxFailed" = "Máximo de intentos fallidos";
+"proxy.healthCheck.url" = "URL de verificación de estado";
+
+/* ---- Configuración de proxy - Balanceo de carga ---- */
+"proxy.loadBalance.group" = "Grupo de balanceo de carga";
+"proxy.loadBalance.groupKey" = "Clave del grupo de balanceo";
+
+/* ---- Columnas de la tabla de proxies ---- */
+"proxy.column.name" = "Nombre";
+"proxy.column.type" = "Tipo";
+"proxy.column.localAddr" = "Dirección local";
+"proxy.column.localPort" = "Puerto local";
+"proxy.column.remoteAddr" = "Dirección remota";
+"proxy.column.remotePort" = "Puerto remoto";
+"proxy.column.domain" = "Dominio";
+"proxy.column.plugin" = "Complemento";
+
+/* ---- Añadir rápido ---- */
+"proxy.quickAdd" = "Añadir rápido";
+"proxy.quick.ssh" = "SSH";
+"proxy.quick.vnc" = "VNC";
+"proxy.quick.remoteDesktop" = "Escritorio remoto";
+"proxy.quick.web" = "Web (HTTP)";
+"proxy.quick.ftp" = "FTP";
+"proxy.quick.httpFileServer" = "Servidor de archivos HTTP";
+"proxy.quick.socks5Proxy" = "Proxy SOCKS5";
+
+/* ---- Diálogos de añadir rápido ---- */
+"quickAdd.simpleProxy.title" = "Proxy simple";
+"quickAdd.simpleProxy.port" = "Puerto local";
+"quickAdd.openPort.title" = "Abrir puerto";
+"quickAdd.openPort.port" = "Puerto remoto";
+"quickAdd.openPort.protocol" = "Protocolo";
+"quickAdd.proxyServer.title" = "Servidor proxy";
+"quickAdd.proxyServer.type" = "Tipo de proxy";
+"quickAdd.proxyServer.user" = "Nombre de usuario";
+"quickAdd.proxyServer.password" = "Contraseña";
+"quickAdd.httpFileServer.title" = "Servidor de archivos HTTP";
+"quickAdd.httpFileServer.localPath" = "Ruta local";
+"quickAdd.httpFileServer.stripPrefix" = "Eliminar prefijo";
+"quickAdd.httpFileServer.auth" = "Autenticación";
+"quickAdd.httpFileServer.user" = "Nombre de usuario";
+"quickAdd.httpFileServer.password" = "Contraseña";
+
+/* ---- Registro ---- */
+"log.autoRefresh" = "Actualización automática";
+"log.config" = "Configuración";
+"log.error.readFailed" = "Error al leer el archivo de registro";
+"log.logFile" = "Archivo de registro";
+"log.noContent" = "Sin contenido de registro";
+"log.openFolder" = "Abrir en carpeta";
+"log.selectConfig" = "Selecciona una configuración para ver los registros";
+
+/* ---- Detección de NAT ---- */
+"nat.title" = "Detección de tipo NAT";
+"nat.startDetection" = "Iniciar detección";
+"nat.detecting" = "Detectando…";
+"nat.stunServer" = "Servidor STUN";
+"nat.natType" = "Tipo de NAT";
+"nat.natBehavior" = "Comportamiento NAT";
+"nat.externalAddresses" = "Direcciones externas";
+"nat.localAddress" = "Dirección local";
+"nat.isPublic" = "Red pública";
+"nat.error.noOutput" = "Sin resultados";
+"nat.error.parseFailed" = "Error al analizar el resultado";
+
+/* ---- Preferencias ---- */
+"preferences.language" = "Idioma";
+"preferences.language.select" = "Seleccionar idioma";
+"preferences.language.restartNote" = "Reinicia la aplicación para aplicar los cambios de idioma";
+
+/* ---- Preferencias - Contraseña ---- */
+"preferences.password" = "Protección con contraseña";
+"preferences.password.enable" = "Activar contraseña";
+"preferences.password.disable" = "Desactivar contraseña";
+"preferences.password.set" = "Establecer contraseña";
+"preferences.password.change" = "Cambiar contraseña";
+"preferences.password.changeTitle" = "Cambiar contraseña";
+"preferences.password.current" = "Contraseña actual";
+"preferences.password.new" = "Nueva contraseña";
+"preferences.password.confirm" = "Confirmar contraseña";
+"preferences.password.empty" = "La contraseña no puede estar vacía";
+"preferences.password.tooShort" = "La contraseña es demasiado corta";
+"preferences.password.mismatch" = "Las contraseñas no coinciden";
+"preferences.password.incorrect" = "La contraseña actual es incorrecta";
+
+/* ---- Preferencias - Avanzado ---- */
+"preferences.advanced" = "Avanzado";
+"preferences.advanced.title" = "Configuración avanzada";
+"preferences.advanced.defaults" = "Valores predeterminados";
+"preferences.advanced.open" = "Abrir";
+"preferences.advanced.protocol" = "Protocolo";
+"preferences.advanced.sourceAddr" = "Dirección de origen";
+"preferences.advanced.dnsServer" = "Servidor DNS";
+"preferences.advanced.stunServer" = "Servidor STUN";
+"preferences.advanced.logLevel" = "Nivel de registro";
+"preferences.advanced.logMaxDays" = "Días máximos de registro";
+"preferences.advanced.user" = "Usuario";
+"preferences.advanced.tls" = "TLS";
+"preferences.advanced.tcpMux" = "Multiplexación TCP";
+"preferences.advanced.manualStart" = "Inicio manual";
+"preferences.advanced.legacyFormat" = "Formato heredado";
+"preferences.advanced.checkUpdate" = "Buscar actualizaciones";
+
+/* ---- Acerca de ---- */
+"about.version \(Constants.appVersion)" = "Versión %@";
+"about.frpVersion \(Constants.frpVersion)" = "Versión de FRP %@";
+"about.buildDate \(Constants.buildDate)" = "Fecha de compilación %@";
+"about.newVersion \(info.version)" = "Nueva versión disponible: %@";
+"about.checkForUpdate" = "Buscar actualizaciones";
+"about.checkingUpdate" = "Comprobando…";
+"about.upToDate" = "Estás al día";
+"about.downloadUpdate" = "Descargar actualización";
+"about.projectURL" = "Página del proyecto";
+"about.frpDocs" = "Documentación de FRP";
+
+/* ---- Diálogo de importación por URL ---- */
+"urlImport.title" = "Importar desde URL";
+"urlImport.description" = "Introduce una URL para importar la configuración";
+"urlImport.import" = "Importar";
+"urlImport.downloading \(current) \(total)" = "Descargando %@ de %@";

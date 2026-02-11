@@ -1,0 +1,401 @@
+/* ============================================================
+   SwiFRP - 日本語ローカライズ文字列
+   ============================================================ */
+
+/* ---- タブ ---- */
+"tab.configuration" = "設定";
+"tab.log" = "ログ";
+"tab.preferences" = "環境設定";
+"tab.about" = "このアプリについて";
+"tab.about.newVersion" = "新バージョン";
+
+/* ---- ようこそ ---- */
+"welcome.title" = "SwiFRP へようこそ";
+"welcome.subtitle" = "サーバー設定を追加して始めましょう";
+
+/* ---- 共通 ---- */
+"common.add" = "追加";
+"common.browse" = "参照…";
+"common.cancel" = "キャンセル";
+"common.clearAll" = "すべてクリア";
+"common.close" = "閉じる";
+"common.copy" = "コピー";
+"common.delete" = "削除";
+"common.no" = "いいえ";
+"common.ok" = "OK";
+"common.quit" = "終了";
+"common.save" = "保存";
+"common.seconds" = "秒";
+"common.selectAll" = "すべて選択";
+"common.unlock" = "ロック解除";
+
+/* ---- エラー ---- */
+"error.title" = "エラー";
+
+/* ---- クリップボード ---- */
+"clipboard.empty" = "クリップボードが空です";
+
+/* ---- キー・値 ---- */
+"keyvalue.key" = "キー";
+"keyvalue.value" = "値";
+
+/* ---- パスワード ---- */
+"password.enterPassword" = "パスワードを入力";
+"password.incorrect" = "パスワードが正しくありません";
+"password.placeholder" = "パスワード";
+
+/* ---- パネル（サーバー制御） ---- */
+"panel.noServer" = "サーバー未選択";
+"panel.protocol" = "プロトコル";
+"panel.serverAddress" = "サーバーアドレス";
+"panel.start" = "開始";
+"panel.stop" = "停止";
+"panel.tlsEnabled" = "TLS 有効";
+"panel.status.running" = "実行中";
+"panel.status.starting" = "起動中…";
+"panel.status.stopped" = "停止";
+"panel.status.stopping" = "停止中…";
+"panel.status.unknown" = "不明";
+"panel.stopConfirmation" = "このトンネルを停止してもよろしいですか？";
+
+/* ---- 設定管理 ---- */
+"config.deleteConfirmation" = "この設定を削除してもよろしいですか？";
+"config.duplicate" = "複製";
+"config.duplicate.basic" = "基本複製";
+"config.duplicate.full" = "完全複製";
+"config.edit" = "編集";
+"config.exportAll" = "すべてエクスポート";
+"config.import.clipboard" = "クリップボードから";
+"config.import.file" = "ファイルから…";
+"config.import.url" = "URL から…";
+"config.importClipboard" = "クリップボードからインポート";
+"config.manualStart" = "手動起動";
+"config.move.bottom" = "一番下へ";
+"config.move.down" = "下へ移動";
+"config.move.top" = "一番上へ";
+"config.move.up" = "上へ移動";
+"config.moveTo" = "移動";
+"config.name" = "名前";
+"config.natCheck" = "NAT タイプ検出";
+"config.new.empty" = "空の設定を新規作成";
+"config.noServer" = "サーバー設定がありません";
+"config.properties" = "プロパティ";
+"config.shareLink" = "リンクを共有";
+
+/* ---- プロパティ ---- */
+"properties.automatic" = "自動";
+"properties.configName" = "設定名";
+"properties.fileCreated" = "作成日時";
+"properties.fileFormat" = "ファイル形式";
+"properties.fileModified" = "更新日時";
+"properties.identifier" = "識別子";
+"properties.logFiles" = "ログファイル";
+"properties.logSize" = "ログサイズ";
+"properties.manual" = "手動";
+"properties.protocol" = "プロトコル";
+"properties.proxyCount" = "プロキシ数";
+"properties.serverAddr" = "サーバーアドレス";
+"properties.serverPort" = "サーバーポート";
+"properties.serviceName" = "サービス名";
+"properties.startupMode" = "起動モード";
+"properties.tcpConnections" = "TCP 接続数";
+"properties.title" = "プロパティ";
+"properties.udpConnections" = "UDP 接続数";
+
+/* ---- クライアント設定 - タブ ---- */
+"client.tab.admin" = "管理";
+"client.tab.advanced" = "詳細";
+"client.tab.auth" = "認証";
+"client.tab.basic" = "基本";
+"client.tab.connection" = "接続";
+"client.tab.log" = "ログ";
+"client.tab.tls" = "TLS";
+
+/* ---- クライアント設定 - 基本 ---- */
+"client.name" = "名前";
+"client.serverAddr" = "サーバーアドレス";
+"client.serverPort" = "サーバーポート";
+"client.user" = "ユーザー";
+"client.manualStart" = "手動起動";
+"client.legacyFormat" = "レガシー形式";
+"client.error.nameRequired" = "名前は必須です";
+"client.error.serverAddrRequired" = "サーバーアドレスは必須です";
+
+/* ---- クライアント設定 - 認証 ---- */
+"client.authMethod" = "認証方式";
+"client.auth.none" = "なし";
+"client.token" = "トークン";
+"client.tokenFile" = "トークンファイル";
+"client.authScope" = "認証スコープ";
+"client.authHeartbeat" = "認証ハートビート";
+"client.authNewWorkConn" = "新規接続認証";
+"client.oidcClientID" = "OIDC クライアント ID";
+"client.oidcClientSecret" = "OIDC クライアントシークレット";
+"client.oidcAudience" = "OIDC オーディエンス";
+"client.oidcScope" = "OIDC スコープ";
+"client.oidcTokenEndpoint" = "OIDC トークンエンドポイント";
+"client.oidcProxyURL" = "OIDC プロキシ URL";
+"client.oidcSkipVerify" = "OIDC TLS 検証をスキップ";
+"client.oidcTLSCA" = "OIDC TLS CA ファイル";
+
+/* ---- クライアント設定 - 接続 ---- */
+"client.protocol" = "プロトコル";
+"client.dialTimeout" = "接続タイムアウト";
+"client.keepalivePeriod" = "キープアライブ間隔";
+"client.heartbeatInterval" = "ハートビート間隔";
+"client.heartbeatTimeout" = "ハートビートタイムアウト";
+"client.connectPoolSize" = "接続プールサイズ";
+"client.connectServerLocalIP" = "ローカル接続 IP";
+"client.tcpMux" = "TCP 多重化";
+"client.tcpMuxKeepAliveInterval" = "TCP 多重化キープアライブ間隔";
+"client.quicSettings" = "QUIC 設定";
+"client.quicKeepalivePeriod" = "QUIC キープアライブ間隔";
+"client.quicMaxIdleTimeout" = "QUIC 最大アイドルタイムアウト";
+"client.quicMaxIncomingStreams" = "QUIC 最大受信ストリーム数";
+"client.dnsServer" = "DNS サーバー";
+"client.stunServer" = "STUN サーバー";
+"client.loginFailExit" = "ログイン失敗時に終了";
+
+/* ---- クライアント設定 - TLS ---- */
+"client.tlsEnable" = "TLS を有効化";
+"client.tlsCertFile" = "TLS 証明書ファイル";
+"client.tlsKeyFile" = "TLS 鍵ファイル";
+"client.tlsTrustedCaFile" = "TLS 信頼済み CA ファイル";
+"client.tlsServerName" = "TLS サーバー名";
+"client.tlsDisableCustomFirstByte" = "カスタム先頭バイトを無効化";
+
+/* ---- クライアント設定 - ログ ---- */
+"client.logLevel" = "ログレベル";
+"client.logMaxDays" = "ログ最大保持日数";
+
+/* ---- クライアント設定 - 管理 ---- */
+"client.adminAddr" = "管理アドレス";
+"client.adminPort" = "管理ポート";
+"client.adminUser" = "管理ユーザー";
+"client.adminPwd" = "管理パスワード";
+"client.adminTLS" = "管理 TLS";
+"client.assetsDir" = "アセットディレクトリ";
+
+/* ---- クライアント設定 - 詳細 ---- */
+"client.metadatas" = "メタデータ";
+"client.autoDelete" = "自動削除";
+"client.delete.none" = "なし";
+"client.delete.absolute" = "指定日";
+"client.delete.relative" = "日数指定";
+"client.deleteMethod" = "削除方法";
+"client.deleteAfterDays" = "削除までの日数";
+"client.deleteAfterDate" = "削除日";
+
+/* ---- プロキシ設定 ---- */
+"proxy.add" = "追加";
+"proxy.new" = "新規プロキシ";
+"proxy.name" = "プロキシ名";
+"proxy.type" = "プロキシタイプ";
+"proxy.enable" = "有効";
+"proxy.disable" = "無効";
+"proxy.toggleEnabled" = "有効/無効を切替";
+"proxy.delete" = "削除";
+"proxy.deleteConfirmation" = "このプロキシを削除してもよろしいですか？";
+"proxy.edit" = "編集";
+"proxy.randomName" = "ランダム名";
+"proxy.importClipboard" = "クリップボードからインポート";
+"proxy.copyAccessAddr" = "アクセスアドレスをコピー";
+"proxy.showRemoteAddr" = "リモートアドレスを表示";
+"proxy.moveTo" = "移動";
+"proxy.error.nameRequired" = "プロキシ名は必須です";
+
+/* ---- プロキシ設定 - タブ ---- */
+"proxy.tab.basic" = "基本";
+"proxy.tab.advanced" = "詳細";
+"proxy.tab.plugin" = "プラグイン";
+"proxy.tab.healthCheck" = "ヘルスチェック";
+"proxy.tab.loadBalance" = "負荷分散";
+"proxy.tab.metadata" = "メタデータ";
+
+/* ---- プロキシ設定 - 基本 ---- */
+"proxy.localIP" = "ローカル IP";
+"proxy.localPort" = "ローカルポート";
+"proxy.remotePort" = "リモートポート";
+"proxy.role" = "ロール";
+"proxy.secretKey" = "シークレットキー";
+"proxy.serverName" = "サーバー名";
+"proxy.serverUser" = "サーバーユーザー";
+"proxy.subdomain" = "サブドメイン";
+"proxy.customDomains" = "カスタムドメイン";
+"proxy.locations" = "ルーティングパス";
+"proxy.bindAddr" = "バインドアドレス";
+"proxy.bindPort" = "バインドポート";
+
+/* ---- プロキシ設定 - 詳細 ---- */
+"proxy.bandwidth" = "帯域幅";
+"proxy.bandwidthLimit" = "帯域幅制限";
+"proxy.bandwidthMode" = "帯域幅モード";
+"proxy.useCompression" = "圧縮を使用";
+"proxy.useEncryption" = "暗号化を使用";
+"proxy.transport" = "トランスポート";
+"proxy.transportField" = "トランスポートプロトコル";
+"proxy.proxyProtocolVersion" = "Proxy Protocol バージョン";
+"proxy.hostHeaderRewrite" = "Host ヘッダー書き換え";
+"proxy.httpSettings" = "HTTP 設定";
+"proxy.httpUser" = "HTTP ユーザー";
+"proxy.httpPwd" = "HTTP パスワード";
+"proxy.http2" = "HTTP/2";
+"proxy.requestHeaders" = "リクエストヘッダー";
+"proxy.responseHeaders" = "レスポンスヘッダー";
+"proxy.routeByHTTPUser" = "HTTP ユーザーでルーティング";
+"proxy.allowUsers" = "許可ユーザー";
+"proxy.annotations" = "アノテーション";
+"proxy.metadatas" = "メタデータ";
+"proxy.multiplexer" = "マルチプレクサ";
+"proxy.keepTunnel" = "トンネルを維持";
+"proxy.fallbackTo" = "フォールバック先";
+"proxy.fallbackTimeout" = "フォールバックタイムアウト";
+"proxy.maxRetriesPerHour" = "1時間あたり最大リトライ数";
+"proxy.minRetryInterval" = "最小リトライ間隔";
+"proxy.retry" = "リトライ";
+
+/* ---- プロキシ設定 - プラグイン ---- */
+"proxy.plugin" = "プラグイン";
+"proxy.plugin.none" = "なし";
+"proxy.plugin.localAddr" = "ローカルアドレス";
+"proxy.plugin.localPath" = "ローカルパス";
+"proxy.plugin.stripPrefix" = "プレフィックス除去";
+"proxy.plugin.httpUser" = "HTTP ユーザー";
+"proxy.plugin.httpPwd" = "HTTP パスワード";
+"proxy.plugin.hostHeaderRewrite" = "Host ヘッダー書き換え";
+"proxy.plugin.requestHeaders" = "リクエストヘッダー";
+"proxy.plugin.socks5User" = "SOCKS5 ユーザー";
+"proxy.plugin.socks5Pwd" = "SOCKS5 パスワード";
+"proxy.plugin.staticFileUser" = "静的ファイルユーザー";
+"proxy.plugin.staticFilePwd" = "静的ファイルパスワード";
+"proxy.plugin.tlsCertFile" = "TLS 証明書ファイル";
+"proxy.plugin.tlsKeyFile" = "TLS 鍵ファイル";
+"proxy.plugin.tlsTrustedCaFile" = "TLS 信頼済み CA ファイル";
+"proxy.plugin.unixPath" = "Unix ソケットパス";
+
+/* ---- プロキシ設定 - ヘルスチェック ---- */
+"proxy.healthCheck.type" = "ヘルスチェックタイプ";
+"proxy.healthCheck.none" = "なし";
+"proxy.healthCheck.interval" = "チェック間隔";
+"proxy.healthCheck.timeout" = "チェックタイムアウト";
+"proxy.healthCheck.maxFailed" = "最大失敗回数";
+"proxy.healthCheck.url" = "ヘルスチェック URL";
+
+/* ---- プロキシ設定 - 負荷分散 ---- */
+"proxy.loadBalance.group" = "負荷分散グループ";
+"proxy.loadBalance.groupKey" = "負荷分散グループキー";
+
+/* ---- プロキシ一覧カラム ---- */
+"proxy.column.name" = "名前";
+"proxy.column.type" = "タイプ";
+"proxy.column.localAddr" = "ローカルアドレス";
+"proxy.column.localPort" = "ローカルポート";
+"proxy.column.remoteAddr" = "リモートアドレス";
+"proxy.column.remotePort" = "リモートポート";
+"proxy.column.domain" = "ドメイン";
+"proxy.column.plugin" = "プラグイン";
+
+/* ---- クイック追加 ---- */
+"proxy.quickAdd" = "クイック追加";
+"proxy.quick.ssh" = "SSH";
+"proxy.quick.vnc" = "VNC";
+"proxy.quick.remoteDesktop" = "リモートデスクトップ";
+"proxy.quick.web" = "Web (HTTP)";
+"proxy.quick.ftp" = "FTP";
+"proxy.quick.httpFileServer" = "HTTP ファイルサーバー";
+"proxy.quick.socks5Proxy" = "SOCKS5 プロキシ";
+
+/* ---- クイック追加ダイアログ ---- */
+"quickAdd.simpleProxy.title" = "シンプルプロキシ";
+"quickAdd.simpleProxy.port" = "ローカルポート";
+"quickAdd.openPort.title" = "ポート開放";
+"quickAdd.openPort.port" = "リモートポート";
+"quickAdd.openPort.protocol" = "プロトコル";
+"quickAdd.proxyServer.title" = "プロキシサーバー";
+"quickAdd.proxyServer.type" = "プロキシタイプ";
+"quickAdd.proxyServer.user" = "ユーザー名";
+"quickAdd.proxyServer.password" = "パスワード";
+"quickAdd.httpFileServer.title" = "HTTP ファイルサーバー";
+"quickAdd.httpFileServer.localPath" = "ローカルパス";
+"quickAdd.httpFileServer.stripPrefix" = "プレフィックス除去";
+"quickAdd.httpFileServer.auth" = "認証";
+"quickAdd.httpFileServer.user" = "ユーザー名";
+"quickAdd.httpFileServer.password" = "パスワード";
+
+/* ---- ログ ---- */
+"log.autoRefresh" = "自動更新";
+"log.config" = "設定";
+"log.error.readFailed" = "ログファイルの読み込みに失敗しました";
+"log.logFile" = "ログファイル";
+"log.noContent" = "ログがありません";
+"log.openFolder" = "フォルダで開く";
+"log.selectConfig" = "ログを表示する設定を選択してください";
+
+/* ---- NAT 検出 ---- */
+"nat.title" = "NAT タイプ検出";
+"nat.startDetection" = "検出を開始";
+"nat.detecting" = "検出中…";
+"nat.stunServer" = "STUN サーバー";
+"nat.natType" = "NAT タイプ";
+"nat.natBehavior" = "NAT 動作";
+"nat.externalAddresses" = "外部アドレス";
+"nat.localAddress" = "ローカルアドレス";
+"nat.isPublic" = "パブリックネットワーク";
+"nat.error.noOutput" = "出力がありません";
+"nat.error.parseFailed" = "結果の解析に失敗しました";
+
+/* ---- 環境設定 ---- */
+"preferences.language" = "言語";
+"preferences.language.select" = "言語を選択";
+"preferences.language.restartNote" = "言語の変更を適用するにはアプリを再起動してください";
+
+/* ---- 環境設定 - パスワード ---- */
+"preferences.password" = "パスワード保護";
+"preferences.password.enable" = "パスワードを有効化";
+"preferences.password.disable" = "パスワードを無効化";
+"preferences.password.set" = "パスワードを設定";
+"preferences.password.change" = "パスワードを変更";
+"preferences.password.changeTitle" = "パスワード変更";
+"preferences.password.current" = "現在のパスワード";
+"preferences.password.new" = "新しいパスワード";
+"preferences.password.confirm" = "パスワードの確認";
+"preferences.password.empty" = "パスワードを入力してください";
+"preferences.password.tooShort" = "パスワードが短すぎます";
+"preferences.password.mismatch" = "パスワードが一致しません";
+"preferences.password.incorrect" = "現在のパスワードが正しくありません";
+
+/* ---- 環境設定 - 詳細 ---- */
+"preferences.advanced" = "詳細";
+"preferences.advanced.title" = "詳細設定";
+"preferences.advanced.defaults" = "デフォルト";
+"preferences.advanced.open" = "開く";
+"preferences.advanced.protocol" = "プロトコル";
+"preferences.advanced.sourceAddr" = "ソースアドレス";
+"preferences.advanced.dnsServer" = "DNS サーバー";
+"preferences.advanced.stunServer" = "STUN サーバー";
+"preferences.advanced.logLevel" = "ログレベル";
+"preferences.advanced.logMaxDays" = "ログ最大保持日数";
+"preferences.advanced.user" = "ユーザー";
+"preferences.advanced.tls" = "TLS";
+"preferences.advanced.tcpMux" = "TCP 多重化";
+"preferences.advanced.manualStart" = "手動起動";
+"preferences.advanced.legacyFormat" = "レガシー形式";
+"preferences.advanced.checkUpdate" = "アップデートを確認";
+
+/* ---- このアプリについて ---- */
+"about.version \(Constants.appVersion)" = "バージョン %@";
+"about.frpVersion \(Constants.frpVersion)" = "FRP バージョン %@";
+"about.buildDate \(Constants.buildDate)" = "ビルド日 %@";
+"about.newVersion \(info.version)" = "新バージョンが利用可能です：%@";
+"about.checkForUpdate" = "アップデートを確認";
+"about.checkingUpdate" = "確認中…";
+"about.upToDate" = "最新です";
+"about.downloadUpdate" = "アップデートをダウンロード";
+"about.projectURL" = "プロジェクトホームページ";
+"about.frpDocs" = "FRP ドキュメント";
+
+/* ---- URL インポートダイアログ ---- */
+"urlImport.title" = "URL からインポート";
+"urlImport.description" = "設定をインポートする URL を入力";
+"urlImport.import" = "インポート";
+"urlImport.downloading \(current) \(total)" = "ダウンロード中 %@/%@";
