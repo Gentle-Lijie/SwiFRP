@@ -10,7 +10,8 @@ final class SwiFRPTests: XCTestCase {
         let config = AppConfig()
         XCTAssertTrue(config.password.isEmpty)
         XCTAssertTrue(config.sort.isEmpty)
-        XCTAssertFalse(config.autoStart)
+        XCTAssertTrue(config.checkUpdate)
+        XCTAssertEqual(config.lang, "en")
     }
 
     func testClientConfigIdentifiable() {
