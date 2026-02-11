@@ -97,7 +97,7 @@ class ProxyListViewModel: ObservableObject {
             }
             return "\(proxy.type)://\(addr)"
         case "tcp", "udp":
-            let port = proxy.remotePort.isEmpty ? "remote_port" : proxy.remotePort
+            let port = proxy.remotePort.map(String.init) ?? "remote_port"
             return "\(addr):\(port)"
         case "stcp", "xtcp", "sudp":
             return "\(proxy.type)://\(proxy.name)"
@@ -107,13 +107,13 @@ class ProxyListViewModel: ObservableObject {
             }
             return addr
         default:
-            return "\(addr):\(proxy.remotePort)"
+            return "\(addr):\(proxy.remotePort.map(String.init) ?? "")"
         }
     }
 
     // MARK: - Quick Add Templates
 
-    func addOpenPort(name: String = "", localPort: String, remotePort: String) {
+    func addOpenPort(name: String = "", localPort: Int, remotePort: Int) {
         var proxy = ProxyConfig(name: name.isEmpty ? "open_port_\(localPort)" : name)
         proxy.type = "tcp"
         proxy.localIP = "127.0.0.1"
@@ -126,8 +126,8 @@ class ProxyListViewModel: ObservableObject {
         var proxy = ProxyConfig(name: name)
         proxy.type = "tcp"
         proxy.localIP = "127.0.0.1"
-        proxy.localPort = "3389"
-        proxy.remotePort = "3389"
+        proxy.localPort = 3389
+        proxy.remotePort = 3389
         addProxy(proxy)
     }
 
@@ -135,8 +135,8 @@ class ProxyListViewModel: ObservableObject {
         var proxy = ProxyConfig(name: name)
         proxy.type = "tcp"
         proxy.localIP = "127.0.0.1"
-        proxy.localPort = "5900"
-        proxy.remotePort = "5900"
+        proxy.localPort = 5900
+        proxy.remotePort = 5900
         addProxy(proxy)
     }
 
@@ -144,12 +144,12 @@ class ProxyListViewModel: ObservableObject {
         var proxy = ProxyConfig(name: name)
         proxy.type = "tcp"
         proxy.localIP = "127.0.0.1"
-        proxy.localPort = "22"
-        proxy.remotePort = "6000"
+        proxy.localPort = 22
+        proxy.remotePort = 6000
         addProxy(proxy)
     }
 
-    func addWeb(name: String = "web", localPort: String = "80") {
+    func addWeb(name: String = "web", localPort: Int = 80) {
         var proxy = ProxyConfig(name: name)
         proxy.type = "http"
         proxy.localIP = "127.0.0.1"
@@ -161,8 +161,8 @@ class ProxyListViewModel: ObservableObject {
         var proxy = ProxyConfig(name: name)
         proxy.type = "tcp"
         proxy.localIP = "127.0.0.1"
-        proxy.localPort = "21"
-        proxy.remotePort = "6021"
+        proxy.localPort = 21
+        proxy.remotePort = 6021
         addProxy(proxy)
     }
 
@@ -170,8 +170,8 @@ class ProxyListViewModel: ObservableObject {
         var proxy = ProxyConfig(name: name)
         proxy.type = "tcp"
         proxy.localIP = "127.0.0.1"
-        proxy.localPort = "8080"
-        proxy.remotePort = "8080"
+        proxy.localPort = 8080
+        proxy.remotePort = 8080
         proxy.plugin.name = "static_file"
         proxy.plugin.localPath = localPath
         addProxy(proxy)
@@ -181,8 +181,8 @@ class ProxyListViewModel: ObservableObject {
         var proxy = ProxyConfig(name: name)
         proxy.type = "tcp"
         proxy.localIP = "127.0.0.1"
-        proxy.localPort = "1080"
-        proxy.remotePort = "1080"
+        proxy.localPort = 1080
+        proxy.remotePort = 1080
         proxy.plugin.name = "socks5"
         addProxy(proxy)
     }

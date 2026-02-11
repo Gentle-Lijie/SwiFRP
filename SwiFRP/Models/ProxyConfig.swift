@@ -10,8 +10,8 @@ struct ProxyConfig: Codable, Identifiable {
 
     // MARK: - Local
     var localIP: String = "127.0.0.1"
-    var localPort: String = ""
-    var remotePort: String = ""
+    var localPort: Int? = nil
+    var remotePort: Int? = nil
 
     // MARK: - Peer-to-peer (xtcp/stcp/sudp)
     var role: String = "server"

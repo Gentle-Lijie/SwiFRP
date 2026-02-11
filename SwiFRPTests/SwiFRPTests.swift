@@ -150,8 +150,8 @@ final class ModelTests: XCTestCase {
         XCTAssertEqual(proxy.type, "tcp")
         XCTAssertFalse(proxy.disabled)
         XCTAssertEqual(proxy.localIP, "127.0.0.1")
-        XCTAssertEqual(proxy.localPort, "")
-        XCTAssertEqual(proxy.remotePort, "")
+        XCTAssertNil(proxy.localPort)
+        XCTAssertNil(proxy.remotePort)
         XCTAssertEqual(proxy.role, "server")
         XCTAssertEqual(proxy.secretKey, "")
         XCTAssertTrue(proxy.customDomains.isEmpty)
@@ -164,14 +164,14 @@ final class ModelTests: XCTestCase {
         proxy.type = "http"
         proxy.subdomain = "myapp"
         proxy.customDomains = ["example.com", "www.example.com"]
-        proxy.localPort = "8080"
+        proxy.localPort = 8080
         let data = try JSONEncoder().encode(proxy)
         let decoded = try JSONDecoder().decode(ProxyConfig.self, from: data)
         XCTAssertEqual(decoded.name, "web")
         XCTAssertEqual(decoded.type, "http")
         XCTAssertEqual(decoded.subdomain, "myapp")
         XCTAssertEqual(decoded.customDomains, ["example.com", "www.example.com"])
-        XCTAssertEqual(decoded.localPort, "8080")
+        XCTAssertEqual(decoded.localPort, 8080)
     }
 
     func testProxyConfigIdentifiable() {
@@ -424,12 +424,12 @@ final class ModelTests: XCTestCase {
 
         var proxy1 = ProxyConfig(name: "ssh")
         proxy1.type = "tcp"
-        proxy1.localPort = "22"
-        proxy1.remotePort = "6000"
+        proxy1.localPort = 22
+        proxy1.remotePort = 6000
 
         var proxy2 = ProxyConfig(name: "web")
         proxy2.type = "http"
-        proxy2.localPort = "80"
+        proxy2.localPort = 80
         proxy2.subdomain = "myapp"
 
         config.proxies = [proxy1, proxy2]
@@ -438,7 +438,7 @@ final class ModelTests: XCTestCase {
         let decoded = try JSONDecoder().decode(ClientConfig.self, from: data)
         XCTAssertEqual(decoded.proxies.count, 2)
         XCTAssertEqual(decoded.proxies[0].name, "ssh")
-        XCTAssertEqual(decoded.proxies[0].remotePort, "6000")
+        XCTAssertEqual(decoded.proxies[0].remotePort, 6000)
         XCTAssertEqual(decoded.proxies[1].name, "web")
         XCTAssertEqual(decoded.proxies[1].subdomain, "myapp")
     }

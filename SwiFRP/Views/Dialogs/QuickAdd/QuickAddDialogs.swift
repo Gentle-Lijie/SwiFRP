@@ -45,28 +45,28 @@ struct OpenPortDialog: View {
 
     private func addProxy() {
         let port = portNumber.trimmingCharacters(in: .whitespaces)
-        guard !port.isEmpty else { return }
+        guard let portInt = Int(port), portInt > 0 else { return }
 
         if protocolChoice == "both" {
             var tcpProxy = ProxyConfig(name: "open_tcp_\(port)")
             tcpProxy.type = "tcp"
             tcpProxy.localIP = "127.0.0.1"
-            tcpProxy.localPort = port
-            tcpProxy.remotePort = port
+            tcpProxy.localPort = portInt
+            tcpProxy.remotePort = portInt
             onAdd(tcpProxy)
 
             var udpProxy = ProxyConfig(name: "open_udp_\(port)")
             udpProxy.type = "udp"
             udpProxy.localIP = "127.0.0.1"
-            udpProxy.localPort = port
-            udpProxy.remotePort = port
+            udpProxy.localPort = portInt
+            udpProxy.remotePort = portInt
             onAdd(udpProxy)
         } else {
             var proxy = ProxyConfig(name: "open_\(protocolChoice)_\(port)")
             proxy.type = protocolChoice
             proxy.localIP = "127.0.0.1"
-            proxy.localPort = port
-            proxy.remotePort = port
+            proxy.localPort = portInt
+            proxy.remotePort = portInt
             onAdd(proxy)
         }
 
@@ -80,12 +80,12 @@ struct SimpleProxyDialog: View {
     @Binding var isPresented: Bool
     var onAdd: (ProxyConfig) -> Void
 
-    private let presets: [(name: String, port: String, type: String)] = [
-        ("rdp", "3389", "tcp"),
-        ("vnc", "5900", "tcp"),
-        ("ssh", "22", "tcp"),
-        ("web", "80", "http"),
-        ("ftp", "21", "tcp"),
+    private let presets: [(name: String, port: Int, type: String)] = [
+        ("rdp", 3389, "tcp"),
+        ("vnc", 5900, "tcp"),
+        ("ssh", 22, "tcp"),
+        ("web", 80, "http"),
+        ("ftp", 21, "tcp"),
     ]
 
     var body: some View {
@@ -126,7 +126,7 @@ struct SimpleProxyDialog: View {
         .frame(width: 360)
     }
 
-    private func addPreset(_ preset: (name: String, port: String, type: String)) {
+    private func addPreset(_ preset: (name: String, port: Int, type: String)) {
         var proxy = ProxyConfig(name: preset.name)
         proxy.type = preset.type
         proxy.localIP = "127.0.0.1"
@@ -189,8 +189,8 @@ struct HTTPFileServerDialog: View {
         var proxy = ProxyConfig(name: "http_file_server")
         proxy.type = "tcp"
         proxy.localIP = "127.0.0.1"
-        proxy.localPort = "8080"
-        proxy.remotePort = "8080"
+        proxy.localPort = 8080
+        proxy.remotePort = 8080
         proxy.plugin.name = "static_file"
         proxy.plugin.localPath = localPath
         proxy.plugin.stripPrefix = stripPrefix
@@ -248,13 +248,13 @@ struct ProxyServerDialog: View {
         proxy.plugin.name = proxyType
 
         if proxyType == "socks5" {
-            proxy.localPort = "1080"
-            proxy.remotePort = "1080"
+            proxy.localPort = 1080
+            proxy.remotePort = 1080
             proxy.plugin.socks5User = userName
             proxy.plugin.socks5Pwd = password
         } else {
-            proxy.localPort = "8080"
-            proxy.remotePort = "8080"
+            proxy.localPort = 8080
+            proxy.remotePort = 8080
             proxy.plugin.httpUser = userName
             proxy.plugin.httpPwd = password
         }

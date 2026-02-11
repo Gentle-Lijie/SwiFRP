@@ -67,13 +67,13 @@ struct ProxyTableView: View {
             .width(min: 80, ideal: 100)
 
             TableColumn(String(localized: "proxy.column.localPort")) { item in
-                Text(item.proxy.localPort)
+                Text(item.proxy.localPort.map(String.init) ?? "")
                     .font(.caption)
             }
             .width(min: 60, ideal: 70)
 
             TableColumn(String(localized: "proxy.column.remotePort")) { item in
-                Text(item.proxy.remotePort)
+                Text(item.proxy.remotePort.map(String.init) ?? "")
                     .font(.caption)
             }
             .width(min: 60, ideal: 80)
@@ -417,8 +417,8 @@ private struct ProxyEditPlaceholder: View {
                         Text(type).tag(type)
                     }
                 }
-                TextField(String(localized: "proxy.column.localPort"), text: $editedProxy.localPort)
-                TextField(String(localized: "proxy.column.remotePort"), text: $editedProxy.remotePort)
+                TextField(String(localized: "proxy.column.localPort"), value: $editedProxy.localPort, format: .number)
+                TextField(String(localized: "proxy.column.remotePort"), value: $editedProxy.remotePort, format: .number)
             }
             .padding(.horizontal)
 

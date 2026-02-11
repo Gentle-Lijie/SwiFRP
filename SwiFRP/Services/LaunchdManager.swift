@@ -92,27 +92,29 @@ class LaunchdManager {
 
     func isRunning(configName: String) -> Bool {
         let label = serviceLabel(for: configName)
-        guard let output = try? runLaunchctl(["list"]) else { return false }
-        return output.contains(label)
+        guard let output = try? runLaunchctl(["list", label]) else { return false }
+        // If launchctl list <label> succeeds, the job is loaded; check for PID
+        return !output.isEmpty && !output.contains("Could not find service")
     }
 
     func queryStatus(configName: String) -> ConfigState {
         let label = serviceLabel(for: configName)
-        guard let output = try? runLaunchctl(["list"]) else { return .unknown }
+        guard let output = try? runLaunchctl(["list", label]) else { return .unknown }
 
+        if output.contains("Could not find service") {
+            return .stopped
+        }
+
+        // Parse JSON-like output from launchctl list <label>
         for line in output.components(separatedBy: .newlines) {
-            guard line.contains(label) else { continue }
-            let parts = line.components(separatedBy: "\t")
-            // launchctl list format: PID\tStatus\tLabel
-            if parts.count >= 3 {
-                let pid = parts[0].trimmingCharacters(in: .whitespaces)
-                if pid == "-" || pid.isEmpty {
-                    return .stopped
-                }
+            let trimmed = line.trimmingCharacters(in: .whitespaces)
+            if trimmed.hasPrefix("\"PID\"") || trimmed.hasPrefix("\"pid\"") {
+                // Has a PID → running
                 return .started
             }
         }
-        return .unknown
+        // Job loaded but no PID
+        return .stopped
     }
 
     // MARK: - Plist Generation
@@ -122,20 +124,18 @@ class LaunchdManager {
         let configURL = AppPaths.configURL(for: config.name, legacyFormat: config.legacyFormat)
         let logURL = AppPaths.logURL(for: config.name)
 
+        let keepAlive: Any = config.manualStart
+            ? false
+            : ["SuccessfulExit": false] as [String: Any]
+
         var plist: [String: Any] = [
             "Label": label,
             "ProgramArguments": [frpcPath, "-c", configURL.path],
             "RunAtLoad": autoStart,
-            "KeepAlive": !config.manualStart,
+            "KeepAlive": keepAlive,
             "StandardOutPath": logURL.path,
             "StandardErrorPath": logURL.path,
         ]
-
-        if !config.manualStart {
-            plist["KeepAlive"] = [
-                "SuccessfulExit": false
-            ] as [String: Any]
-        }
 
         return plist
     }
