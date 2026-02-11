@@ -1,0 +1,401 @@
+/* ============================================================
+   SwiFRP - 简体中文本地化字符串
+   ============================================================ */
+
+/* ---- 标签页 ---- */
+"tab.configuration" = "配置";
+"tab.log" = "日志";
+"tab.preferences" = "偏好设置";
+"tab.about" = "关于";
+"tab.about.newVersion" = "新版本";
+
+/* ---- 欢迎 ---- */
+"welcome.title" = "欢迎使用 SwiFRP";
+"welcome.subtitle" = "添加服务器配置以开始使用";
+
+/* ---- 通用 ---- */
+"common.add" = "添加";
+"common.browse" = "浏览…";
+"common.cancel" = "取消";
+"common.clearAll" = "清除全部";
+"common.close" = "关闭";
+"common.copy" = "复制";
+"common.delete" = "删除";
+"common.no" = "否";
+"common.ok" = "好";
+"common.quit" = "退出";
+"common.save" = "保存";
+"common.seconds" = "秒";
+"common.selectAll" = "全选";
+"common.unlock" = "解锁";
+
+/* ---- 错误 ---- */
+"error.title" = "错误";
+
+/* ---- 剪贴板 ---- */
+"clipboard.empty" = "剪贴板为空";
+
+/* ---- 键值 ---- */
+"keyvalue.key" = "键";
+"keyvalue.value" = "值";
+
+/* ---- 密码 ---- */
+"password.enterPassword" = "请输入密码";
+"password.incorrect" = "密码错误";
+"password.placeholder" = "密码";
+
+/* ---- 面板（服务器控制） ---- */
+"panel.noServer" = "未选择服务器";
+"panel.protocol" = "协议";
+"panel.serverAddress" = "服务器地址";
+"panel.start" = "启动";
+"panel.stop" = "停止";
+"panel.tlsEnabled" = "已启用 TLS";
+"panel.status.running" = "运行中";
+"panel.status.starting" = "正在启动…";
+"panel.status.stopped" = "已停止";
+"panel.status.stopping" = "正在停止…";
+"panel.status.unknown" = "未知";
+"panel.stopConfirmation" = "确定要停止此隧道吗？";
+
+/* ---- 配置管理 ---- */
+"config.deleteConfirmation" = "确定要删除此配置吗？";
+"config.duplicate" = "复制";
+"config.duplicate.basic" = "基本复制";
+"config.duplicate.full" = "完整复制";
+"config.edit" = "编辑";
+"config.exportAll" = "导出全部";
+"config.import.clipboard" = "从剪贴板导入";
+"config.import.file" = "从文件导入…";
+"config.import.url" = "从 URL 导入…";
+"config.importClipboard" = "从剪贴板导入";
+"config.manualStart" = "手动启动";
+"config.move.bottom" = "移至底部";
+"config.move.down" = "下移";
+"config.move.top" = "移至顶部";
+"config.move.up" = "上移";
+"config.moveTo" = "移动到";
+"config.name" = "名称";
+"config.natCheck" = "NAT 类型检测";
+"config.new.empty" = "新建空白配置";
+"config.noServer" = "暂无服务器配置";
+"config.properties" = "属性";
+"config.shareLink" = "分享链接";
+
+/* ---- 属性 ---- */
+"properties.automatic" = "自动";
+"properties.configName" = "配置名称";
+"properties.fileCreated" = "创建时间";
+"properties.fileFormat" = "文件格式";
+"properties.fileModified" = "修改时间";
+"properties.identifier" = "标识符";
+"properties.logFiles" = "日志文件";
+"properties.logSize" = "日志大小";
+"properties.manual" = "手动";
+"properties.protocol" = "协议";
+"properties.proxyCount" = "代理数量";
+"properties.serverAddr" = "服务器地址";
+"properties.serverPort" = "服务器端口";
+"properties.serviceName" = "服务名称";
+"properties.startupMode" = "启动模式";
+"properties.tcpConnections" = "TCP 连接数";
+"properties.title" = "属性";
+"properties.udpConnections" = "UDP 连接数";
+
+/* ---- 客户端配置 - 标签页 ---- */
+"client.tab.admin" = "管理";
+"client.tab.advanced" = "高级";
+"client.tab.auth" = "认证";
+"client.tab.basic" = "基本";
+"client.tab.connection" = "连接";
+"client.tab.log" = "日志";
+"client.tab.tls" = "TLS";
+
+/* ---- 客户端配置 - 基本 ---- */
+"client.name" = "名称";
+"client.serverAddr" = "服务器地址";
+"client.serverPort" = "服务器端口";
+"client.user" = "用户";
+"client.manualStart" = "手动启动";
+"client.legacyFormat" = "旧版格式";
+"client.error.nameRequired" = "名称不能为空";
+"client.error.serverAddrRequired" = "服务器地址不能为空";
+
+/* ---- 客户端配置 - 认证 ---- */
+"client.authMethod" = "认证方式";
+"client.auth.none" = "无";
+"client.token" = "令牌";
+"client.tokenFile" = "令牌文件";
+"client.authScope" = "认证范围";
+"client.authHeartbeat" = "认证心跳";
+"client.authNewWorkConn" = "新连接认证";
+"client.oidcClientID" = "OIDC 客户端 ID";
+"client.oidcClientSecret" = "OIDC 客户端密钥";
+"client.oidcAudience" = "OIDC 受众";
+"client.oidcScope" = "OIDC 权限范围";
+"client.oidcTokenEndpoint" = "OIDC 令牌端点";
+"client.oidcProxyURL" = "OIDC 代理 URL";
+"client.oidcSkipVerify" = "OIDC 跳过 TLS 验证";
+"client.oidcTLSCA" = "OIDC TLS CA 文件";
+
+/* ---- 客户端配置 - 连接 ---- */
+"client.protocol" = "协议";
+"client.dialTimeout" = "连接超时";
+"client.keepalivePeriod" = "保活周期";
+"client.heartbeatInterval" = "心跳间隔";
+"client.heartbeatTimeout" = "心跳超时";
+"client.connectPoolSize" = "连接池大小";
+"client.connectServerLocalIP" = "本地连接 IP";
+"client.tcpMux" = "TCP 多路复用";
+"client.tcpMuxKeepAliveInterval" = "TCP 多路复用保活间隔";
+"client.quicSettings" = "QUIC 设置";
+"client.quicKeepalivePeriod" = "QUIC 保活周期";
+"client.quicMaxIdleTimeout" = "QUIC 最大空闲超时";
+"client.quicMaxIncomingStreams" = "QUIC 最大入站流数";
+"client.dnsServer" = "DNS 服务器";
+"client.stunServer" = "STUN 服务器";
+"client.loginFailExit" = "登录失败时退出";
+
+/* ---- 客户端配置 - TLS ---- */
+"client.tlsEnable" = "启用 TLS";
+"client.tlsCertFile" = "TLS 证书文件";
+"client.tlsKeyFile" = "TLS 密钥文件";
+"client.tlsTrustedCaFile" = "TLS 受信任 CA 文件";
+"client.tlsServerName" = "TLS 服务器名称";
+"client.tlsDisableCustomFirstByte" = "禁用自定义首字节";
+
+/* ---- 客户端配置 - 日志 ---- */
+"client.logLevel" = "日志级别";
+"client.logMaxDays" = "日志最大保留天数";
+
+/* ---- 客户端配置 - 管理 ---- */
+"client.adminAddr" = "管理地址";
+"client.adminPort" = "管理端口";
+"client.adminUser" = "管理用户";
+"client.adminPwd" = "管理密码";
+"client.adminTLS" = "管理 TLS";
+"client.assetsDir" = "资源目录";
+
+/* ---- 客户端配置 - 高级 ---- */
+"client.metadatas" = "元数据";
+"client.autoDelete" = "自动删除";
+"client.delete.none" = "无";
+"client.delete.absolute" = "绝对日期";
+"client.delete.relative" = "相对天数";
+"client.deleteMethod" = "删除方式";
+"client.deleteAfterDays" = "删除天数";
+"client.deleteAfterDate" = "删除日期";
+
+/* ---- 代理配置 ---- */
+"proxy.add" = "添加";
+"proxy.new" = "新建代理";
+"proxy.name" = "代理名称";
+"proxy.type" = "代理类型";
+"proxy.enable" = "启用";
+"proxy.disable" = "禁用";
+"proxy.toggleEnabled" = "切换启用状态";
+"proxy.delete" = "删除";
+"proxy.deleteConfirmation" = "确定要删除此代理吗？";
+"proxy.edit" = "编辑";
+"proxy.randomName" = "随机名称";
+"proxy.importClipboard" = "从剪贴板导入";
+"proxy.copyAccessAddr" = "复制访问地址";
+"proxy.showRemoteAddr" = "显示远程地址";
+"proxy.moveTo" = "移动到";
+"proxy.error.nameRequired" = "代理名称不能为空";
+
+/* ---- 代理配置 - 标签页 ---- */
+"proxy.tab.basic" = "基本";
+"proxy.tab.advanced" = "高级";
+"proxy.tab.plugin" = "插件";
+"proxy.tab.healthCheck" = "健康检查";
+"proxy.tab.loadBalance" = "负载均衡";
+"proxy.tab.metadata" = "元数据";
+
+/* ---- 代理配置 - 基本 ---- */
+"proxy.localIP" = "本地 IP";
+"proxy.localPort" = "本地端口";
+"proxy.remotePort" = "远程端口";
+"proxy.role" = "角色";
+"proxy.secretKey" = "密钥";
+"proxy.serverName" = "服务器名称";
+"proxy.serverUser" = "服务器用户";
+"proxy.subdomain" = "子域名";
+"proxy.customDomains" = "自定义域名";
+"proxy.locations" = "路由路径";
+"proxy.bindAddr" = "绑定地址";
+"proxy.bindPort" = "绑定端口";
+
+/* ---- 代理配置 - 高级 ---- */
+"proxy.bandwidth" = "带宽";
+"proxy.bandwidthLimit" = "带宽限制";
+"proxy.bandwidthMode" = "带宽模式";
+"proxy.useCompression" = "启用压缩";
+"proxy.useEncryption" = "启用加密";
+"proxy.transport" = "传输";
+"proxy.transportField" = "传输协议";
+"proxy.proxyProtocolVersion" = "Proxy Protocol 版本";
+"proxy.hostHeaderRewrite" = "Host 头重写";
+"proxy.httpSettings" = "HTTP 设置";
+"proxy.httpUser" = "HTTP 用户";
+"proxy.httpPwd" = "HTTP 密码";
+"proxy.http2" = "HTTP/2";
+"proxy.requestHeaders" = "请求头";
+"proxy.responseHeaders" = "响应头";
+"proxy.routeByHTTPUser" = "按 HTTP 用户路由";
+"proxy.allowUsers" = "允许的用户";
+"proxy.annotations" = "注解";
+"proxy.metadatas" = "元数据";
+"proxy.multiplexer" = "多路复用器";
+"proxy.keepTunnel" = "保持隧道开启";
+"proxy.fallbackTo" = "故障转移到";
+"proxy.fallbackTimeout" = "故障转移超时";
+"proxy.maxRetriesPerHour" = "每小时最大重试次数";
+"proxy.minRetryInterval" = "最小重试间隔";
+"proxy.retry" = "重试";
+
+/* ---- 代理配置 - 插件 ---- */
+"proxy.plugin" = "插件";
+"proxy.plugin.none" = "无";
+"proxy.plugin.localAddr" = "本地地址";
+"proxy.plugin.localPath" = "本地路径";
+"proxy.plugin.stripPrefix" = "去除前缀";
+"proxy.plugin.httpUser" = "HTTP 用户";
+"proxy.plugin.httpPwd" = "HTTP 密码";
+"proxy.plugin.hostHeaderRewrite" = "Host 头重写";
+"proxy.plugin.requestHeaders" = "请求头";
+"proxy.plugin.socks5User" = "SOCKS5 用户";
+"proxy.plugin.socks5Pwd" = "SOCKS5 密码";
+"proxy.plugin.staticFileUser" = "静态文件用户";
+"proxy.plugin.staticFilePwd" = "静态文件密码";
+"proxy.plugin.tlsCertFile" = "TLS 证书文件";
+"proxy.plugin.tlsKeyFile" = "TLS 密钥文件";
+"proxy.plugin.tlsTrustedCaFile" = "TLS 受信任 CA 文件";
+"proxy.plugin.unixPath" = "Unix 套接字路径";
+
+/* ---- 代理配置 - 健康检查 ---- */
+"proxy.healthCheck.type" = "健康检查类型";
+"proxy.healthCheck.none" = "无";
+"proxy.healthCheck.interval" = "检查间隔";
+"proxy.healthCheck.timeout" = "检查超时";
+"proxy.healthCheck.maxFailed" = "最大失败次数";
+"proxy.healthCheck.url" = "健康检查 URL";
+
+/* ---- 代理配置 - 负载均衡 ---- */
+"proxy.loadBalance.group" = "负载均衡组";
+"proxy.loadBalance.groupKey" = "负载均衡组密钥";
+
+/* ---- 代理列表列头 ---- */
+"proxy.column.name" = "名称";
+"proxy.column.type" = "类型";
+"proxy.column.localAddr" = "本地地址";
+"proxy.column.localPort" = "本地端口";
+"proxy.column.remoteAddr" = "远程地址";
+"proxy.column.remotePort" = "远程端口";
+"proxy.column.domain" = "域名";
+"proxy.column.plugin" = "插件";
+
+/* ---- 快速添加 ---- */
+"proxy.quickAdd" = "快速添加";
+"proxy.quick.ssh" = "SSH";
+"proxy.quick.vnc" = "VNC";
+"proxy.quick.remoteDesktop" = "远程桌面";
+"proxy.quick.web" = "Web (HTTP)";
+"proxy.quick.ftp" = "FTP";
+"proxy.quick.httpFileServer" = "HTTP 文件服务器";
+"proxy.quick.socks5Proxy" = "SOCKS5 代理";
+
+/* ---- 快速添加对话框 ---- */
+"quickAdd.simpleProxy.title" = "简单代理";
+"quickAdd.simpleProxy.port" = "本地端口";
+"quickAdd.openPort.title" = "开放端口";
+"quickAdd.openPort.port" = "远程端口";
+"quickAdd.openPort.protocol" = "协议";
+"quickAdd.proxyServer.title" = "代理服务器";
+"quickAdd.proxyServer.type" = "代理类型";
+"quickAdd.proxyServer.user" = "用户名";
+"quickAdd.proxyServer.password" = "密码";
+"quickAdd.httpFileServer.title" = "HTTP 文件服务器";
+"quickAdd.httpFileServer.localPath" = "本地路径";
+"quickAdd.httpFileServer.stripPrefix" = "去除前缀";
+"quickAdd.httpFileServer.auth" = "身份验证";
+"quickAdd.httpFileServer.user" = "用户名";
+"quickAdd.httpFileServer.password" = "密码";
+
+/* ---- 日志 ---- */
+"log.autoRefresh" = "自动刷新";
+"log.config" = "配置";
+"log.error.readFailed" = "读取日志文件失败";
+"log.logFile" = "日志文件";
+"log.noContent" = "暂无日志内容";
+"log.openFolder" = "在文件夹中打开";
+"log.selectConfig" = "选择一个配置以查看日志";
+
+/* ---- NAT 检测 ---- */
+"nat.title" = "NAT 类型检测";
+"nat.startDetection" = "开始检测";
+"nat.detecting" = "正在检测…";
+"nat.stunServer" = "STUN 服务器";
+"nat.natType" = "NAT 类型";
+"nat.natBehavior" = "NAT 行为";
+"nat.externalAddresses" = "外部地址";
+"nat.localAddress" = "本地地址";
+"nat.isPublic" = "公网";
+"nat.error.noOutput" = "未收到输出";
+"nat.error.parseFailed" = "解析结果失败";
+
+/* ---- 偏好设置 ---- */
+"preferences.language" = "语言";
+"preferences.language.select" = "选择语言";
+"preferences.language.restartNote" = "重启应用以应用语言更改";
+
+/* ---- 偏好设置 - 密码 ---- */
+"preferences.password" = "密码保护";
+"preferences.password.enable" = "启用密码";
+"preferences.password.disable" = "禁用密码";
+"preferences.password.set" = "设置密码";
+"preferences.password.change" = "更改密码";
+"preferences.password.changeTitle" = "更改密码";
+"preferences.password.current" = "当前密码";
+"preferences.password.new" = "新密码";
+"preferences.password.confirm" = "确认密码";
+"preferences.password.empty" = "密码不能为空";
+"preferences.password.tooShort" = "密码太短";
+"preferences.password.mismatch" = "两次输入的密码不一致";
+"preferences.password.incorrect" = "当前密码错误";
+
+/* ---- 偏好设置 - 高级 ---- */
+"preferences.advanced" = "高级";
+"preferences.advanced.title" = "高级设置";
+"preferences.advanced.defaults" = "默认值";
+"preferences.advanced.open" = "打开";
+"preferences.advanced.protocol" = "协议";
+"preferences.advanced.sourceAddr" = "源地址";
+"preferences.advanced.dnsServer" = "DNS 服务器";
+"preferences.advanced.stunServer" = "STUN 服务器";
+"preferences.advanced.logLevel" = "日志级别";
+"preferences.advanced.logMaxDays" = "日志最大保留天数";
+"preferences.advanced.user" = "用户";
+"preferences.advanced.tls" = "TLS";
+"preferences.advanced.tcpMux" = "TCP 多路复用";
+"preferences.advanced.manualStart" = "手动启动";
+"preferences.advanced.legacyFormat" = "旧版格式";
+"preferences.advanced.checkUpdate" = "检查更新";
+
+/* ---- 关于 ---- */
+"about.version \(Constants.appVersion)" = "版本 %@";
+"about.frpVersion \(Constants.frpVersion)" = "FRP 版本 %@";
+"about.buildDate \(Constants.buildDate)" = "构建日期 %@";
+"about.newVersion \(info.version)" = "发现新版本：%@";
+"about.checkForUpdate" = "检查更新";
+"about.checkingUpdate" = "正在检查…";
+"about.upToDate" = "已是最新版本";
+"about.downloadUpdate" = "下载更新";
+"about.projectURL" = "项目主页";
+"about.frpDocs" = "FRP 文档";
+
+/* ---- URL 导入对话框 ---- */
+"urlImport.title" = "从 URL 导入";
+"urlImport.description" = "输入 URL 以导入配置";
+"urlImport.import" = "导入";
+"urlImport.downloading \(current) \(total)" = "正在下载 %@/%@";

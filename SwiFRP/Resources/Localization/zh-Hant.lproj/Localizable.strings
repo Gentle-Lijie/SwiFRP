@@ -1,0 +1,401 @@
+/* ============================================================
+   SwiFRP - 繁體中文本地化字串
+   ============================================================ */
+
+/* ---- 標籤頁 ---- */
+"tab.configuration" = "設定";
+"tab.log" = "日誌";
+"tab.preferences" = "偏好設定";
+"tab.about" = "關於";
+"tab.about.newVersion" = "新版本";
+
+/* ---- 歡迎 ---- */
+"welcome.title" = "歡迎使用 SwiFRP";
+"welcome.subtitle" = "新增伺服器設定以開始使用";
+
+/* ---- 通用 ---- */
+"common.add" = "新增";
+"common.browse" = "瀏覽…";
+"common.cancel" = "取消";
+"common.clearAll" = "清除全部";
+"common.close" = "關閉";
+"common.copy" = "複製";
+"common.delete" = "刪除";
+"common.no" = "否";
+"common.ok" = "好";
+"common.quit" = "結束";
+"common.save" = "儲存";
+"common.seconds" = "秒";
+"common.selectAll" = "全選";
+"common.unlock" = "解鎖";
+
+/* ---- 錯誤 ---- */
+"error.title" = "錯誤";
+
+/* ---- 剪貼簿 ---- */
+"clipboard.empty" = "剪貼簿為空";
+
+/* ---- 鍵值 ---- */
+"keyvalue.key" = "鍵";
+"keyvalue.value" = "值";
+
+/* ---- 密碼 ---- */
+"password.enterPassword" = "請輸入密碼";
+"password.incorrect" = "密碼錯誤";
+"password.placeholder" = "密碼";
+
+/* ---- 面板（伺服器控制） ---- */
+"panel.noServer" = "未選擇伺服器";
+"panel.protocol" = "協定";
+"panel.serverAddress" = "伺服器位址";
+"panel.start" = "啟動";
+"panel.stop" = "停止";
+"panel.tlsEnabled" = "已啟用 TLS";
+"panel.status.running" = "執行中";
+"panel.status.starting" = "正在啟動…";
+"panel.status.stopped" = "已停止";
+"panel.status.stopping" = "正在停止…";
+"panel.status.unknown" = "未知";
+"panel.stopConfirmation" = "確定要停止此通道嗎？";
+
+/* ---- 設定管理 ---- */
+"config.deleteConfirmation" = "確定要刪除此設定嗎？";
+"config.duplicate" = "複製";
+"config.duplicate.basic" = "基本複製";
+"config.duplicate.full" = "完整複製";
+"config.edit" = "編輯";
+"config.exportAll" = "匯出全部";
+"config.import.clipboard" = "從剪貼簿匯入";
+"config.import.file" = "從檔案匯入…";
+"config.import.url" = "從 URL 匯入…";
+"config.importClipboard" = "從剪貼簿匯入";
+"config.manualStart" = "手動啟動";
+"config.move.bottom" = "移至底部";
+"config.move.down" = "下移";
+"config.move.top" = "移至頂部";
+"config.move.up" = "上移";
+"config.moveTo" = "移動到";
+"config.name" = "名稱";
+"config.natCheck" = "NAT 類型偵測";
+"config.new.empty" = "新建空白設定";
+"config.noServer" = "尚無伺服器設定";
+"config.properties" = "屬性";
+"config.shareLink" = "分享連結";
+
+/* ---- 屬性 ---- */
+"properties.automatic" = "自動";
+"properties.configName" = "設定名稱";
+"properties.fileCreated" = "建立時間";
+"properties.fileFormat" = "檔案格式";
+"properties.fileModified" = "修改時間";
+"properties.identifier" = "識別碼";
+"properties.logFiles" = "日誌檔案";
+"properties.logSize" = "日誌大小";
+"properties.manual" = "手動";
+"properties.protocol" = "協定";
+"properties.proxyCount" = "代理數量";
+"properties.serverAddr" = "伺服器位址";
+"properties.serverPort" = "伺服器連接埠";
+"properties.serviceName" = "服務名稱";
+"properties.startupMode" = "啟動模式";
+"properties.tcpConnections" = "TCP 連線數";
+"properties.title" = "屬性";
+"properties.udpConnections" = "UDP 連線數";
+
+/* ---- 用戶端設定 - 標籤頁 ---- */
+"client.tab.admin" = "管理";
+"client.tab.advanced" = "進階";
+"client.tab.auth" = "認證";
+"client.tab.basic" = "基本";
+"client.tab.connection" = "連線";
+"client.tab.log" = "日誌";
+"client.tab.tls" = "TLS";
+
+/* ---- 用戶端設定 - 基本 ---- */
+"client.name" = "名稱";
+"client.serverAddr" = "伺服器位址";
+"client.serverPort" = "伺服器連接埠";
+"client.user" = "使用者";
+"client.manualStart" = "手動啟動";
+"client.legacyFormat" = "舊版格式";
+"client.error.nameRequired" = "名稱不可為空";
+"client.error.serverAddrRequired" = "伺服器位址不可為空";
+
+/* ---- 用戶端設定 - 認證 ---- */
+"client.authMethod" = "認證方式";
+"client.auth.none" = "無";
+"client.token" = "權杖";
+"client.tokenFile" = "權杖檔案";
+"client.authScope" = "認證範圍";
+"client.authHeartbeat" = "認證心跳";
+"client.authNewWorkConn" = "新連線認證";
+"client.oidcClientID" = "OIDC 用戶端 ID";
+"client.oidcClientSecret" = "OIDC 用戶端密鑰";
+"client.oidcAudience" = "OIDC 受眾";
+"client.oidcScope" = "OIDC 權限範圍";
+"client.oidcTokenEndpoint" = "OIDC 權杖端點";
+"client.oidcProxyURL" = "OIDC 代理 URL";
+"client.oidcSkipVerify" = "OIDC 略過 TLS 驗證";
+"client.oidcTLSCA" = "OIDC TLS CA 檔案";
+
+/* ---- 用戶端設定 - 連線 ---- */
+"client.protocol" = "協定";
+"client.dialTimeout" = "連線逾時";
+"client.keepalivePeriod" = "保活週期";
+"client.heartbeatInterval" = "心跳間隔";
+"client.heartbeatTimeout" = "心跳逾時";
+"client.connectPoolSize" = "連線池大小";
+"client.connectServerLocalIP" = "本機連線 IP";
+"client.tcpMux" = "TCP 多工";
+"client.tcpMuxKeepAliveInterval" = "TCP 多工保活間隔";
+"client.quicSettings" = "QUIC 設定";
+"client.quicKeepalivePeriod" = "QUIC 保活週期";
+"client.quicMaxIdleTimeout" = "QUIC 最大閒置逾時";
+"client.quicMaxIncomingStreams" = "QUIC 最大傳入串流數";
+"client.dnsServer" = "DNS 伺服器";
+"client.stunServer" = "STUN 伺服器";
+"client.loginFailExit" = "登入失敗時結束";
+
+/* ---- 用戶端設定 - TLS ---- */
+"client.tlsEnable" = "啟用 TLS";
+"client.tlsCertFile" = "TLS 憑證檔案";
+"client.tlsKeyFile" = "TLS 金鑰檔案";
+"client.tlsTrustedCaFile" = "TLS 受信任 CA 檔案";
+"client.tlsServerName" = "TLS 伺服器名稱";
+"client.tlsDisableCustomFirstByte" = "停用自訂首位元組";
+
+/* ---- 用戶端設定 - 日誌 ---- */
+"client.logLevel" = "日誌等級";
+"client.logMaxDays" = "日誌最大保留天數";
+
+/* ---- 用戶端設定 - 管理 ---- */
+"client.adminAddr" = "管理位址";
+"client.adminPort" = "管理連接埠";
+"client.adminUser" = "管理使用者";
+"client.adminPwd" = "管理密碼";
+"client.adminTLS" = "管理 TLS";
+"client.assetsDir" = "資源目錄";
+
+/* ---- 用戶端設定 - 進階 ---- */
+"client.metadatas" = "中繼資料";
+"client.autoDelete" = "自動刪除";
+"client.delete.none" = "無";
+"client.delete.absolute" = "絕對日期";
+"client.delete.relative" = "相對天數";
+"client.deleteMethod" = "刪除方式";
+"client.deleteAfterDays" = "刪除天數";
+"client.deleteAfterDate" = "刪除日期";
+
+/* ---- 代理設定 ---- */
+"proxy.add" = "新增";
+"proxy.new" = "新增代理";
+"proxy.name" = "代理名稱";
+"proxy.type" = "代理類型";
+"proxy.enable" = "啟用";
+"proxy.disable" = "停用";
+"proxy.toggleEnabled" = "切換啟用狀態";
+"proxy.delete" = "刪除";
+"proxy.deleteConfirmation" = "確定要刪除此代理嗎？";
+"proxy.edit" = "編輯";
+"proxy.randomName" = "隨機名稱";
+"proxy.importClipboard" = "從剪貼簿匯入";
+"proxy.copyAccessAddr" = "複製存取位址";
+"proxy.showRemoteAddr" = "顯示遠端位址";
+"proxy.moveTo" = "移動到";
+"proxy.error.nameRequired" = "代理名稱不可為空";
+
+/* ---- 代理設定 - 標籤頁 ---- */
+"proxy.tab.basic" = "基本";
+"proxy.tab.advanced" = "進階";
+"proxy.tab.plugin" = "外掛";
+"proxy.tab.healthCheck" = "健康檢查";
+"proxy.tab.loadBalance" = "負載平衡";
+"proxy.tab.metadata" = "中繼資料";
+
+/* ---- 代理設定 - 基本 ---- */
+"proxy.localIP" = "本機 IP";
+"proxy.localPort" = "本機連接埠";
+"proxy.remotePort" = "遠端連接埠";
+"proxy.role" = "角色";
+"proxy.secretKey" = "密鑰";
+"proxy.serverName" = "伺服器名稱";
+"proxy.serverUser" = "伺服器使用者";
+"proxy.subdomain" = "子網域";
+"proxy.customDomains" = "自訂網域";
+"proxy.locations" = "路由路徑";
+"proxy.bindAddr" = "綁定位址";
+"proxy.bindPort" = "綁定連接埠";
+
+/* ---- 代理設定 - 進階 ---- */
+"proxy.bandwidth" = "頻寬";
+"proxy.bandwidthLimit" = "頻寬限制";
+"proxy.bandwidthMode" = "頻寬模式";
+"proxy.useCompression" = "啟用壓縮";
+"proxy.useEncryption" = "啟用加密";
+"proxy.transport" = "傳輸";
+"proxy.transportField" = "傳輸協定";
+"proxy.proxyProtocolVersion" = "Proxy Protocol 版本";
+"proxy.hostHeaderRewrite" = "Host 標頭改寫";
+"proxy.httpSettings" = "HTTP 設定";
+"proxy.httpUser" = "HTTP 使用者";
+"proxy.httpPwd" = "HTTP 密碼";
+"proxy.http2" = "HTTP/2";
+"proxy.requestHeaders" = "請求標頭";
+"proxy.responseHeaders" = "回應標頭";
+"proxy.routeByHTTPUser" = "依 HTTP 使用者路由";
+"proxy.allowUsers" = "允許的使用者";
+"proxy.annotations" = "標註";
+"proxy.metadatas" = "中繼資料";
+"proxy.multiplexer" = "多工器";
+"proxy.keepTunnel" = "保持通道開啟";
+"proxy.fallbackTo" = "故障轉移到";
+"proxy.fallbackTimeout" = "故障轉移逾時";
+"proxy.maxRetriesPerHour" = "每小時最大重試次數";
+"proxy.minRetryInterval" = "最小重試間隔";
+"proxy.retry" = "重試";
+
+/* ---- 代理設定 - 外掛 ---- */
+"proxy.plugin" = "外掛";
+"proxy.plugin.none" = "無";
+"proxy.plugin.localAddr" = "本機位址";
+"proxy.plugin.localPath" = "本機路徑";
+"proxy.plugin.stripPrefix" = "去除前綴";
+"proxy.plugin.httpUser" = "HTTP 使用者";
+"proxy.plugin.httpPwd" = "HTTP 密碼";
+"proxy.plugin.hostHeaderRewrite" = "Host 標頭改寫";
+"proxy.plugin.requestHeaders" = "請求標頭";
+"proxy.plugin.socks5User" = "SOCKS5 使用者";
+"proxy.plugin.socks5Pwd" = "SOCKS5 密碼";
+"proxy.plugin.staticFileUser" = "靜態檔案使用者";
+"proxy.plugin.staticFilePwd" = "靜態檔案密碼";
+"proxy.plugin.tlsCertFile" = "TLS 憑證檔案";
+"proxy.plugin.tlsKeyFile" = "TLS 金鑰檔案";
+"proxy.plugin.tlsTrustedCaFile" = "TLS 受信任 CA 檔案";
+"proxy.plugin.unixPath" = "Unix 通訊端路徑";
+
+/* ---- 代理設定 - 健康檢查 ---- */
+"proxy.healthCheck.type" = "健康檢查類型";
+"proxy.healthCheck.none" = "無";
+"proxy.healthCheck.interval" = "檢查間隔";
+"proxy.healthCheck.timeout" = "檢查逾時";
+"proxy.healthCheck.maxFailed" = "最大失敗次數";
+"proxy.healthCheck.url" = "健康檢查 URL";
+
+/* ---- 代理設定 - 負載平衡 ---- */
+"proxy.loadBalance.group" = "負載平衡群組";
+"proxy.loadBalance.groupKey" = "負載平衡群組金鑰";
+
+/* ---- 代理列表欄位 ---- */
+"proxy.column.name" = "名稱";
+"proxy.column.type" = "類型";
+"proxy.column.localAddr" = "本機位址";
+"proxy.column.localPort" = "本機連接埠";
+"proxy.column.remoteAddr" = "遠端位址";
+"proxy.column.remotePort" = "遠端連接埠";
+"proxy.column.domain" = "網域";
+"proxy.column.plugin" = "外掛";
+
+/* ---- 快速新增 ---- */
+"proxy.quickAdd" = "快速新增";
+"proxy.quick.ssh" = "SSH";
+"proxy.quick.vnc" = "VNC";
+"proxy.quick.remoteDesktop" = "遠端桌面";
+"proxy.quick.web" = "Web (HTTP)";
+"proxy.quick.ftp" = "FTP";
+"proxy.quick.httpFileServer" = "HTTP 檔案伺服器";
+"proxy.quick.socks5Proxy" = "SOCKS5 代理";
+
+/* ---- 快速新增對話框 ---- */
+"quickAdd.simpleProxy.title" = "簡單代理";
+"quickAdd.simpleProxy.port" = "本機連接埠";
+"quickAdd.openPort.title" = "開放連接埠";
+"quickAdd.openPort.port" = "遠端連接埠";
+"quickAdd.openPort.protocol" = "協定";
+"quickAdd.proxyServer.title" = "代理伺服器";
+"quickAdd.proxyServer.type" = "代理類型";
+"quickAdd.proxyServer.user" = "使用者名稱";
+"quickAdd.proxyServer.password" = "密碼";
+"quickAdd.httpFileServer.title" = "HTTP 檔案伺服器";
+"quickAdd.httpFileServer.localPath" = "本機路徑";
+"quickAdd.httpFileServer.stripPrefix" = "去除前綴";
+"quickAdd.httpFileServer.auth" = "身分驗證";
+"quickAdd.httpFileServer.user" = "使用者名稱";
+"quickAdd.httpFileServer.password" = "密碼";
+
+/* ---- 日誌 ---- */
+"log.autoRefresh" = "自動重新整理";
+"log.config" = "設定";
+"log.error.readFailed" = "讀取日誌檔案失敗";
+"log.logFile" = "日誌檔案";
+"log.noContent" = "暫無日誌內容";
+"log.openFolder" = "在 Finder 中顯示";
+"log.selectConfig" = "選擇一個設定以檢視日誌";
+
+/* ---- NAT 偵測 ---- */
+"nat.title" = "NAT 類型偵測";
+"nat.startDetection" = "開始偵測";
+"nat.detecting" = "正在偵測…";
+"nat.stunServer" = "STUN 伺服器";
+"nat.natType" = "NAT 類型";
+"nat.natBehavior" = "NAT 行為";
+"nat.externalAddresses" = "外部位址";
+"nat.localAddress" = "本機位址";
+"nat.isPublic" = "公共網路";
+"nat.error.noOutput" = "未收到輸出";
+"nat.error.parseFailed" = "解析結果失敗";
+
+/* ---- 偏好設定 ---- */
+"preferences.language" = "語言";
+"preferences.language.select" = "選擇語言";
+"preferences.language.restartNote" = "重新啟動應用程式以套用語言變更";
+
+/* ---- 偏好設定 - 密碼 ---- */
+"preferences.password" = "密碼保護";
+"preferences.password.enable" = "啟用密碼";
+"preferences.password.disable" = "停用密碼";
+"preferences.password.set" = "設定密碼";
+"preferences.password.change" = "更改密碼";
+"preferences.password.changeTitle" = "更改密碼";
+"preferences.password.current" = "目前密碼";
+"preferences.password.new" = "新密碼";
+"preferences.password.confirm" = "確認密碼";
+"preferences.password.empty" = "密碼不可為空";
+"preferences.password.tooShort" = "密碼太短";
+"preferences.password.mismatch" = "兩次輸入的密碼不一致";
+"preferences.password.incorrect" = "目前密碼錯誤";
+
+/* ---- 偏好設定 - 進階 ---- */
+"preferences.advanced" = "進階";
+"preferences.advanced.title" = "進階設定";
+"preferences.advanced.defaults" = "預設值";
+"preferences.advanced.open" = "打開";
+"preferences.advanced.protocol" = "協定";
+"preferences.advanced.sourceAddr" = "來源位址";
+"preferences.advanced.dnsServer" = "DNS 伺服器";
+"preferences.advanced.stunServer" = "STUN 伺服器";
+"preferences.advanced.logLevel" = "日誌等級";
+"preferences.advanced.logMaxDays" = "日誌最大保留天數";
+"preferences.advanced.user" = "使用者";
+"preferences.advanced.tls" = "TLS";
+"preferences.advanced.tcpMux" = "TCP 多工";
+"preferences.advanced.manualStart" = "手動啟動";
+"preferences.advanced.legacyFormat" = "舊版格式";
+"preferences.advanced.checkUpdate" = "檢查更新";
+
+/* ---- 關於 ---- */
+"about.version \(Constants.appVersion)" = "版本 %@";
+"about.frpVersion \(Constants.frpVersion)" = "FRP 版本 %@";
+"about.buildDate \(Constants.buildDate)" = "建置日期 %@";
+"about.newVersion \(info.version)" = "發現新版本：%@";
+"about.checkForUpdate" = "檢查更新";
+"about.checkingUpdate" = "正在檢查…";
+"about.upToDate" = "已是最新版本";
+"about.downloadUpdate" = "下載更新";
+"about.projectURL" = "專案首頁";
+"about.frpDocs" = "FRP 文件";
+
+/* ---- URL 匯入對話框 ---- */
+"urlImport.title" = "從 URL 匯入";
+"urlImport.description" = "輸入 URL 以匯入設定";
+"urlImport.import" = "匯入";
+"urlImport.downloading \(current) \(total)" = "正在下載 %@/%@";
