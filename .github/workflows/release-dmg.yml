@@ -1,0 +1,30 @@
+name: Build macOS DMG
+
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-dmg:
+    runs-on: macos-latest
+    env:
+      APP_NAME: SwiFRP
+      DMG_NAME: SwiFRP-${{ github.ref_name }}.dmg
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build app bundle
+        run: |
+          chmod +x package.sh
+          BUILD_CONFIGURATION=release ./package.sh
+      - name: Create DMG
+        run: |
+          hdiutil create -volname "${APP_NAME}" -srcfolder "${APP_NAME}.app" -ov -format UDZO "${DMG_NAME}"
+      - name: Upload DMG to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.DMG_NAME }}

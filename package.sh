@@ -8,7 +8,8 @@ set -e
 APP_NAME="SwiFRP"
 BUNDLE_ID="com.swifrp.app"
 VERSION="1.0.0"
-BUILD_DIR=".build/arm64-apple-macosx/debug"
+CONFIGURATION="${BUILD_CONFIGURATION:-debug}"
+BUILD_DIR=".build/arm64-apple-macosx/${CONFIGURATION}"
 APP_BUNDLE="${APP_NAME}.app"
 CONTENTS_DIR="${APP_BUNDLE}/Contents"
 MACOS_DIR="${CONTENTS_DIR}/MacOS"
@@ -18,7 +19,7 @@ CURRENT_YEAR=$(date +"%Y")
 echo "🚀 Building ${APP_NAME}..."
 
 # Build the project
-swift build -c debug
+swift build -c "${CONFIGURATION}"
 
 echo "📦 Creating app bundle structure..."
 
