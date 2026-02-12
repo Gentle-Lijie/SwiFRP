@@ -1,5 +1,20 @@
 # SwiFRP
 
+<div align="center">
+
+[![Build macOS DMG](https://github.com/Gentle-Lijie/SwiFRP/actions/workflows/release-dmg.yml/badge.svg)](https://github.com/Gentle-Lijie/SwiFRP/actions/workflows/release-dmg.yml)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/Gentle-Lijie/SwiFRP/releases)
+[![Platform](https://img.shields.io/badge/platform-macOS%2013%2B-lightgrey.svg)](https://www.apple.com/macos)
+[![Swift](https://img.shields.io/badge/Swift-5.9%2B-orange.svg)](https://swift.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+**macOS 原生 FRP 客户端管理工具 | Native macOS FRP Client Manager**
+
+[中文](#简介--overview) • [English](#简介--overview-1)
+
+</div>
+
 > **中文优先**：SwiFRP 是 [frpmgr](https://github.com/koho/frpmgr) 的 macOS 原生移植版，用 SwiftUI + MVVM 打造图形化 FRP 客户端管理工具。
 >
 > **English**: SwiFRP is a macOS-native port of [frpmgr](https://github.com/koho/frpmgr), providing a SwiftUI + MVVM GUI for managing FRP client configurations.
