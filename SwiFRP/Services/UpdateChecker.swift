@@ -3,7 +3,7 @@ import Foundation
 class UpdateChecker {
     static let shared = UpdateChecker()
 
-    var owner: String = "koho"
+    var owner: String = "Gentle-Lijie"
     var repo: String = "SwiFRP"
 
     private init() {}
