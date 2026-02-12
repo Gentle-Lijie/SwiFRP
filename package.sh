@@ -7,7 +7,7 @@ set -e
 
 APP_NAME="SwiFRP"
 BUNDLE_ID="com.swifrp.app"
-VERSION="1.0.0"
+VERSION="1.0.1"
 CONFIGURATION="${BUILD_CONFIGURATION:-debug}"
 BUILD_DIR=".build/arm64-apple-macosx/${CONFIGURATION}"
 APP_BUNDLE="${APP_NAME}.app"

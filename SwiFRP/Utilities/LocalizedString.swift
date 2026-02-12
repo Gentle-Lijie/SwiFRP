@@ -19,9 +19,6 @@ class LanguageManager {
             return bundle
         }
         
-        // First try to find the bundle in the module
-        let moduleBundle = Bundle.module
-        
         // Try to find the .lproj directory for current language
         let languageMap: [String: String] = [
             "en": "en",
@@ -34,23 +31,28 @@ class LanguageManager {
         
         let langCode = languageMap[currentLanguage] ?? currentLanguage
         
-        // Check in module bundle
-        if let path = moduleBundle.path(forResource: langCode, ofType: "lproj"),
-           let bundle = Bundle(path: path) {
-            _bundle = bundle
-            return bundle
-        }
-        
-        // Check in main bundle
+        // Check in main bundle (for packaged .app)
         if let path = Bundle.main.path(forResource: langCode, ofType: "lproj"),
            let bundle = Bundle(path: path) {
             _bundle = bundle
             return bundle
         }
         
-        // Fallback to module bundle
-        _bundle = moduleBundle
-        return moduleBundle
+        // Try Bundle.module for SPM development environment (with availability check)
+        #if SWIFT_PACKAGE
+        if let path = Bundle.module.path(forResource: langCode, ofType: "lproj"),
+           let bundle = Bundle(path: path) {
+            _bundle = bundle
+            return bundle
+        }
+        // Fallback to module bundle in development
+        _bundle = Bundle.module
+        return Bundle.module
+        #else
+        // Fallback to main bundle for packaged app
+        _bundle = Bundle.main
+        return Bundle.main
+        #endif
     }
     
     private init() {
