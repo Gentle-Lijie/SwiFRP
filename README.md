@@ -39,10 +39,10 @@ SwiFRP brings feature parity with the Windows frpmgr experience on macOS, coveri
 ### 1) 准备 frpc
 
 - 从 [frp releases](https://github.com/fatedier/frp/releases) 下载并放置 `frpc` 到常见路径。
-- 或使用 Homebrew 安装：`brew install frp`
+- 或使用 Homebrew 安装：`brew install frpc`
 
 - Download `frpc` from [frp releases](https://github.com/fatedier/frp/releases) and place it in a common path.
-- Or install via Homebrew: `brew install frp`
+- Or install via Homebrew: `brew install frpc`
 
 ### 2) 构建应用
 
@@ -115,23 +115,21 @@ SwiFRP/
 
 ## 截图 / Screenshots
 
-> 以下为截图占位符，欢迎补充真实截图。
-
 - 总览 / Overview
 
-  ![Overview](docs/screenshots/overview-placeholder.svg)
+  ![Overview](docs/screenshots/swifrp_landing.png)
 
 - 配置页 / Configuration
 
-  ![Configuration](docs/screenshots/config-placeholder.svg)
+  ![Configuration](docs/screenshots/swifrp_config.png)
 
-- 日志页 / Logs
+- Admin API 配置 / Admin API Configuration
 
-  ![Logs](docs/screenshots/logs-placeholder.svg)
+  ![Logs](docs/screenshots/swifrp_security.png)
 
-- 偏好设置 / Preferences
+- 代理设置 / Proxies
 
-  ![Preferences](docs/screenshots/preferences-placeholder.svg)
+  ![Preferences](docs/screenshots/swifrp_proxies.png)
 
 ## 开发与测试 / Development & Testing
 
