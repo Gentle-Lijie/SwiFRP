@@ -50,6 +50,8 @@
 "panel.serverAddress" = "Server Address";
 "panel.start" = "Start";
 "panel.stop" = "Stop";
+"panel.startSuccess" = "Service Started Successfully";
+"panel.startConfirmation" = "Are you sure you want to start this service?";
 "panel.tlsEnabled" = "TLS Enabled";
 "panel.status.running" = "Running";
 "panel.status.starting" = "Starting…";
@@ -57,6 +59,9 @@
 "panel.status.stopping" = "Stopping…";
 "panel.status.unknown" = "Unknown";
 "panel.stopConfirmation" = "Are you sure you want to stop this tunnel?";
+"panel.frpcNotFound" = "frpc not found";
+"panel.frpcNotFoundHint" = "Please install frpc to start the tunnel";
+"panel.download" = "Download";
 
 /* ---- Configuration ---- */
 "config.deleteConfirmation" = "Are you sure you want to delete this configuration?";
@@ -321,6 +326,16 @@
 "quickAdd.httpFileServer.auth" = "Authentication";
 "quickAdd.httpFileServer.user" = "Username";
 "quickAdd.httpFileServer.password" = "Password";
+
+/* ---- Proxy Status ---- */
+"proxy.status.disabled" = "Disabled";
+"proxy.status.serviceStopped" = "Service Not Running";
+"proxy.status.adminAPINotEnabled" = "Admin API Not Configured (Edit config to enable)";
+"proxy.status.checking" = "Checking...";
+"proxy.status.running" = "Running";
+"proxy.status.error" = "Error";
+"proxy.status.unknown" = "Unknown";
+"proxy.status.hint.adminAPI" = "Tip: Configure Admin API for detailed status";
 
 /* ---- Log ---- */
 "log.autoRefresh" = "Auto Refresh";

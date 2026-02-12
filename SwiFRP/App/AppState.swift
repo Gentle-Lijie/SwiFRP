@@ -26,6 +26,12 @@ class AppState: ObservableObject {
     private init() {
         loadAppConfig()
         loadConfigs()
+        startStatusTracking()
+    }
+    
+    private func startStatusTracking() {
+        StatusTracker.shared.setTrackedConfigs(configs)
+        StatusTracker.shared.startTracking()
     }
 
     func loadAppConfig() {
@@ -37,6 +43,7 @@ class AppState: ObservableObject {
 
     func loadConfigs() {
         configs = ConfigFileManager.shared.loadAllConfigs(sortOrder: appConfig.sort)
+        StatusTracker.shared.setTrackedConfigs(configs)
     }
 
     func saveAppConfig() {
@@ -46,6 +53,7 @@ class AppState: ObservableObject {
     func addConfig(_ config: ClientConfig) {
         configs.append(config)
         appConfig.sort.append(config.name)
+        StatusTracker.shared.setTrackedConfigs(configs)
         saveAppConfig()
     }
 

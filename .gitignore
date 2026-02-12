@@ -60,3 +60,16 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# Output
+*.app/
+*.app.dSYM
+.swiftpm/
+
+# Xcode Related
+
+# Apple
+.DS_Store
+.AppleDouble
+.LSOverride
+__macosx_metadata_never_index

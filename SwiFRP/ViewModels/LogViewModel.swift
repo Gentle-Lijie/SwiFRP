@@ -52,7 +52,7 @@ class LogViewModel: ObservableObject {
                 logContent = lines
             }
         } catch {
-            logContent = [String(localized: "log.error.readFailed")]
+            logContent = [L("log.error.readFailed")]
         }
     }
 
@@ -124,9 +124,15 @@ class LogViewModel: ObservableObject {
 
     func selectConfig(_ name: String?) {
         selectedConfigName = name
-        stopAutoRefresh()
-        stopFileMonitor()
         loadLogFiles()
+        // Auto-start file monitoring (tail -f mode) when selecting config
+        if name != nil {
+            startAutoRefresh()
+            startFileMonitor()
+        } else {
+            stopAutoRefresh()
+            stopFileMonitor()
+        }
     }
 
     func selectLogFile(_ url: URL?) {

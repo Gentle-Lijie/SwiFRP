@@ -22,11 +22,11 @@ struct LogPageView: View {
 
     private var toolbar: some View {
         HStack(spacing: 12) {
-            Picker(String(localized: "log.config"), selection: Binding(
+            Picker(L("log.config"), selection: Binding(
                 get: { viewModel.selectedConfigName ?? "" },
                 set: { viewModel.selectConfig($0.isEmpty ? nil : $0) }
             )) {
-                Text(String(localized: "log.selectConfig")).tag("")
+                Text(L("log.selectConfig")).tag("")
                 ForEach(appState.configs, id: \.name) { config in
                     Text(config.name).tag(config.name)
                 }
@@ -34,7 +34,7 @@ struct LogPageView: View {
             .frame(width: 200)
 
             if !viewModel.availableLogFiles.isEmpty {
-                Picker(String(localized: "log.logFile"), selection: Binding(
+                Picker(L("log.logFile"), selection: Binding(
                     get: { viewModel.selectedLogFile?.absoluteString ?? "" },
                     set: { urlString in
                         let url = viewModel.availableLogFiles.first { $0.absoluteString == urlString }
@@ -50,7 +50,7 @@ struct LogPageView: View {
 
             Spacer()
 
-            Toggle(String(localized: "log.autoRefresh"), isOn: Binding(
+            Toggle(L("log.autoRefresh"), isOn: Binding(
                 get: { viewModel.isAutoRefreshing },
                 set: { $0 ? viewModel.startAutoRefresh() : viewModel.stopAutoRefresh() }
             ))
@@ -59,7 +59,7 @@ struct LogPageView: View {
             Button {
                 viewModel.openLogFolder()
             } label: {
-                Label(String(localized: "log.openFolder"), systemImage: "folder")
+                Label(L("log.openFolder"), systemImage: "folder")
             }
         }
         .padding(.horizontal)
@@ -73,7 +73,7 @@ struct LogPageView: View {
             if viewModel.logContent.isEmpty {
                 VStack {
                     Spacer()
-                    Text(String(localized: "log.noContent"))
+                    Text(L("log.noContent"))
                         .foregroundColor(.secondary)
                     Spacer()
                 }

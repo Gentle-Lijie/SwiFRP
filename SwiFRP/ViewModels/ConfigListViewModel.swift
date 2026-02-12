@@ -104,7 +104,7 @@ class ConfigListViewModel: ObservableObject {
     func importFromClipboard() {
         #if canImport(AppKit)
         guard let content = NSPasteboard.general.string(forType: .string) else {
-            errorMessage = String(localized: "clipboard.empty")
+            errorMessage = L("clipboard.empty")
             showError = true
             return
         }

@@ -19,8 +19,8 @@ struct DetailView: View {
             ProxyTableView(config: $config, viewModel: proxyViewModel)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onChange(of: config) { newConfig in
-            proxyViewModel.config = newConfig
+        .onChange(of: config.id) { _ in
+            proxyViewModel.config = config
         }
     }
 }

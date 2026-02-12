@@ -7,28 +7,28 @@ struct MainWindow: View {
         TabView(selection: $appState.selectedTab) {
             ConfigPageView()
                 .tabItem {
-                    Label(String(localized: "tab.configuration"), systemImage: "gearshape.2")
+                    Label(L("tab.configuration"), systemImage: "gearshape.2")
                 }
                 .tag(AppTab.configuration)
 
             LogPageView()
                 .tabItem {
-                    Label(String(localized: "tab.log"), systemImage: "doc.text")
+                    Label(L("tab.log"), systemImage: "doc.text")
                 }
                 .tag(AppTab.log)
 
             PreferencesPageView()
                 .tabItem {
-                    Label(String(localized: "tab.preferences"), systemImage: "slider.horizontal.3")
+                    Label(L("tab.preferences"), systemImage: "slider.horizontal.3")
                 }
                 .tag(AppTab.preferences)
 
             AboutPageView()
                 .tabItem {
                     if appState.hasNewVersion {
-                        Label(String(localized: "tab.about.newVersion"), systemImage: "info.circle.fill")
+                        Label(L("tab.about.newVersion"), systemImage: "info.circle.fill")
                     } else {
-                        Label(String(localized: "tab.about"), systemImage: "info.circle")
+                        Label(L("tab.about"), systemImage: "info.circle")
                     }
                 }
                 .tag(AppTab.about)
@@ -53,10 +53,10 @@ struct PasswordVerifyView: View {
                 .font(.system(size: 48))
                 .foregroundColor(.accentColor)
 
-            Text(String(localized: "password.enterPassword"))
+            Text(L("password.enterPassword"))
                 .font(.headline)
 
-            SecureField(String(localized: "password.placeholder"), text: $password)
+            SecureField(L("password.placeholder"), text: $password)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 250)
                 .onSubmit { verify() }
@@ -68,12 +68,12 @@ struct PasswordVerifyView: View {
             }
 
             HStack {
-                Button(String(localized: "common.quit")) {
+                Button(L("common.quit")) {
                     NSApplication.shared.terminate(nil)
                 }
                 .keyboardShortcut(.cancelAction)
 
-                Button(String(localized: "common.unlock")) {
+                Button(L("common.unlock")) {
                     verify()
                 }
                 .keyboardShortcut(.defaultAction)
@@ -89,7 +89,7 @@ struct PasswordVerifyView: View {
         if hash == appState.appConfig.password {
             appState.isPasswordVerified = true
         } else {
-            errorMessage = String(localized: "password.incorrect")
+            errorMessage = L("password.incorrect")
         }
     }
 }

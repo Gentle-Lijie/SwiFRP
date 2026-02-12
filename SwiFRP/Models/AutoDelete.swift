@@ -6,7 +6,7 @@ enum DeleteMethod: String, Codable, CaseIterable {
     case relative
 }
 
-struct AutoDelete: Codable {
+struct AutoDelete: Codable, Equatable {
     var deleteMethod: DeleteMethod = .none
     var deleteAfterDays: Int = 0
     var deleteAfterDate: Date = Date()

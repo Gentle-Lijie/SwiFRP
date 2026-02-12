@@ -15,13 +15,13 @@ struct KeyValueEditor: View {
             }
 
             Table(entries, selection: $selectedID) {
-                TableColumn(String(localized: "keyvalue.key")) { entry in
+                TableColumn(L("keyvalue.key")) { entry in
                     TextField("", text: binding(for: entry.id, keyPath: \.key))
                         .textFieldStyle(.plain)
                 }
                 .width(min: 80, ideal: 140)
 
-                TableColumn(String(localized: "keyvalue.value")) { entry in
+                TableColumn(L("keyvalue.value")) { entry in
                     TextField("", text: binding(for: entry.id, keyPath: \.value))
                         .textFieldStyle(.plain)
                 }
@@ -51,7 +51,7 @@ struct KeyValueEditor: View {
 
                 Spacer()
 
-                Button(String(localized: "common.clearAll")) {
+                Button(L("common.clearAll")) {
                     entries.removeAll()
                     syncToPairs()
                 }

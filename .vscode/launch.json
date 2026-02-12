@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:SwiFRP}",
+            "name": "Debug SwiFRP",
+            "target": "SwiFRP",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug SwiFRP"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:SwiFRP}",
+            "name": "Release SwiFRP",
+            "target": "SwiFRP",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release SwiFRP"
+        }
+    ]
+}

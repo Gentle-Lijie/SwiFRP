@@ -12,7 +12,7 @@ struct ProxyTableView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            proxyTable
+            proxyList
             Divider()
             proxyToolbar
         }
@@ -25,88 +25,71 @@ struct ProxyTableView: View {
             }
         }
         .confirmationDialog(
-            String(localized: "proxy.deleteConfirmation"),
+            L("proxy.deleteConfirmation"),
             isPresented: $isShowingDeleteConfirmation,
             titleVisibility: .visible
         ) {
-            Button(String(localized: "common.delete"), role: .destructive) {
+            Button(L("common.delete"), role: .destructive) {
                 viewModel.deleteSelectedProxies()
                 syncProxiesToConfig()
             }
-            Button(String(localized: "common.cancel"), role: .cancel) {}
+            Button(L("common.cancel"), role: .cancel) {}
         }
     }
 
-    // MARK: - Proxy Table
+    // MARK: - Proxy List
 
-    private var proxyTable: some View {
-        Table(of: IndexedProxy.self, selection: Binding(
-            get: { viewModel.selectedProxyIndices },
-            set: { viewModel.selectedProxyIndices = $0 }
-        )) {
-            TableColumn(String(localized: "proxy.column.name")) { item in
-                HStack(spacing: 6) {
-                    proxyStateIcon(for: item.proxy)
-                    Text(item.proxy.name)
-                        .strikethrough(item.proxy.disabled)
-                        .foregroundColor(item.proxy.disabled ? .secondary : .primary)
-                }
-            }
-            .width(min: 80, ideal: 120)
-
-            TableColumn(String(localized: "proxy.column.type")) { item in
-                Text(item.proxy.type)
-                    .foregroundColor(proxyTypeColor(item.proxy.type))
-            }
-            .width(min: 50, ideal: 60)
-
-            TableColumn(String(localized: "proxy.column.localAddr")) { item in
-                Text(item.proxy.localIP)
-                    .font(.caption)
-            }
-            .width(min: 80, ideal: 100)
-
-            TableColumn(String(localized: "proxy.column.localPort")) { item in
-                Text(item.proxy.localPort.map(String.init) ?? "")
-                    .font(.caption)
-            }
-            .width(min: 60, ideal: 70)
-
-            TableColumn(String(localized: "proxy.column.remotePort")) { item in
-                Text(item.proxy.remotePort.map(String.init) ?? "")
-                    .font(.caption)
-            }
-            .width(min: 60, ideal: 80)
-
-            TableColumn(String(localized: "proxy.column.domain")) { item in
-                Text(domainDisplay(for: item.proxy))
-                    .font(.caption)
-                    .lineLimit(1)
-            }
-            .width(min: 80, ideal: 120)
-
-            TableColumn(String(localized: "proxy.column.plugin")) { item in
-                Text(item.proxy.plugin.name.isEmpty ? "-" : item.proxy.plugin.name)
-                    .font(.caption)
-                    .foregroundColor(item.proxy.plugin.name.isEmpty ? .secondary : .primary)
-            }
-            .width(min: 60, ideal: 80)
-
-            if viewModel.showRemoteAddress {
-                TableColumn(String(localized: "proxy.column.remoteAddr")) { item in
-                    let status = proxyStatuses.first { $0.name == item.proxy.name }
-                    Text(status?.remoteAddr ?? "-")
+    private var proxyList: some View {
+        List(selection: $viewModel.selectedProxyIDs) {
+            ForEach(Array(config.proxies.enumerated()), id: \.element.id) { index, proxy in
+                HStack(spacing: 8) {
+                    proxyStateIcon(for: proxy)
+                        .frame(width: 12)
+                    
+                    Text(proxy.name)
+                        .strikethrough(proxy.disabled)
+                        .foregroundColor(proxy.disabled ? .secondary : .primary)
+                        .frame(width: 100, alignment: .leading)
+                    
+                    Text(proxy.type)
+                        .foregroundColor(proxyTypeColor(proxy.type))
+                        .frame(width: 60)
+                    
+                    Text(proxy.localIP)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .frame(width: 100)
+                    
+                    Text(proxy.localPort.map(String.init) ?? "-")
+                        .font(.caption)
+                        .frame(width: 60)
+                    
+                    Text(proxy.remotePort.map(String.init) ?? "-")
+                        .font(.caption)
+                        .frame(width: 60)
+                    
+                    Text(domainDisplay(for: proxy))
+                        .font(.caption)
+                        .lineLimit(1)
+                        .frame(width: 120, alignment: .leading)
+                    
+                    Text(proxy.plugin.name.isEmpty ? "-" : proxy.plugin.name)
+                        .font(.caption)
+                        .foregroundColor(proxy.plugin.name.isEmpty ? .secondary : .primary)
+                        .frame(width: 80)
+                    
+                    if viewModel.showRemoteAddress {
+                        let status = proxyStatuses.first { $0.name == proxy.name }
+                        Text(status?.remoteAddr ?? "-")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .frame(width: 100)
+                    }
                 }
-                .width(min: 80, ideal: 120)
-            }
-        } rows: {
-            ForEach(indexedProxies) { item in
-                TableRow(item)
-                    .contextMenu { proxyContextMenu(proxy: item.proxy, index: item.index) }
+                .tag(proxy.id)
+                .contextMenu { proxyContextMenu(proxy: proxy, index: index) }
             }
         }
+        .listStyle(.inset)
     }
 
     // MARK: - Proxy Toolbar
@@ -122,67 +105,71 @@ struct ProxyTableView: View {
                 Image(systemName: "plus")
             }
             .buttonStyle(.borderless)
-            .help(String(localized: "proxy.add"))
+            .help(L("proxy.add"))
 
             quickAddMenu
 
             Button {
-                guard let firstIndex = viewModel.selectedProxyIndices.sorted().first,
-                      firstIndex >= 0, firstIndex < config.proxies.count else { return }
-                viewModel.editProxy(config.proxies[firstIndex])
+                guard let selectedID = viewModel.selectedProxyIDs.first,
+                      let index = config.proxies.firstIndex(where: { $0.id == selectedID }) else { return }
+                viewModel.editProxy(config.proxies[index])
             } label: {
                 Image(systemName: "pencil")
             }
             .buttonStyle(.borderless)
-            .disabled(viewModel.selectedProxyIndices.count != 1)
-            .help(String(localized: "proxy.edit"))
+            .disabled(viewModel.selectedProxyIDs.count != 1)
+            .help(L("proxy.edit"))
 
             Button {
-                for index in viewModel.selectedProxyIndices {
+                for id in viewModel.selectedProxyIDs {
+                    guard let index = config.proxies.firstIndex(where: { $0.id == id }) else { continue }
                     viewModel.toggleProxyEnabled(at: index)
                 }
                 syncProxiesToConfig()
+                saveAndReloadConfig()
             } label: {
                 Image(systemName: "eye.slash")
             }
             .buttonStyle(.borderless)
-            .disabled(viewModel.selectedProxyIndices.isEmpty)
-            .help(String(localized: "proxy.toggleEnabled"))
+            .disabled(viewModel.selectedProxyIDs.isEmpty)
+            .help(L("proxy.toggleEnabled"))
 
             Divider()
                 .frame(height: 16)
 
             Button {
-                guard let index = viewModel.selectedProxyIndices.sorted().first else { return }
+                guard let selectedID = viewModel.selectedProxyIDs.first,
+                      let index = config.proxies.firstIndex(where: { $0.id == selectedID }) else { return }
                 viewModel.moveProxy(from: index, direction: .up)
                 syncProxiesToConfig()
             } label: {
                 Image(systemName: "chevron.up")
             }
             .buttonStyle(.borderless)
-            .disabled(viewModel.selectedProxyIndices.count != 1)
+            .disabled(viewModel.selectedProxyIDs.count != 1)
 
             Button {
-                guard let index = viewModel.selectedProxyIndices.sorted().first else { return }
+                guard let selectedID = viewModel.selectedProxyIDs.first,
+                      let index = config.proxies.firstIndex(where: { $0.id == selectedID }) else { return }
                 viewModel.moveProxy(from: index, direction: .down)
                 syncProxiesToConfig()
             } label: {
                 Image(systemName: "chevron.down")
             }
             .buttonStyle(.borderless)
-            .disabled(viewModel.selectedProxyIndices.count != 1)
+            .disabled(viewModel.selectedProxyIDs.count != 1)
 
             Spacer()
 
             Button {
-                guard !viewModel.selectedProxyIndices.isEmpty else { return }
+                guard !viewModel.selectedProxyIDs.isEmpty else { return }
                 isShowingDeleteConfirmation = true
             } label: {
                 Image(systemName: "minus")
             }
             .buttonStyle(.borderless)
-            .disabled(viewModel.selectedProxyIndices.isEmpty)
-            .help(String(localized: "proxy.delete"))
+            .disabled(viewModel.selectedProxyIDs.isEmpty)
+            .help(L("proxy.delete"))
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 6)
@@ -192,32 +179,32 @@ struct ProxyTableView: View {
 
     private var quickAddMenu: some View {
         Menu {
-            Button(String(localized: "proxy.quick.ssh")) {
+            Button(L("proxy.quick.ssh")) {
                 viewModel.addSSH()
                 syncProxiesToConfig()
             }
-            Button(String(localized: "proxy.quick.web")) {
+            Button(L("proxy.quick.web")) {
                 viewModel.addWeb()
                 syncProxiesToConfig()
             }
-            Button(String(localized: "proxy.quick.remoteDesktop")) {
+            Button(L("proxy.quick.remoteDesktop")) {
                 viewModel.addRemoteDesktop()
                 syncProxiesToConfig()
             }
-            Button(String(localized: "proxy.quick.vnc")) {
+            Button(L("proxy.quick.vnc")) {
                 viewModel.addVNC()
                 syncProxiesToConfig()
             }
-            Button(String(localized: "proxy.quick.ftp")) {
+            Button(L("proxy.quick.ftp")) {
                 viewModel.addFTP()
                 syncProxiesToConfig()
             }
             Divider()
-            Button(String(localized: "proxy.quick.httpFileServer")) {
+            Button(L("proxy.quick.httpFileServer")) {
                 viewModel.addHTTPFileServer()
                 syncProxiesToConfig()
             }
-            Button(String(localized: "proxy.quick.socks5Proxy")) {
+            Button(L("proxy.quick.socks5Proxy")) {
                 viewModel.addProxyServer()
                 syncProxiesToConfig()
             }
@@ -226,7 +213,7 @@ struct ProxyTableView: View {
         }
         .menuStyle(.borderlessButton)
         .frame(width: 28)
-        .help(String(localized: "proxy.quickAdd"))
+        .help(L("proxy.quickAdd"))
     }
 
     // MARK: - Context Menu
@@ -236,37 +223,38 @@ struct ProxyTableView: View {
         Button {
             viewModel.editProxy(proxy)
         } label: {
-            Label(String(localized: "proxy.edit"), systemImage: "pencil")
+            Label(L("proxy.edit"), systemImage: "pencil")
         }
 
         Button {
             viewModel.toggleProxyEnabled(at: index)
             syncProxiesToConfig()
+            saveAndReloadConfig()
         } label: {
             Label(
                 proxy.disabled
-                    ? String(localized: "proxy.enable")
-                    : String(localized: "proxy.disable"),
+                    ? L("proxy.enable")
+                    : L("proxy.disable"),
                 systemImage: proxy.disabled ? "eye" : "eye.slash"
             )
         }
 
         Divider()
 
-        Menu(String(localized: "proxy.moveTo")) {
-            Button(String(localized: "config.move.top")) {
+        Menu(L("proxy.moveTo")) {
+            Button(L("config.move.top")) {
                 viewModel.moveProxy(from: index, direction: .top)
                 syncProxiesToConfig()
             }
-            Button(String(localized: "config.move.up")) {
+            Button(L("config.move.up")) {
                 viewModel.moveProxy(from: index, direction: .up)
                 syncProxiesToConfig()
             }
-            Button(String(localized: "config.move.down")) {
+            Button(L("config.move.down")) {
                 viewModel.moveProxy(from: index, direction: .down)
                 syncProxiesToConfig()
             }
-            Button(String(localized: "config.move.bottom")) {
+            Button(L("config.move.bottom")) {
                 viewModel.moveProxy(from: index, direction: .bottom)
                 syncProxiesToConfig()
             }
@@ -280,15 +268,15 @@ struct ProxyTableView: View {
             viewModel.editingProxy = newProxy
             viewModel.isShowingEditProxy = true
         } label: {
-            Label(String(localized: "proxy.new"), systemImage: "plus")
+            Label(L("proxy.new"), systemImage: "plus")
         }
 
-        Menu(String(localized: "proxy.quickAdd")) {
-            Button(String(localized: "proxy.quick.ssh")) {
+        Menu(L("proxy.quickAdd")) {
+            Button(L("proxy.quick.ssh")) {
                 viewModel.addSSH()
                 syncProxiesToConfig()
             }
-            Button(String(localized: "proxy.quick.web")) {
+            Button(L("proxy.quick.web")) {
                 viewModel.addWeb()
                 syncProxiesToConfig()
             }
@@ -298,61 +286,81 @@ struct ProxyTableView: View {
             viewModel.importFromClipboard()
             syncProxiesToConfig()
         } label: {
-            Label(String(localized: "proxy.importClipboard"), systemImage: "doc.on.clipboard")
+            Label(L("proxy.importClipboard"), systemImage: "doc.on.clipboard")
         }
 
         Divider()
 
-        Toggle(String(localized: "proxy.showRemoteAddr"), isOn: $viewModel.showRemoteAddress)
+        Toggle(L("proxy.showRemoteAddr"), isOn: $viewModel.showRemoteAddress)
 
         Button {
             let addr = viewModel.copyAccessAddress(for: proxy, serverAddr: config.serverAddr)
             NSPasteboard.general.clearContents()
             NSPasteboard.general.setString(addr, forType: .string)
         } label: {
-            Label(String(localized: "proxy.copyAccessAddr"), systemImage: "doc.on.doc")
+            Label(L("proxy.copyAccessAddr"), systemImage: "doc.on.doc")
         }
 
         Button {
-            viewModel.selectedProxyIndices = Set(0..<config.proxies.count)
+            viewModel.selectedProxyIDs = Set(config.proxies.map { $0.id })
         } label: {
-            Label(String(localized: "common.selectAll"), systemImage: "checkmark.circle")
+            Label(L("common.selectAll"), systemImage: "checkmark.circle")
         }
 
         Divider()
 
         Button(role: .destructive) {
-            viewModel.selectedProxyIndices = [index]
+            viewModel.selectedProxyIDs = [proxy.id]
             isShowingDeleteConfirmation = true
         } label: {
-            Label(String(localized: "common.delete"), systemImage: "trash")
+            Label(L("common.delete"), systemImage: "trash")
         }
     }
 
     // MARK: - Helpers
 
-    private var indexedProxies: [IndexedProxy] {
-        config.proxies.enumerated().map { IndexedProxy(index: $0, proxy: $1) }
-    }
-
     private func proxyStateIcon(for proxy: ProxyConfig) -> some View {
         let status = proxyStatuses.first { $0.name == proxy.name }
-        let (color, icon): (Color, String) = {
+        let configState = statusTracker.configStates[config.name] ?? .unknown
+        
+        // Determine icon appearance based on state
+        let (iconName, color, tooltip): (String, Color, String) = {
+            // If proxy is disabled
             if proxy.disabled {
-                return (.gray, "circle.dashed")
+                return ("pause.circle.fill", .gray, L("proxy.status.disabled"))
             }
-            guard let status = status else {
-                return (.secondary, "circle")
+            
+            // If config service is not running
+            if configState != .started {
+                return ("circle.dashed", .secondary, L("proxy.status.serviceStopped"))
             }
-            switch status.status {
-            case .running: return (.green, "circle.fill")
-            case .error: return (.red, "exclamationmark.circle.fill")
-            case .unknown: return (.secondary, "circle")
+            
+            // If service is running and we have admin API status
+            if config.adminPort > 0, let status = status {
+                switch status.status {
+                case .running:
+                    return ("checkmark.circle.fill", .green, L("proxy.status.running"))
+                case .error:
+                    return ("xmark.circle.fill", .red, "\(L("proxy.status.error")): \(status.error)")
+                case .unknown:
+                    return ("questionmark.circle", .secondary, L("proxy.status.unknown"))
+                }
             }
+            
+            // If service is running but no admin API configured
+            // Try to fetch status from admin API, but don't assume success
+            if config.adminPort == 0 {
+                return ("checkmark.circle", .secondary, "\(L("proxy.status.running")) (\(L("proxy.status.hint.adminAPI")))")
+            }
+            
+            // Service running, admin API configured but no status yet
+            return ("circle", .secondary, L("proxy.status.checking"))
         }()
-        return Image(systemName: icon)
-            .font(.system(size: 8))
+        
+        return Image(systemName: iconName)
+            .font(.system(size: 12, weight: .medium))
             .foregroundColor(color)
+            .help(tooltip)
     }
 
     private func proxyTypeColor(_ type: String) -> Color {
@@ -378,15 +386,32 @@ struct ProxyTableView: View {
 
     private func syncProxiesToConfig() {
         config.proxies = viewModel.config.proxies
+        // Save to file immediately
+        ConfigFileManager.shared.saveConfig(config)
     }
-}
-
-// MARK: - IndexedProxy
-
-struct IndexedProxy: Identifiable {
-    let index: Int
-    let proxy: ProxyConfig
-    var id: String { "\(index)-\(proxy.name)" }
+    private func saveAndReloadConfig() {
+        // Save config to file
+        ConfigFileManager.shared.saveConfig(config)
+        
+        // Hot reload if service is running
+        let state = statusTracker.configStates[config.name] ?? .unknown
+        if state == .started && config.adminPort > 0 {
+            Task {
+                do {
+                    try await FRPCBridge.shared.reload(
+                        adminAddr: config.adminAddr.isEmpty ? "127.0.0.1" : config.adminAddr,
+                        adminPort: config.adminPort,
+                        user: config.adminUser.isEmpty ? nil : config.adminUser,
+                        password: config.adminPwd.isEmpty ? nil : config.adminPwd
+                    )
+                    // Refresh proxy statuses after reload
+                    await statusTracker.probeProxies(for: config)
+                } catch {
+                    print("Failed to hot reload config: \(error)")
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Placeholder for proxy edit dialog
@@ -397,6 +422,7 @@ private struct ProxyEditPlaceholder: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var editedProxy: ProxyConfig
+    @State private var isPresented = true
 
     init(proxy: ProxyConfig, onSave: @escaping (ProxyConfig) -> Void) {
         self.proxy = proxy
@@ -405,35 +431,14 @@ private struct ProxyEditPlaceholder: View {
     }
 
     var body: some View {
-        VStack(spacing: 12) {
-            Text(String(localized: "proxy.edit"))
-                .font(.headline)
-                .padding(.top)
-
-            Form {
-                TextField(String(localized: "proxy.column.name"), text: $editedProxy.name)
-                Picker(String(localized: "proxy.column.type"), selection: $editedProxy.type) {
-                    ForEach(Constants.proxyTypes, id: \.self) { type in
-                        Text(type).tag(type)
-                    }
-                }
-                TextField(String(localized: "proxy.column.localPort"), value: $editedProxy.localPort, format: .number)
-                TextField(String(localized: "proxy.column.remotePort"), value: $editedProxy.remotePort, format: .number)
-            }
-            .padding(.horizontal)
-
-            HStack {
-                Button(String(localized: "common.cancel")) { dismiss() }
-                    .keyboardShortcut(.cancelAction)
-                Button(String(localized: "common.save")) {
-                    onSave(editedProxy)
-                    dismiss()
-                }
-                .keyboardShortcut(.defaultAction)
-                .buttonStyle(.borderedProminent)
-            }
-            .padding(.bottom)
+        EditProxyDialog(
+            proxy: $editedProxy,
+            isPresented: $isPresented
+        ) { saved in
+            onSave(saved)
         }
-        .frame(width: 420, height: 300)
+        .onDisappear {
+            // Ensure dismissal is handled
+        }
     }
 }

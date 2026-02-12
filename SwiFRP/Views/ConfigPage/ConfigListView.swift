@@ -13,27 +13,33 @@ struct ConfigListView: View {
         }
         .sheet(isPresented: $viewModel.isShowingNewConfigDialog) {
             if let config = viewModel.editingConfig {
-                ConfigEditPlaceholder(config: config) { saved in
+                EditClientDialog(
+                    config: Binding(
+                        get: { config },
+                        set: { _ in }
+                    ),
+                    isPresented: $viewModel.isShowingNewConfigDialog
+                ) { saved in
                     viewModel.saveConfig(saved)
                 }
             }
         }
-        .alert(String(localized: "error.title"), isPresented: $viewModel.showError) {
-            Button(String(localized: "common.ok"), role: .cancel) {}
+        .alert(L("error.title"), isPresented: $viewModel.showError) {
+            Button(L("common.ok"), role: .cancel) {}
         } message: {
             if let msg = viewModel.errorMessage {
                 Text(msg)
             }
         }
         .confirmationDialog(
-            String(localized: "config.deleteConfirmation"),
+            L("config.deleteConfirmation"),
             isPresented: $viewModel.isShowingDeleteConfirmation,
             titleVisibility: .visible
         ) {
-            Button(String(localized: "common.delete"), role: .destructive) {
+            Button(L("common.delete"), role: .destructive) {
                 viewModel.deleteSelectedConfigs()
             }
-            Button(String(localized: "common.cancel"), role: .cancel) {}
+            Button(L("common.cancel"), role: .cancel) {}
         }
     }
 
@@ -86,7 +92,7 @@ struct ConfigListView: View {
                 Image(systemName: "hand.raised.fill")
                     .font(.caption2)
                     .foregroundColor(.secondary)
-                    .help(String(localized: "config.manualStart"))
+                    .help(L("config.manualStart"))
             }
         }
         .padding(.vertical, 2)
@@ -110,7 +116,7 @@ struct ConfigListView: View {
 
     private func serverAddress(for config: ClientConfig) -> String {
         if config.serverAddr.isEmpty {
-            return "\(String(localized: "config.noServer"))"
+            return "\(L("config.noServer"))"
         }
         return "\(config.serverAddr):\(config.serverPort)"
     }
@@ -123,31 +129,31 @@ struct ConfigListView: View {
             viewModel.editingConfig = config
             viewModel.isShowingNewConfigDialog = true
         } label: {
-            Label(String(localized: "config.edit"), systemImage: "pencil")
+            Label(L("config.edit"), systemImage: "pencil")
         }
 
         Divider()
 
-        Menu(String(localized: "config.moveTo")) {
-            Button(String(localized: "config.move.top")) {
+        Menu(L("config.moveTo")) {
+            Button(L("config.move.top")) {
                 viewModel.moveConfig(from: index, direction: .top)
             }
-            Button(String(localized: "config.move.up")) {
+            Button(L("config.move.up")) {
                 viewModel.moveConfig(from: index, direction: .up)
             }
-            Button(String(localized: "config.move.down")) {
+            Button(L("config.move.down")) {
                 viewModel.moveConfig(from: index, direction: .down)
             }
-            Button(String(localized: "config.move.bottom")) {
+            Button(L("config.move.bottom")) {
                 viewModel.moveConfig(from: index, direction: .bottom)
             }
         }
 
-        Menu(String(localized: "config.duplicate")) {
-            Button(String(localized: "config.duplicate.full")) {
+        Menu(L("config.duplicate")) {
+            Button(L("config.duplicate.full")) {
                 viewModel.duplicateConfig(config, fullCopy: true)
             }
-            Button(String(localized: "config.duplicate.basic")) {
+            Button(L("config.duplicate.basic")) {
                 viewModel.duplicateConfig(config, fullCopy: false)
             }
         }
@@ -157,13 +163,13 @@ struct ConfigListView: View {
         Button {
             viewModel.importFromClipboard()
         } label: {
-            Label(String(localized: "config.importClipboard"), systemImage: "doc.on.clipboard")
+            Label(L("config.importClipboard"), systemImage: "doc.on.clipboard")
         }
 
         Button {
             viewModel.isShowingNATDialog = true
         } label: {
-            Label(String(localized: "config.natCheck"), systemImage: "network.badge.shield.half.filled")
+            Label(L("config.natCheck"), systemImage: "network.badge.shield.half.filled")
         }
 
         Button {
@@ -171,13 +177,13 @@ struct ConfigListView: View {
             NSPasteboard.general.clearContents()
             NSPasteboard.general.setString(link, forType: .string)
         } label: {
-            Label(String(localized: "config.shareLink"), systemImage: "square.and.arrow.up")
+            Label(L("config.shareLink"), systemImage: "square.and.arrow.up")
         }
 
         Button {
             viewModel.isShowingPropertiesDialog = true
         } label: {
-            Label(String(localized: "config.properties"), systemImage: "info.circle")
+            Label(L("config.properties"), systemImage: "info.circle")
         }
 
         Divider()
@@ -186,7 +192,7 @@ struct ConfigListView: View {
             viewModel.selectedIndices = [index]
             viewModel.isShowingDeleteConfirmation = true
         } label: {
-            Label(String(localized: "common.delete"), systemImage: "trash")
+            Label(L("common.delete"), systemImage: "trash")
         }
     }
 
@@ -198,7 +204,7 @@ struct ConfigListView: View {
                 Button {
                     viewModel.createNewConfig()
                 } label: {
-                    Label(String(localized: "config.new.empty"), systemImage: "doc")
+                    Label(L("config.new.empty"), systemImage: "doc")
                 }
 
                 Divider()
@@ -206,19 +212,19 @@ struct ConfigListView: View {
                 Button {
                     viewModel.isShowingImportFileDialog = true
                 } label: {
-                    Label(String(localized: "config.import.file"), systemImage: "doc.badge.plus")
+                    Label(L("config.import.file"), systemImage: "doc.badge.plus")
                 }
 
                 Button {
                     viewModel.importFromClipboard()
                 } label: {
-                    Label(String(localized: "config.import.clipboard"), systemImage: "doc.on.clipboard")
+                    Label(L("config.import.clipboard"), systemImage: "doc.on.clipboard")
                 }
 
                 Button {
                     viewModel.isShowingImportURLDialog = true
                 } label: {
-                    Label(String(localized: "config.import.url"), systemImage: "link.badge.plus")
+                    Label(L("config.import.url"), systemImage: "link.badge.plus")
                 }
             } label: {
                 Image(systemName: "plus")
@@ -243,7 +249,7 @@ struct ConfigListView: View {
                 Image(systemName: "square.and.arrow.up")
             }
             .buttonStyle(.borderless)
-            .help(String(localized: "config.exportAll"))
+            .help(L("config.exportAll"))
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 6)
@@ -269,46 +275,5 @@ struct ConfigListView: View {
                 }
             }
         }
-    }
-}
-
-// MARK: - Placeholder for config edit dialog
-
-private struct ConfigEditPlaceholder: View {
-    let config: ClientConfig
-    let onSave: (ClientConfig) -> Void
-
-    @Environment(\.dismiss) private var dismiss
-    @State private var editedConfig: ClientConfig
-
-    init(config: ClientConfig, onSave: @escaping (ClientConfig) -> Void) {
-        self.config = config
-        self.onSave = onSave
-        _editedConfig = State(initialValue: config)
-    }
-
-    var body: some View {
-        VStack {
-            Text(String(localized: "config.edit"))
-                .font(.headline)
-                .padding()
-
-            TextField(String(localized: "config.name"), text: $editedConfig.name)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
-
-            HStack {
-                Button(String(localized: "common.cancel")) { dismiss() }
-                    .keyboardShortcut(.cancelAction)
-                Button(String(localized: "common.save")) {
-                    onSave(editedConfig)
-                    dismiss()
-                }
-                .keyboardShortcut(.defaultAction)
-                .buttonStyle(.borderedProminent)
-            }
-            .padding()
-        }
-        .frame(width: 400, height: 200)
     }
 }

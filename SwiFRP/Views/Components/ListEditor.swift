@@ -29,7 +29,7 @@ struct ListEditor: View {
             Button {
                 items.append("")
             } label: {
-                Label(String(localized: "common.add"), systemImage: "plus")
+                Label(L("common.add"), systemImage: "plus")
             }
         }
     }

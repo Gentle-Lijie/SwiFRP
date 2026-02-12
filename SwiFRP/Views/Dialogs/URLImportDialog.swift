@@ -11,10 +11,10 @@ struct URLImportDialog: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text(String(localized: "urlImport.title"))
+            Text(L("urlImport.title"))
                 .font(.headline)
 
-            Text(String(localized: "urlImport.description"))
+            Text(L("urlImport.description"))
                 .font(.caption)
                 .foregroundColor(.secondary)
 
@@ -44,12 +44,12 @@ struct URLImportDialog: View {
 
             HStack {
                 Spacer()
-                Button(String(localized: "common.cancel")) {
+                Button(L("common.cancel")) {
                     isPresented = false
                 }
                 .keyboardShortcut(.cancelAction)
 
-                Button(String(localized: "urlImport.import")) {
+                Button(L("urlImport.import")) {
                     importURLs()
                 }
                 .keyboardShortcut(.defaultAction)
@@ -58,7 +58,7 @@ struct URLImportDialog: View {
             }
         }
         .padding()
-        .frame(width: 480, minHeight: 300)
+        .frame(width: 480, height: 300)
     }
 
     private func importURLs() {
@@ -77,7 +77,7 @@ struct URLImportDialog: View {
             do {
                 let configs = try await ImportExportManager.shared.importFromURLs(urls) { current, total in
                     DispatchQueue.main.async {
-                        statusMessage = String(localized: "urlImport.downloading \(current) \(total)")
+                        statusMessage = L("urlImport.downloading \(current) \(total)")
                     }
                 }
 

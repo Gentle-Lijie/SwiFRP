@@ -1,6 +1,6 @@
 import Foundation
 
-struct ClientConfig: Codable, Identifiable {
+struct ClientConfig: Codable, Identifiable, Equatable {
     var id: String { name }
 
     // MARK: - Basic

@@ -11,7 +11,7 @@ struct BrowseField: View {
             TextField(label, text: $path)
                 .textFieldStyle(.roundedBorder)
 
-            Button(String(localized: "common.browse")) {
+            Button(L("common.browse")) {
                 browseFile()
             }
         }
