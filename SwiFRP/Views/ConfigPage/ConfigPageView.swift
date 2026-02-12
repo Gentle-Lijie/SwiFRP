@@ -29,10 +29,10 @@ struct WelcomeView: View {
             Image(systemName: "network")
                 .font(.system(size: 64))
                 .foregroundColor(.secondary)
-            Text(String(localized: "welcome.title"))
+            Text(L("welcome.title"))
                 .font(.title2)
                 .foregroundColor(.secondary)
-            Text(String(localized: "welcome.subtitle"))
+            Text(L("welcome.subtitle"))
                 .font(.body)
                 .foregroundColor(.secondary)
         }

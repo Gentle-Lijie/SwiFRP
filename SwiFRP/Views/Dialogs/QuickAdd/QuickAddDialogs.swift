@@ -13,13 +13,13 @@ struct OpenPortDialog: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text(String(localized: "quickAdd.openPort.title"))
+            Text(L("quickAdd.openPort.title"))
                 .font(.headline)
 
             Form {
-                TextField(String(localized: "quickAdd.openPort.port"), text: $portNumber)
+                TextField(L("quickAdd.openPort.port"), text: $portNumber)
 
-                Picker(String(localized: "quickAdd.openPort.protocol"), selection: $protocolChoice) {
+                Picker(L("quickAdd.openPort.protocol"), selection: $protocolChoice) {
                     ForEach(protocolOptions, id: \.self) { opt in
                         Text(opt.uppercased()).tag(opt)
                     }
@@ -31,9 +31,9 @@ struct OpenPortDialog: View {
 
             HStack {
                 Spacer()
-                Button(String(localized: "common.cancel")) { isPresented = false }
+                Button(L("common.cancel")) { isPresented = false }
                     .keyboardShortcut(.cancelAction)
-                Button(String(localized: "common.add")) { addProxy() }
+                Button(L("common.add")) { addProxy() }
                     .keyboardShortcut(.defaultAction)
                     .buttonStyle(.borderedProminent)
                     .disabled(portNumber.isEmpty)
@@ -90,7 +90,7 @@ struct SimpleProxyDialog: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text(String(localized: "quickAdd.simpleProxy.title"))
+            Text(L("quickAdd.simpleProxy.title"))
                 .font(.headline)
 
             List {
@@ -102,7 +102,7 @@ struct SimpleProxyDialog: View {
                             Text(preset.name.uppercased())
                                 .fontWeight(.medium)
                             Spacer()
-                            Text(String(localized: "quickAdd.simpleProxy.port") + " \(preset.port)")
+                            Text(L("quickAdd.simpleProxy.port") + " \(preset.port)")
                                 .foregroundColor(.secondary)
                             Text("(\(preset.type))")
                                 .foregroundColor(.secondary)
@@ -118,7 +118,7 @@ struct SimpleProxyDialog: View {
 
             HStack {
                 Spacer()
-                Button(String(localized: "common.close")) { isPresented = false }
+                Button(L("common.close")) { isPresented = false }
                     .keyboardShortcut(.cancelAction)
             }
         }
@@ -152,20 +152,20 @@ struct HTTPFileServerDialog: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text(String(localized: "quickAdd.httpFileServer.title"))
+            Text(L("quickAdd.httpFileServer.title"))
                 .font(.headline)
 
             Form {
                 BrowseField(
-                    label: String(localized: "quickAdd.httpFileServer.localPath"),
+                    label: L("quickAdd.httpFileServer.localPath"),
                     path: $localPath,
                     canChooseDirectories: true
                 )
-                TextField(String(localized: "quickAdd.httpFileServer.stripPrefix"), text: $stripPrefix)
+                TextField(L("quickAdd.httpFileServer.stripPrefix"), text: $stripPrefix)
 
-                Section(String(localized: "quickAdd.httpFileServer.auth")) {
-                    TextField(String(localized: "quickAdd.httpFileServer.user"), text: $httpUser)
-                    SecureField(String(localized: "quickAdd.httpFileServer.password"), text: $httpPwd)
+                Section(L("quickAdd.httpFileServer.auth")) {
+                    TextField(L("quickAdd.httpFileServer.user"), text: $httpUser)
+                    SecureField(L("quickAdd.httpFileServer.password"), text: $httpPwd)
                 }
             }
 
@@ -173,9 +173,9 @@ struct HTTPFileServerDialog: View {
 
             HStack {
                 Spacer()
-                Button(String(localized: "common.cancel")) { isPresented = false }
+                Button(L("common.cancel")) { isPresented = false }
                     .keyboardShortcut(.cancelAction)
-                Button(String(localized: "common.add")) { addProxy() }
+                Button(L("common.add")) { addProxy() }
                     .keyboardShortcut(.defaultAction)
                     .buttonStyle(.borderedProminent)
                     .disabled(localPath.isEmpty)
@@ -213,26 +213,26 @@ struct ProxyServerDialog: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text(String(localized: "quickAdd.proxyServer.title"))
+            Text(L("quickAdd.proxyServer.title"))
                 .font(.headline)
 
             Form {
-                Picker(String(localized: "quickAdd.proxyServer.type"), selection: $proxyType) {
+                Picker(L("quickAdd.proxyServer.type"), selection: $proxyType) {
                     Text("SOCKS5").tag("socks5")
                     Text("HTTP Proxy").tag("http_proxy")
                 }
 
-                TextField(String(localized: "quickAdd.proxyServer.user"), text: $userName)
-                SecureField(String(localized: "quickAdd.proxyServer.password"), text: $password)
+                TextField(L("quickAdd.proxyServer.user"), text: $userName)
+                SecureField(L("quickAdd.proxyServer.password"), text: $password)
             }
 
             Divider()
 
             HStack {
                 Spacer()
-                Button(String(localized: "common.cancel")) { isPresented = false }
+                Button(L("common.cancel")) { isPresented = false }
                     .keyboardShortcut(.cancelAction)
-                Button(String(localized: "common.add")) { addProxy() }
+                Button(L("common.add")) { addProxy() }
                     .keyboardShortcut(.defaultAction)
                     .buttonStyle(.borderedProminent)
             }

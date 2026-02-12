@@ -132,66 +132,67 @@ struct TOMLParser {
     // MARK: - ClientConfig Conversion
 
     /// Converts a ClientConfig to a TOML-compatible dictionary.
+    /// New frp format (v0.52+): No [common] section, settings directly at root level.
     static func clientConfigToDict(_ config: ClientConfig) -> [String: Any] {
         var dict: [String: Any] = [:]
 
-        // Common section
-        var common: [String: Any] = [:]
-        if !config.serverAddr.isEmpty { common["serverAddr"] = config.serverAddr }
-        if config.serverPort != 7000 { common["serverPort"] = config.serverPort }
-        if !config.user.isEmpty { common["user"] = config.user }
-        if !config.natHoleSTUNServer.isEmpty { common["natHoleSTUNServer"] = config.natHoleSTUNServer }
+        // Basic settings (directly at root level, not in [common])
+        if !config.serverAddr.isEmpty { dict["serverAddr"] = config.serverAddr }
+        if config.serverPort != 7000 { dict["serverPort"] = config.serverPort }
+        if !config.user.isEmpty { dict["user"] = config.user }
+        if !config.natHoleSTUNServer.isEmpty { dict["natHoleSTUNServer"] = config.natHoleSTUNServer }
 
         // Auth
-        if !config.authMethod.isEmpty { common["auth.method"] = config.authMethod }
-        if !config.token.isEmpty { common["auth.token"] = config.token }
-        if !config.tokenFile.isEmpty { common["auth.tokenFile"] = config.tokenFile }
-        if !config.oidcClientID.isEmpty { common["auth.oidc.clientID"] = config.oidcClientID }
-        if !config.oidcClientSecret.isEmpty { common["auth.oidc.clientSecret"] = config.oidcClientSecret }
-        if !config.oidcAudience.isEmpty { common["auth.oidc.audience"] = config.oidcAudience }
-        if !config.oidcScope.isEmpty { common["auth.oidc.scope"] = config.oidcScope }
-        if !config.oidcTokenEndpoint.isEmpty { common["auth.oidc.tokenEndpointURL"] = config.oidcTokenEndpoint }
+        if !config.authMethod.isEmpty { dict["auth.method"] = config.authMethod }
+        if !config.token.isEmpty { dict["auth.token"] = config.token }
+        if !config.tokenFile.isEmpty { dict["auth.tokenFile"] = config.tokenFile }
+        if !config.oidcClientID.isEmpty { dict["auth.oidc.clientID"] = config.oidcClientID }
+        if !config.oidcClientSecret.isEmpty { dict["auth.oidc.clientSecret"] = config.oidcClientSecret }
+        if !config.oidcAudience.isEmpty { dict["auth.oidc.audience"] = config.oidcAudience }
+        if !config.oidcScope.isEmpty { dict["auth.oidc.scope"] = config.oidcScope }
+        if !config.oidcTokenEndpoint.isEmpty { dict["auth.oidc.tokenEndpointURL"] = config.oidcTokenEndpoint }
         var additionalScopes: [String] = []
         if config.authHeartbeat { additionalScopes.append("HeartBeats") }
         if config.authNewWorkConn { additionalScopes.append("NewWorkConns") }
-        if !additionalScopes.isEmpty { common["auth.additionalScopes"] = additionalScopes }
+        if !additionalScopes.isEmpty { dict["auth.additionalScopes"] = additionalScopes }
 
         // Log
-        if config.logLevel != "info" { common["log.level"] = config.logLevel }
-        if config.logMaxDays != 3 { common["log.maxDays"] = config.logMaxDays }
+        if config.logLevel != "info" { dict["log.level"] = config.logLevel }
+        if config.logMaxDays != 3 { dict["log.maxDays"] = config.logMaxDays }
 
-        // Admin
-        if !config.adminAddr.isEmpty { common["webServer.addr"] = config.adminAddr }
-        if config.adminPort != 0 { common["webServer.port"] = config.adminPort }
-        if !config.adminUser.isEmpty { common["webServer.user"] = config.adminUser }
-        if !config.adminPwd.isEmpty { common["webServer.password"] = config.adminPwd }
-        if config.adminTLS { common["webServer.tls.certFile"] = config.adminTLSCertFile }
+        // Admin (always set addr and port for admin API)
+        // Admin API should always listen on localhost for security
+        if config.adminPort > 0 {
+            dict["webServer.addr"] = config.adminAddr.isEmpty ? "127.0.0.1" : config.adminAddr
+            dict["webServer.port"] = config.adminPort
+            if !config.adminUser.isEmpty { dict["webServer.user"] = config.adminUser }
+            if !config.adminPwd.isEmpty { dict["webServer.password"] = config.adminPwd }
+            if config.adminTLS { dict["webServer.tls.certFile"] = config.adminTLSCertFile }
+        }
 
         // Connection
-        if config.protocol != "tcp" { common["transport.protocol"] = config.protocol }
-        if config.dialTimeout != 10 { common["transport.dialServerTimeout"] = config.dialTimeout }
-        if config.keepalivePeriod != 30 { common["transport.dialServerKeepAlive"] = config.keepalivePeriod }
-        if config.connectPoolSize > 0 { common["transport.poolCount"] = config.connectPoolSize }
-        if config.heartbeatInterval != 30 { common["transport.heartbeatInterval"] = config.heartbeatInterval }
-        if config.heartbeatTimeout != 90 { common["transport.heartbeatTimeout"] = config.heartbeatTimeout }
+        if config.protocol != "tcp" { dict["transport.protocol"] = config.protocol }
+        if config.dialTimeout != 10 { dict["transport.dialServerTimeout"] = config.dialTimeout }
+        if config.keepalivePeriod != 30 { dict["transport.dialServerKeepAlive"] = config.keepalivePeriod }
+        if config.connectPoolSize > 0 { dict["transport.poolCount"] = config.connectPoolSize }
+        if config.heartbeatInterval != 30 { dict["transport.heartbeatInterval"] = config.heartbeatInterval }
+        if config.heartbeatTimeout != 90 { dict["transport.heartbeatTimeout"] = config.heartbeatTimeout }
 
         // TLS
-        if config.tlsEnable { common["transport.tls.enable"] = true }
-        if !config.tlsServerName.isEmpty { common["transport.tls.serverName"] = config.tlsServerName }
-        if !config.tlsCertFile.isEmpty { common["transport.tls.certFile"] = config.tlsCertFile }
-        if !config.tlsKeyFile.isEmpty { common["transport.tls.keyFile"] = config.tlsKeyFile }
-        if !config.tlsTrustedCaFile.isEmpty { common["transport.tls.trustedCaFile"] = config.tlsTrustedCaFile }
+        if config.tlsEnable { dict["transport.tls.enable"] = true }
+        if !config.tlsServerName.isEmpty { dict["transport.tls.serverName"] = config.tlsServerName }
+        if !config.tlsCertFile.isEmpty { dict["transport.tls.certFile"] = config.tlsCertFile }
+        if !config.tlsKeyFile.isEmpty { dict["transport.tls.keyFile"] = config.tlsKeyFile }
+        if !config.tlsTrustedCaFile.isEmpty { dict["transport.tls.trustedCaFile"] = config.tlsTrustedCaFile }
 
         // Advanced
-        if !config.dnsServer.isEmpty { common["dnsServer"] = config.dnsServer }
-        if !config.connectServerLocalIP.isEmpty { common["transport.connectServerLocalIP"] = config.connectServerLocalIP }
-        if !config.tcpMux { common["transport.tcpMux"] = false }
-        if config.tcpMuxKeepAliveInterval != 60 { common["transport.tcpMuxKeepaliveInterval"] = config.tcpMuxKeepAliveInterval }
-        if !config.loginFailExit { common["loginFailExit"] = false }
+        if !config.dnsServer.isEmpty { dict["dnsServer"] = config.dnsServer }
+        if !config.connectServerLocalIP.isEmpty { dict["transport.connectServerLocalIP"] = config.connectServerLocalIP }
+        if !config.tcpMux { dict["transport.tcpMux"] = false }
+        if config.tcpMuxKeepAliveInterval != 60 { dict["transport.tcpMuxKeepaliveInterval"] = config.tcpMuxKeepAliveInterval }
+        if !config.loginFailExit { dict["loginFailExit"] = false }
 
-        if !config.metadatas.isEmpty { common["metadatas"] = config.metadatas }
-
-        dict["common"] = common
+        if !config.metadatas.isEmpty { dict["metadatas"] = config.metadatas }
 
         // Proxies
         if !config.proxies.isEmpty {
@@ -285,64 +286,66 @@ struct TOMLParser {
         return dict
     }
 
-    /// Converts a TOML dictionary (from the common section) to a ClientConfig.
+    /// Converts a TOML dictionary to a ClientConfig.
+    /// Supports both old format (with [common] section) and new format (root-level settings).
     static func dictToClientConfig(_ dict: [String: Any], name: String) -> ClientConfig {
-        let common = dict["common"] as? [String: Any] ?? dict
+        // Support both old format (with [common] section) and new format (root level)
+        let settings = dict["common"] as? [String: Any] ?? dict
 
         var config = ClientConfig(name: name)
-        config.serverAddr = common["serverAddr"] as? String ?? ""
-        config.serverPort = common["serverPort"] as? Int ?? 7000
-        config.user = common["user"] as? String ?? ""
-        config.natHoleSTUNServer = common["natHoleSTUNServer"] as? String ?? ""
+        config.serverAddr = settings["serverAddr"] as? String ?? ""
+        config.serverPort = settings["serverPort"] as? Int ?? 7000
+        config.user = settings["user"] as? String ?? ""
+        config.natHoleSTUNServer = settings["natHoleSTUNServer"] as? String ?? ""
 
         // Auth
-        config.authMethod = common["auth.method"] as? String ?? ""
-        config.token = common["auth.token"] as? String ?? ""
-        config.tokenFile = common["auth.tokenFile"] as? String ?? ""
-        config.oidcClientID = common["auth.oidc.clientID"] as? String ?? ""
-        config.oidcClientSecret = common["auth.oidc.clientSecret"] as? String ?? ""
-        config.oidcAudience = common["auth.oidc.audience"] as? String ?? ""
-        config.oidcScope = common["auth.oidc.scope"] as? String ?? ""
-        config.oidcTokenEndpoint = common["auth.oidc.tokenEndpointURL"] as? String ?? ""
+        config.authMethod = settings["auth.method"] as? String ?? ""
+        config.token = settings["auth.token"] as? String ?? ""
+        config.tokenFile = settings["auth.tokenFile"] as? String ?? ""
+        config.oidcClientID = settings["auth.oidc.clientID"] as? String ?? ""
+        config.oidcClientSecret = settings["auth.oidc.clientSecret"] as? String ?? ""
+        config.oidcAudience = settings["auth.oidc.audience"] as? String ?? ""
+        config.oidcScope = settings["auth.oidc.scope"] as? String ?? ""
+        config.oidcTokenEndpoint = settings["auth.oidc.tokenEndpointURL"] as? String ?? ""
 
-        if let scopes = common["auth.additionalScopes"] as? [String] {
+        if let scopes = settings["auth.additionalScopes"] as? [String] {
             config.authHeartbeat = scopes.contains("HeartBeats")
             config.authNewWorkConn = scopes.contains("NewWorkConns")
         }
 
         // Log
-        config.logLevel = common["log.level"] as? String ?? "info"
-        config.logMaxDays = common["log.maxDays"] as? Int ?? 3
+        config.logLevel = settings["log.level"] as? String ?? "info"
+        config.logMaxDays = settings["log.maxDays"] as? Int ?? 3
 
         // Admin
-        config.adminAddr = common["webServer.addr"] as? String ?? ""
-        config.adminPort = common["webServer.port"] as? Int ?? 0
-        config.adminUser = common["webServer.user"] as? String ?? ""
-        config.adminPwd = common["webServer.password"] as? String ?? ""
+        config.adminAddr = settings["webServer.addr"] as? String ?? "127.0.0.1"
+        config.adminPort = settings["webServer.port"] as? Int ?? 0
+        config.adminUser = settings["webServer.user"] as? String ?? ""
+        config.adminPwd = settings["webServer.password"] as? String ?? ""
 
         // Connection
-        config.protocol = common["transport.protocol"] as? String ?? "tcp"
-        config.dialTimeout = common["transport.dialServerTimeout"] as? Int ?? 10
-        config.keepalivePeriod = common["transport.dialServerKeepAlive"] as? Int ?? 30
-        config.connectPoolSize = common["transport.poolCount"] as? Int ?? 0
-        config.heartbeatInterval = common["transport.heartbeatInterval"] as? Int ?? 30
-        config.heartbeatTimeout = common["transport.heartbeatTimeout"] as? Int ?? 90
+        config.protocol = settings["transport.protocol"] as? String ?? "tcp"
+        config.dialTimeout = settings["transport.dialServerTimeout"] as? Int ?? 10
+        config.keepalivePeriod = settings["transport.dialServerKeepAlive"] as? Int ?? 30
+        config.connectPoolSize = settings["transport.poolCount"] as? Int ?? 0
+        config.heartbeatInterval = settings["transport.heartbeatInterval"] as? Int ?? 30
+        config.heartbeatTimeout = settings["transport.heartbeatTimeout"] as? Int ?? 90
 
         // TLS
-        config.tlsEnable = common["transport.tls.enable"] as? Bool ?? false
-        config.tlsServerName = common["transport.tls.serverName"] as? String ?? ""
-        config.tlsCertFile = common["transport.tls.certFile"] as? String ?? ""
-        config.tlsKeyFile = common["transport.tls.keyFile"] as? String ?? ""
-        config.tlsTrustedCaFile = common["transport.tls.trustedCaFile"] as? String ?? ""
+        config.tlsEnable = settings["transport.tls.enable"] as? Bool ?? false
+        config.tlsServerName = settings["transport.tls.serverName"] as? String ?? ""
+        config.tlsCertFile = settings["transport.tls.certFile"] as? String ?? ""
+        config.tlsKeyFile = settings["transport.tls.keyFile"] as? String ?? ""
+        config.tlsTrustedCaFile = settings["transport.tls.trustedCaFile"] as? String ?? ""
 
         // Advanced
-        config.dnsServer = common["dnsServer"] as? String ?? ""
-        config.connectServerLocalIP = common["transport.connectServerLocalIP"] as? String ?? ""
-        config.tcpMux = common["transport.tcpMux"] as? Bool ?? true
-        config.tcpMuxKeepAliveInterval = common["transport.tcpMuxKeepaliveInterval"] as? Int ?? 60
-        config.loginFailExit = common["loginFailExit"] as? Bool ?? true
+        config.dnsServer = settings["dnsServer"] as? String ?? ""
+        config.connectServerLocalIP = settings["transport.connectServerLocalIP"] as? String ?? ""
+        config.tcpMux = settings["transport.tcpMux"] as? Bool ?? true
+        config.tcpMuxKeepAliveInterval = settings["transport.tcpMuxKeepaliveInterval"] as? Int ?? 60
+        config.loginFailExit = settings["loginFailExit"] as? Bool ?? true
 
-        if let metadatas = common["metadatas"] as? [String: String] {
+        if let metadatas = settings["metadatas"] as? [String: String] {
             config.metadatas = metadatas
         }
 

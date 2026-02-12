@@ -14,18 +14,18 @@ struct NATDiscoveryDialog: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text(String(localized: "nat.title"))
+            Text(L("nat.title"))
                 .font(.headline)
 
             HStack {
-                Text(String(localized: "nat.stunServer"))
+                Text(L("nat.stunServer"))
                     .fontWeight(.medium)
                 Text(stunServer.isEmpty ? Constants.defaultSTUNServer : stunServer)
                     .textSelection(.enabled)
             }
 
             if isDetecting {
-                ProgressView(String(localized: "nat.detecting"))
+                ProgressView(L("nat.detecting"))
                     .padding()
             }
 
@@ -34,31 +34,31 @@ struct NATDiscoveryDialog: View {
 
                 Grid(alignment: .leadingFirstTextBaseline, horizontalSpacing: 16, verticalSpacing: 8) {
                     GridRow {
-                        Text(String(localized: "nat.natType"))
+                        Text(L("nat.natType"))
                             .fontWeight(.medium)
                             .foregroundColor(.secondary)
                         Text(natType).textSelection(.enabled)
                     }
                     GridRow {
-                        Text(String(localized: "nat.natBehavior"))
+                        Text(L("nat.natBehavior"))
                             .fontWeight(.medium)
                             .foregroundColor(.secondary)
                         Text(natBehavior).textSelection(.enabled)
                     }
                     GridRow {
-                        Text(String(localized: "nat.localAddress"))
+                        Text(L("nat.localAddress"))
                             .fontWeight(.medium)
                             .foregroundColor(.secondary)
                         Text(localAddress).textSelection(.enabled)
                     }
                     GridRow {
-                        Text(String(localized: "nat.externalAddresses"))
+                        Text(L("nat.externalAddresses"))
                             .fontWeight(.medium)
                             .foregroundColor(.secondary)
                         Text(externalAddresses).textSelection(.enabled)
                     }
                     GridRow {
-                        Text(String(localized: "nat.isPublic"))
+                        Text(L("nat.isPublic"))
                             .fontWeight(.medium)
                             .foregroundColor(.secondary)
                         Text(isPublic).textSelection(.enabled)
@@ -76,14 +76,14 @@ struct NATDiscoveryDialog: View {
             Divider()
 
             HStack {
-                Button(String(localized: "nat.startDetection")) {
+                Button(L("nat.startDetection")) {
                     startDetection()
                 }
                 .disabled(isDetecting)
 
                 Spacer()
 
-                Button(String(localized: "common.close")) {
+                Button(L("common.close")) {
                     isPresented = false
                 }
                 .keyboardShortcut(.defaultAction)
@@ -112,7 +112,7 @@ struct NATDiscoveryDialog: View {
                     natBehavior = result.natBehavior
                     localAddress = result.localAddress
                     externalAddresses = result.externalAddresses
-                    isPublic = result.isPublic ? String(localized: "common.yes") : String(localized: "common.no")
+                    isPublic = result.isPublic ? L("common.yes") : L("common.no")
                     isDetecting = false
                 }
             } catch {
@@ -179,8 +179,8 @@ struct NATDiscoveryDialog: View {
 
         if result.natType.isEmpty {
             result.natType = output.isEmpty
-                ? String(localized: "nat.error.noOutput")
-                : String(localized: "nat.error.parseFailed")
+                ? L("nat.error.noOutput")
+                : L("nat.error.parseFailed")
         }
 
         return result

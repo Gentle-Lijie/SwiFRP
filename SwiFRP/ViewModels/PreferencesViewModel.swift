@@ -33,15 +33,15 @@ class PreferencesViewModel: ObservableObject {
 
     func enablePassword() {
         guard !newPassword.isEmpty else {
-            passwordError = String(localized: "preferences.password.empty")
+            passwordError = L("preferences.password.empty")
             return
         }
         guard newPassword == confirmPassword else {
-            passwordError = String(localized: "preferences.password.mismatch")
+            passwordError = L("preferences.password.mismatch")
             return
         }
         guard newPassword.count >= 4 else {
-            passwordError = String(localized: "preferences.password.tooShort")
+            passwordError = L("preferences.password.tooShort")
             return
         }
         appState.appConfig.password = hashPassword(newPassword)
@@ -52,7 +52,7 @@ class PreferencesViewModel: ObservableObject {
 
     func disablePassword() {
         guard validatePassword(currentPassword) else {
-            passwordError = String(localized: "preferences.password.incorrect")
+            passwordError = L("preferences.password.incorrect")
             return
         }
         appState.appConfig.password = ""
@@ -64,19 +64,19 @@ class PreferencesViewModel: ObservableObject {
 
     func changePassword() {
         guard validatePassword(currentPassword) else {
-            passwordError = String(localized: "preferences.password.incorrect")
+            passwordError = L("preferences.password.incorrect")
             return
         }
         guard !newPassword.isEmpty else {
-            passwordError = String(localized: "preferences.password.empty")
+            passwordError = L("preferences.password.empty")
             return
         }
         guard newPassword == confirmPassword else {
-            passwordError = String(localized: "preferences.password.mismatch")
+            passwordError = L("preferences.password.mismatch")
             return
         }
         guard newPassword.count >= 4 else {
-            passwordError = String(localized: "preferences.password.tooShort")
+            passwordError = L("preferences.password.tooShort")
             return
         }
         appState.appConfig.password = hashPassword(newPassword)
@@ -96,6 +96,28 @@ class PreferencesViewModel: ObservableObject {
     func saveLanguage() {
         appState.appConfig.lang = selectedLanguage
         appState.saveAppConfig()
+        
+        // Save to UserDefaults for LanguageManager
+        UserDefaults.standard.set(selectedLanguage, forKey: "savedLanguage")
+        UserDefaults.standard.synchronize()
+        
+        // Update LanguageManager
+        LanguageManager.shared.currentLanguage = selectedLanguage
+        
+        // Set AppleLanguages for next launch
+        let languageMap: [String: String] = [
+            "en": "en",
+            "zh-Hans": "zh-Hans",
+            "zh-Hant": "zh-Hant",
+            "ja": "ja",
+            "ko": "ko",
+            "es": "es"
+        ]
+        
+        if let appleLang = languageMap[selectedLanguage] {
+            UserDefaults.standard.set([appleLang], forKey: "AppleLanguages")
+            UserDefaults.standard.synchronize()
+        }
     }
 
     // MARK: - Private Helpers

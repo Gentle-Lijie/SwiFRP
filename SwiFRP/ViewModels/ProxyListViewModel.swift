@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 class ProxyListViewModel: ObservableObject {
-    @Published var selectedProxyIndices: Set<Int> = []
+    @Published var selectedProxyIDs: Set<String> = []
     @Published var isShowingEditProxy = false
     @Published var isShowingQuickAdd = false
     @Published var editingProxy: ProxyConfig? = nil
@@ -37,12 +37,14 @@ class ProxyListViewModel: ObservableObject {
     }
 
     func deleteSelectedProxies() {
-        let sortedIndices = selectedProxyIndices.sorted(by: >)
-        for index in sortedIndices {
+        let indicesToRemove = selectedProxyIDs.compactMap { id in
+            config.proxies.firstIndex(where: { $0.id == id })
+        }.sorted(by: >)
+        for index in indicesToRemove {
             guard index >= 0, index < config.proxies.count else { continue }
             config.proxies.remove(at: index)
         }
-        selectedProxyIndices.removeAll()
+        selectedProxyIDs.removeAll()
     }
 
     func toggleProxyEnabled(at index: Int) {

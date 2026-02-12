@@ -39,9 +39,22 @@ class StatusTracker: ObservableObject {
     // MARK: - Refresh
 
     func refreshStatus(for configName: String) {
-        let state = LaunchdManager.shared.queryStatus(configName: configName)
+        // Check both launchd status and actual process
+        let launchdState = LaunchdManager.shared.queryStatus(configName: configName)
+        let hasProcess = LaunchdManager.shared.getProcessPID(configName: configName) != nil
+        
+        let finalState: ConfigState
+        if hasProcess {
+            finalState = .started
+        } else if launchdState == .started {
+            // launchd thinks it's running but no process found
+            finalState = .stopped
+        } else {
+            finalState = launchdState
+        }
+        
         DispatchQueue.main.async {
-            self.configStates[configName] = state
+            self.configStates[configName] = finalState
         }
     }
 
@@ -59,9 +72,8 @@ class StatusTracker: ObservableObject {
                 self.proxyStatuses[config.name] = statuses
             }
         } catch {
-            await MainActor.run {
-                self.proxyStatuses[config.name] = []
-            }
+            // Don't clear existing statuses on error - keep the last known state
+            print("Failed to probe proxies for \(config.name): \(error)")
         }
     }
 

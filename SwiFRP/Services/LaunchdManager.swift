@@ -34,7 +34,24 @@ class LaunchdManager {
         if let path = try? runWhich("frpc"), !path.isEmpty {
             return path
         }
+        // Check common locations
+        let commonPaths = [
+            "/usr/local/bin/frpc",
+            "/opt/homebrew/bin/frpc",
+            "\(fm.homeDirectoryForCurrentUser.path)/.local/bin/frpc"
+        ]
+        for path in commonPaths {
+            if fm.fileExists(atPath: path) {
+                return path
+            }
+        }
         return "/usr/local/bin/frpc"
+    }
+    
+    /// Check if frpc binary exists
+    var frpcExists: Bool {
+        let path = frpcPath
+        return fm.fileExists(atPath: path)
     }
 
     private func runWhich(_ command: String) throws -> String {
@@ -79,13 +96,97 @@ class LaunchdManager {
     // MARK: - Start / Stop
 
     func start(configName: String) throws {
+        // If service is not loaded, load it first
+        let url = plistURL(for: configName)
+        if !isLoaded(configName: configName) && fm.fileExists(atPath: url.path) {
+            _ = try runLaunchctl(["load", "-w", url.path])
+        }
+        
         let label = serviceLabel(for: configName)
         _ = try runLaunchctl(["start", label])
     }
+    
+    private func isLoaded(configName: String) -> Bool {
+        let label = serviceLabel(for: configName)
+        guard let output = try? runLaunchctl(["list", label]) else { return false }
+        return !output.contains("Could not find service")
+    }
 
     func stop(configName: String) throws {
-        let label = serviceLabel(for: configName)
-        _ = try runLaunchctl(["stop", label])
+        // First, unload the service
+        let url = plistURL(for: configName)
+        if fm.fileExists(atPath: url.path) {
+            _ = try? runLaunchctl(["unload", "-w", url.path])
+        }
+        
+        // Then, kill any remaining frpc processes for this config
+        killProcess(configName: configName)
+    }
+    
+    private func killProcess(configName: String) {
+        let configURL = AppPaths.configURL(for: configName, legacyFormat: false)
+        let configPath = configURL.path
+        
+        // Find and kill frpc process using this config
+        let process = Process()
+        let pipe = Pipe()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/pgrep")
+        process.arguments = ["-f", "frpc.*\(configPath)"]
+        process.standardOutput = pipe
+        
+        do {
+            try process.run()
+            process.waitUntilExit()
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            let output = String(data: data, encoding: .utf8) ?? ""
+            
+            // Parse PIDs and kill them
+            for line in output.components(separatedBy: .newlines) {
+                if let pid = Int(line.trimmingCharacters(in: .whitespaces)) {
+                    // Try SIGTERM first
+                    let kill = Process()
+                    kill.executableURL = URL(fileURLWithPath: "/bin/kill")
+                    kill.arguments = ["-TERM", "\(pid)"]
+                    try? kill.run()
+                    kill.waitUntilExit()
+                    
+                    // Wait a bit, then force kill if still running
+                    Thread.sleep(forTimeInterval: 1.0)
+                    if isProcessRunning(pid: pid) {
+                        let forceKill = Process()
+                        forceKill.executableURL = URL(fileURLWithPath: "/bin/kill")
+                        forceKill.arguments = ["-KILL", "\(pid)"]
+                        try? forceKill.run()
+                        forceKill.waitUntilExit()
+                    }
+                }
+            }
+        } catch {
+            print("Failed to kill process: \(error)")
+        }
+    }
+    
+    private func isProcessRunning(pid: Int) -> Bool {
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/bin/kill")
+        process.arguments = ["-0", "\(pid)"]
+        do {
+            try process.run()
+            process.waitUntilExit()
+            return process.terminationStatus == 0
+        } catch {
+            return false
+        }
+    }
+    
+    func restart(configName: String) throws {
+        let url = plistURL(for: configName)
+        if fm.fileExists(atPath: url.path) {
+            _ = try runLaunchctl(["unload", "-w", url.path])
+            Thread.sleep(forTimeInterval: 1.0)
+            _ = try runLaunchctl(["load", "-w", url.path])
+            _ = try runLaunchctl(["start", serviceLabel(for: configName)])
+        }
     }
 
     // MARK: - Status
@@ -113,8 +214,62 @@ class LaunchdManager {
                 return .started
             }
         }
-        // Job loaded but no PID
+        // Job loaded but no PID - check actual process
+        if getProcessPID(configName: configName) != nil {
+            return .started
+        }
         return .stopped
+    }
+    
+    /// Gets the PID of running frpc process for a config
+    func getProcessPID(configName: String) -> Int? {
+        let configURL = AppPaths.configURL(for: configName, legacyFormat: false)
+        let configPath = configURL.path
+        
+        let process = Process()
+        let pipe = Pipe()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/pgrep")
+        process.arguments = ["-f", "frpc.*\(configPath)"]
+        process.standardOutput = pipe
+        
+        do {
+            try process.run()
+            process.waitUntilExit()
+            let data = pipe.fileHandleForReading.readDataToEndOfFile()
+            let output = String(data: data, encoding: .utf8) ?? ""
+            if let pid = Int(output.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                return pid
+            }
+        } catch {}
+        return nil
+    }
+    
+    /// Gets the last error message from launchd if service failed to start
+    func getServiceError(configName: String) -> String? {
+        let label = serviceLabel(for: configName)
+        guard let output = try? runLaunchctl(["list", label]) else { return nil }
+        
+        // Parse exit code
+        for line in output.components(separatedBy: .newlines) {
+            let trimmed = line.trimmingCharacters(in: .whitespaces)
+            if trimmed.contains("\"LastExitStatus\"") {
+                if let range = trimmed.range(of: "="),
+                   let endRange = trimmed.range(of: ";", range: range.upperBound..<trimmed.endIndex) {
+                    let code = trimmed[range.upperBound..<endRange.lowerBound]
+                        .trimmingCharacters(in: .whitespaces)
+                    if let exitCode = Int(code), exitCode != 0 {
+                        return "Service exited with code \(exitCode). Check logs for details."
+                    }
+                }
+            }
+        }
+        
+        // Check if PID is missing (service not running)
+        if !output.contains("\"PID\"") && !output.contains("Could not find service") {
+            return "Service loaded but not running. Check configuration and frpc binary."
+        }
+        
+        return nil
     }
 
     // MARK: - Plist Generation
@@ -124,17 +279,16 @@ class LaunchdManager {
         let configURL = AppPaths.configURL(for: config.name, legacyFormat: config.legacyFormat)
         let logURL = AppPaths.logURL(for: config.name)
 
-        let keepAlive: Any = config.manualStart
-            ? false
-            : ["SuccessfulExit": false] as [String: Any]
-
-        var plist: [String: Any] = [
+        // Don't use KeepAlive - we want manual control over starting/stopping
+        // Add environment variable to disable colored output
+        let plist: [String: Any] = [
             "Label": label,
             "ProgramArguments": [frpcPath, "-c", configURL.path],
             "RunAtLoad": autoStart,
-            "KeepAlive": keepAlive,
+            "KeepAlive": false,
             "StandardOutPath": logURL.path,
             "StandardErrorPath": logURL.path,
+            "EnvironmentVariables": ["NO_COLOR": "1", "TERM": "dumb"]
         ]
 
         return plist

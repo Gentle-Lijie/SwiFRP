@@ -30,9 +30,9 @@ struct PreferencesPageView: View {
     // MARK: - Password Section
 
     private var passwordSection: some View {
-        GroupBox(String(localized: "preferences.password")) {
+        GroupBox(L("preferences.password")) {
             VStack(alignment: .leading, spacing: 12) {
-                Toggle(String(localized: "preferences.password.enable"), isOn: $viewModel.isPasswordEnabled)
+                Toggle(L("preferences.password.enable"), isOn: $viewModel.isPasswordEnabled)
                     .onChange(of: viewModel.isPasswordEnabled) { enabled in
                         if !enabled {
                             viewModel.isShowingChangePassword = true
@@ -41,21 +41,21 @@ struct PreferencesPageView: View {
 
                 if viewModel.isPasswordEnabled {
                     if appState.appConfig.password.isEmpty {
-                        SecureField(String(localized: "preferences.password.new"), text: $viewModel.newPassword)
+                        SecureField(L("preferences.password.new"), text: $viewModel.newPassword)
                             .frame(width: 250)
-                        SecureField(String(localized: "preferences.password.confirm"), text: $viewModel.confirmPassword)
+                        SecureField(L("preferences.password.confirm"), text: $viewModel.confirmPassword)
                             .frame(width: 250)
 
                         if let error = viewModel.passwordError {
                             Text(error).foregroundColor(.red).font(.caption)
                         }
 
-                        Button(String(localized: "preferences.password.set")) {
+                        Button(L("preferences.password.set")) {
                             viewModel.enablePassword()
                         }
                         .buttonStyle(.borderedProminent)
                     } else {
-                        Button(String(localized: "preferences.password.change")) {
+                        Button(L("preferences.password.change")) {
                             viewModel.isShowingChangePassword = true
                         }
                     }
@@ -68,9 +68,9 @@ struct PreferencesPageView: View {
     // MARK: - Language Section
 
     private var languageSection: some View {
-        GroupBox(String(localized: "preferences.language")) {
+        GroupBox(L("preferences.language")) {
             VStack(alignment: .leading, spacing: 8) {
-                Picker(String(localized: "preferences.language.select"), selection: $viewModel.selectedLanguage) {
+                Picker(L("preferences.language.select"), selection: $viewModel.selectedLanguage) {
                     ForEach(PreferencesViewModel.availableLanguages, id: \.code) { lang in
                         Text(lang.name).tag(lang.code)
                     }
@@ -80,7 +80,7 @@ struct PreferencesPageView: View {
                     viewModel.saveLanguage()
                 }
 
-                Text(String(localized: "preferences.language.restartNote"))
+                Text(L("preferences.language.restartNote"))
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -91,8 +91,8 @@ struct PreferencesPageView: View {
     // MARK: - Advanced Section
 
     private var advancedSection: some View {
-        GroupBox(String(localized: "preferences.advanced")) {
-            Button(String(localized: "preferences.advanced.open")) {
+        GroupBox(L("preferences.advanced")) {
+            Button(L("preferences.advanced.open")) {
                 viewModel.isShowingAdvancedSettings = true
             }
             .padding(.vertical, 4)
@@ -103,18 +103,18 @@ struct PreferencesPageView: View {
 
     private var changePasswordSheet: some View {
         VStack(spacing: 16) {
-            Text(String(localized: "preferences.password.changeTitle"))
+            Text(L("preferences.password.changeTitle"))
                 .font(.headline)
 
             if !appState.appConfig.password.isEmpty {
-                SecureField(String(localized: "preferences.password.current"), text: $viewModel.currentPassword)
+                SecureField(L("preferences.password.current"), text: $viewModel.currentPassword)
                     .frame(width: 250)
             }
 
             if viewModel.isPasswordEnabled {
-                SecureField(String(localized: "preferences.password.new"), text: $viewModel.newPassword)
+                SecureField(L("preferences.password.new"), text: $viewModel.newPassword)
                     .frame(width: 250)
-                SecureField(String(localized: "preferences.password.confirm"), text: $viewModel.confirmPassword)
+                SecureField(L("preferences.password.confirm"), text: $viewModel.confirmPassword)
                     .frame(width: 250)
             }
 
@@ -124,19 +124,19 @@ struct PreferencesPageView: View {
 
             HStack {
                 Spacer()
-                Button(String(localized: "common.cancel")) {
+                Button(L("common.cancel")) {
                     viewModel.isShowingChangePassword = false
                 }
                 .keyboardShortcut(.cancelAction)
 
                 if viewModel.isPasswordEnabled {
-                    Button(String(localized: "common.save")) {
+                    Button(L("common.save")) {
                         viewModel.changePassword()
                     }
                     .keyboardShortcut(.defaultAction)
                     .buttonStyle(.borderedProminent)
                 } else {
-                    Button(String(localized: "preferences.password.disable")) {
+                    Button(L("preferences.password.disable")) {
                         viewModel.disablePassword()
                     }
                     .keyboardShortcut(.defaultAction)
@@ -152,46 +152,46 @@ struct PreferencesPageView: View {
 
     private var advancedSettingsSheet: some View {
         VStack(spacing: 12) {
-            Text(String(localized: "preferences.advanced.title"))
+            Text(L("preferences.advanced.title"))
                 .font(.headline)
 
             ScrollView {
                 Form {
-                    Toggle(String(localized: "preferences.advanced.checkUpdate"), isOn: $appState.appConfig.checkUpdate)
+                    Toggle(L("preferences.advanced.checkUpdate"), isOn: $appState.appConfig.checkUpdate)
 
                     Divider()
 
-                    Text(String(localized: "preferences.advanced.defaults"))
+                    Text(L("preferences.advanced.defaults"))
                         .font(.subheadline)
                         .fontWeight(.medium)
 
-                    Picker(String(localized: "preferences.advanced.protocol"), selection: $appState.appConfig.defaults.protocol) {
+                    Picker(L("preferences.advanced.protocol"), selection: $appState.appConfig.defaults.protocol) {
                         ForEach(Constants.protocols, id: \.self) { proto in
                             Text(proto).tag(proto)
                         }
                     }
 
-                    TextField(String(localized: "preferences.advanced.user"), text: $appState.appConfig.defaults.user)
+                    TextField(L("preferences.advanced.user"), text: $appState.appConfig.defaults.user)
 
-                    Picker(String(localized: "preferences.advanced.logLevel"), selection: $appState.appConfig.defaults.logLevel) {
+                    Picker(L("preferences.advanced.logLevel"), selection: $appState.appConfig.defaults.logLevel) {
                         ForEach(Constants.logLevels, id: \.self) { level in
                             Text(level).tag(level)
                         }
                     }
 
                     Stepper(
-                        String(localized: "preferences.advanced.logMaxDays") + ": \(appState.appConfig.defaults.logMaxDays)",
+                        L("preferences.advanced.logMaxDays") + ": \(appState.appConfig.defaults.logMaxDays)",
                         value: $appState.appConfig.defaults.logMaxDays, in: 1...365
                     )
 
-                    TextField(String(localized: "preferences.advanced.dnsServer"), text: $appState.appConfig.defaults.dnsServer)
-                    TextField(String(localized: "preferences.advanced.stunServer"), text: $appState.appConfig.defaults.natHoleSTUNServer)
-                    TextField(String(localized: "preferences.advanced.sourceAddr"), text: $appState.appConfig.defaults.connectServerLocalIP)
+                    TextField(L("preferences.advanced.dnsServer"), text: $appState.appConfig.defaults.dnsServer)
+                    TextField(L("preferences.advanced.stunServer"), text: $appState.appConfig.defaults.natHoleSTUNServer)
+                    TextField(L("preferences.advanced.sourceAddr"), text: $appState.appConfig.defaults.connectServerLocalIP)
 
-                    Toggle(String(localized: "preferences.advanced.tcpMux"), isOn: $appState.appConfig.defaults.tcpMux)
-                    Toggle(String(localized: "preferences.advanced.tls"), isOn: $appState.appConfig.defaults.tlsEnable)
-                    Toggle(String(localized: "preferences.advanced.manualStart"), isOn: $appState.appConfig.defaults.manualStart)
-                    Toggle(String(localized: "preferences.advanced.legacyFormat"), isOn: $appState.appConfig.defaults.legacyFormat)
+                    Toggle(L("preferences.advanced.tcpMux"), isOn: $appState.appConfig.defaults.tcpMux)
+                    Toggle(L("preferences.advanced.tls"), isOn: $appState.appConfig.defaults.tlsEnable)
+                    Toggle(L("preferences.advanced.manualStart"), isOn: $appState.appConfig.defaults.manualStart)
+                    Toggle(L("preferences.advanced.legacyFormat"), isOn: $appState.appConfig.defaults.legacyFormat)
                 }
             }
             .frame(maxHeight: 400)
@@ -200,7 +200,7 @@ struct PreferencesPageView: View {
 
             HStack {
                 Spacer()
-                Button(String(localized: "common.close")) {
+                Button(L("common.close")) {
                     appState.saveAppConfig()
                     viewModel.isShowingAdvancedSettings = false
                 }

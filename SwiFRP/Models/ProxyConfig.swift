@@ -1,6 +1,6 @@
 import Foundation
 
-struct ProxyConfig: Codable, Identifiable {
+struct ProxyConfig: Codable, Identifiable, Equatable {
     var id: String { name }
 
     // MARK: - Basic
@@ -68,7 +68,7 @@ struct ProxyConfig: Codable, Identifiable {
 
 // MARK: - BandwidthConfig
 
-struct BandwidthConfig: Codable {
+struct BandwidthConfig: Codable, Equatable {
     var limit: Int = 0
     var unit: String = "MB"
     var mode: String = "client"
@@ -76,7 +76,7 @@ struct BandwidthConfig: Codable {
 
 // MARK: - PluginConfig
 
-struct PluginConfig: Codable {
+struct PluginConfig: Codable, Equatable {
     var name: String = ""
 
     // http2http, http2https, https2http, https2https, tls2raw
@@ -111,14 +111,14 @@ struct PluginConfig: Codable {
 
 // MARK: - LoadBalanceConfig
 
-struct LoadBalanceConfig: Codable {
+struct LoadBalanceConfig: Codable, Equatable {
     var group: String = ""
     var groupKey: String = ""
 }
 
 // MARK: - HealthCheckConfig
 
-struct HealthCheckConfig: Codable {
+struct HealthCheckConfig: Codable, Equatable {
     var type: String = ""
     var url: String = ""
     var timeout: Int = 0
